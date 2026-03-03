@@ -1,68 +1,95 @@
+@import "tailwindcss";
+
+/* ===========================
+   Sistema de Tema Dual
+=========================== */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Tema Claro (Por defecto) */
+  --color-base-bg: #f3f2f0;
+  --color-base-bg-2: #e9e6e1;
+  --color-base-ink: #0e0e10;
+  --color-base-ink-2: #141416;
+  --color-base-gold: #c3b08c;
+  /* Ligeramente más oscuro para contraste en fondo claro */
+  --color-base-muted: #737373;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+.dark {
+  /* Tema Oscuro (Los valores originales de tu CSS) */
+  --color-base-bg: #0e0e10;
+  --color-base-bg-2: #141416;
+  --color-base-ink: #f3f2f0;
+  --color-base-ink-2: #e9e6e1;
+  --color-base-gold: #d9c6a3;
+  --color-base-muted: #a5a5a5;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* ===========================
+   Configuración de Tailwind v4
+=========================== */
+@theme {
+  /* Colores dinámicos basados en el tema */
+  --color-bg: var(--color-base-bg);
+  --color-bg-2: var(--color-base-bg-2);
+  --color-ink: var(--color-base-ink);
+  --color-ink-2: var(--color-base-ink-2);
+  --color-gold: var(--color-base-gold);
+  --color-muted: var(--color-base-muted);
+
+  /* Tipografía */
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  --font-script: "Kalnia", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+
+  /* Espaciado y Layout */
+  --spacing-header: 68px;
+  --spacing-mobile-pad: 16px;
+  --spacing-gap-base: 24px;
+
+  /* Utilidades personalizadas */
+  --radius-base: 18px;
+  --width-container: min(100% - 32px, 1200px);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* ===========================
+   Estilos Base y Resets
+=========================== */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    height: 100%;
   }
-  a:hover {
-    color: #747bff;
+
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    margin: 0;
+    height: 100%;
+    line-height: 1.6;
+    overflow-x: hidden;
+    padding-top: var(--spacing-header);
   }
-  button {
-    background-color: #f9f9f9;
+
+  img {
+    @apply max-w-full block;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+}
+
+/* ===========================
+   Componentes Globales (Opcional)
+=========================== */
+@layer components {
+
+  /* Contenedor centralizado heredado de tu CSS */
+  .container-pr {
+    @apply w-container mx-auto;
+  }
+
+  /* Botón principal */
+  .btn-pr {
+    @apply inline-block px-7 py-2.5 border border-ink-2 rounded-full font-semibold transition-all duration-300 hover:bg-ink hover:text-bg hover:-translate-y-0.5;
   }
 }
