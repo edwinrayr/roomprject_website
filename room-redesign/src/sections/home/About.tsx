@@ -1,56 +1,121 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export const About: React.FC = () => {
+    // Estado y Referencia para el Intersection Observer (Animaciones al hacer scroll)
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                // Cuando el 20% de la sección es visible, disparamos la animación
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    // Una vez que se anima, podemos dejar de observar para mejorar el rendimiento
+                    if (sectionRef.current) observer.unobserve(sectionRef.current);
+                }
+            },
+            { threshold: 0.2 }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) observer.unobserve(sectionRef.current);
+        };
+    }, []);
+
     return (
-        <section id="about" className="w-full bg-ink text-bg flex flex-col lg:flex-row transition-colors duration-500">
+        <section
+            id="about"
+            ref={sectionRef}
+            className="w-full bg-bg text-ink py-24 md:py-32 lg:py-40 transition-colors duration-500 overflow-hidden"
+        >
+            <div className="container mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
 
-            {/* Panel Izquierdo: Imagen Cuadrada */}
-            <div className="w-full lg:w-1/2 relative aspect-square lg:aspect-auto lg:min-h-[600px] overflow-hidden">
-                <img
-                    src="/images/taller.webp"
-                    alt="Inside Project Room Gallery"
-                    className="absolute inset-0 w-full h-full object-cover filter brightness-95 hover:scale-105 transition-transform duration-[1.5s] ease-out"
-                />
-            </div>
+                {/* Panel Izquierdo: Collage Editorial */}
+                <div className="w-full lg:w-1/2 relative min-h-[500px] lg:min-h-[700px] flex items-center">
 
-            {/* Panel Derecho: Contenido y Lista */}
-            <div className="w-full lg:w-1/2 flex flex-col justify-center bg-bg text-ink p-8 md:p-16 lg:p-24 transition-colors duration-500">
+                    {/* Imagen Principal (Fondo) */}
+                    <div
+                        className={`relative z-10 w-[80%] md:w-[75%] aspect-[4/5] overflow-hidden transition-all duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
+                            }`}
+                    >
+                        <img
+                            src="/images/acercahome.webp"
+                            alt="Project Room Main Exhibition"
+                            className="absolute inset-0 w-full h-full object-cover filter brightness-95 hover:scale-105 transition-transform duration-[2s] ease-out"
+                        />
+                    </div>
 
-                <span className="text-xs md:text-sm font-semibold tracking-[0.18em] uppercase opacity-70 mb-4 block">
-                    About the gallery
-                </span>
-
-                <h2 className="font-serif text-[clamp(2.5rem,4vw,3.8rem)] leading-[1.05] font-extrabold mb-6 tracking-tight">
-                    Redefining the space between art and observer.
-                </h2>
-
-                <p className="font-sans text-sm md:text-base leading-relaxed opacity-80 max-w-[52ch] mb-8">
-                    Project Room is more than an exhibition space; it is an architectural canvas dedicated to contemporary masterpieces. We curate immersive environments that challenge perception and elevate the dialogue between the artwork and its environment.
-                </p>
-
-                {/* Lista de enfoques */}
-                <ul className="flex flex-col gap-1 mb-10 max-w-[48ch]">
-                    <li className="py-3 border-b border-ink/10 text-sm md:text-base font-medium flex items-center gap-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gold"></span>
-                        Curated Contemporary Exhibitions
-                    </li>
-                    <li className="py-3 border-b border-ink/10 text-sm md:text-base font-medium flex items-center gap-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gold"></span>
-                        Private Art Advisory & Acquisitions
-                    </li>
-                    <li className="py-3 border-b border-ink/10 text-sm md:text-base font-medium flex items-center gap-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gold"></span>
-                        Cultural Events & Artist Workshops
-                    </li>
-                </ul>
-
-                <div>
-                    <a href="#artists" className="inline-block font-bold text-sm tracking-wide text-ink underline underline-offset-4 decoration-ink/30 hover:decoration-gold hover:text-gold transition-colors">
-                        Discover our artists
-                    </a>
+                    {/* Imagen Secundaria (Flotante Superpuesta) */}
+                    <div
+                        className={`absolute bottom-0 md:-bottom-10 right-0 z-20 w-[55%] md:w-[50%] aspect-square overflow-hidden shadow-2xl border-[8px] md:border-[12px] border-bg transition-all duration-[1.5s] delay-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
+                            }`}
+                    >
+                        <img
+                            src="/images/expo.webp"
+                            alt="Project Room Art Details"
+                            className="absolute inset-0 w-full h-full object-cover hover:scale-110 transition-transform duration-[2s] ease-out"
+                        />
+                    </div>
                 </div>
-            </div>
 
+                {/* Panel Derecho: Contenido y Lista Animada */}
+                <div className="w-full lg:w-1/2 flex flex-col justify-center">
+
+                    <div className={`transition-all duration-1000 delay-100 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                        <span className="text-gold text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-4 block">
+                            About the gallery
+                        </span>
+
+                        <h2 className="font-serif text-[clamp(2.5rem,4vw,4rem)] leading-[1.05] font-extrabold mb-8 tracking-tight">
+                            Redefining the space between art & observer.
+                        </h2>
+                    </div>
+
+                    <p className={`font-sans text-sm md:text-base leading-relaxed opacity-80 max-w-[52ch] mb-10 transition-all duration-1000 delay-300 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                        Project Room is more than an exhibition space; it is an architectural canvas dedicated to contemporary masterpieces. We curate immersive environments that challenge perception and elevate the dialogue between the artwork and its environment.
+                    </p>
+
+                    {/* Lista de enfoques con íconos personalizados */}
+                    <ul className="flex flex-col gap-4 mb-12 max-w-[48ch]">
+                        {[
+                            'Curated Contemporary Exhibitions',
+                            'Private Art Advisory & Acquisitions',
+                            'Cultural Events & Artist Workshops'
+                        ].map((item, index) => (
+                            <li
+                                key={index}
+                                className={`pb-4 border-b border-ink/10 text-sm md:text-base font-medium flex items-center gap-4 transition-all duration-1000 ease-out transform ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'
+                                    }`}
+                                style={{ transitionDelay: `${400 + (index * 150)}ms` }} // Retraso escalonado
+                            >
+                                <span className="flex-shrink-0 w-2 h-2 rounded-full bg-gold"></span>
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
+
+                    {/* Botón final animado */}
+                    <div className={`transition-all duration-1000 delay-700 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                        <a
+                            href="#artists"
+                            className="inline-flex items-center gap-2 font-bold text-sm tracking-widest uppercase text-ink group"
+                        >
+                            Discover our artists
+                            {/* Línea animada al hacer hover */}
+                            <span className="relative overflow-hidden w-8 h-[1px] bg-ink/30 group-hover:bg-gold transition-colors block ml-2">
+                                <span className="absolute inset-0 bg-gold -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+                            </span>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
         </section>
     );
 };
