@@ -1,0 +1,73 @@
+/* ===== RESERVA / CONTACTO (oscuro, sin border-radius) ===== */
+.reserve-contact{
+  background:#000; color:#f3f2f0;
+  padding: clamp(36px,6vw,72px) 0;
+}
+.reserve-contact a{ color:#e9e6e1; text-decoration:underline; text-underline-offset:2px; }
+
+.reserve-contact__wrap{
+  display:grid; grid-template-columns: 1.1fr 1fr; gap: clamp(20px,4vw,36px);
+}
+
+/* Columna izquierda */
+.reserve-contact__title{
+  font-family: var(--ff-serif, "Playfair Display", serif);
+  font-weight: 800; letter-spacing:.02em;
+  font-size: clamp(28px,4.4vw,44px); line-height:1.1; margin:0 0 .25rem;
+}
+.reserve-contact__lead{ margin:0 0 1.25rem; max-width: 60ch; opacity:.9; }
+.reserve-contact__people{ list-style:none; margin:0; padding:0; display:grid; gap:18px; }
+.reserve-contact__people h3{ margin:0 0 2px; font-weight:700; }
+.reserve-contact__people .role{ margin:0 0 6px; opacity:.75; }
+
+/* Formulario (sin radios) */
+.reserve-contact__form{
+  background:#0e0e10; border:1px solid rgba(255,255,255,.08);
+  padding: clamp(16px,3vw,24px);
+}
+.reserve-contact__form .field{ display:flex; flex-direction:column; gap:8px; margin-bottom:14px; }
+.reserve-contact__form .field--full{ grid-column:1/-1; }
+
+.reserve-contact__form label{ font-size:.9rem; opacity:.85; }
+.reserve-contact__form input,
+.reserve-contact__form textarea{
+  background:#121214; color:#fff; border:1px solid rgba(255,255,255,.18);
+  padding:12px 12px; outline:none; border-radius:0; /* sin radio */
+}
+.reserve-contact__form input::placeholder,
+.reserve-contact__form textarea::placeholder{ color:rgba(255,255,255,.45); }
+.reserve-contact__form input:focus,
+.reserve-contact__form textarea:focus{ border-color:#fff; }
+
+/* Grid simple para 2 columnas dentro del form en wide */
+@media (min-width: 720px){
+  .reserve-contact__form{
+    display:grid; grid-template-columns: 1fr 1fr; gap:14px 16px;
+  }
+  .reserve-contact__form .actions{ grid-column:1/-1; }
+}
+
+/* Botón (usa tu estilo global .btn-pr; este asegura contraste si faltara) */
+.btn-pr{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:12px 20px; border:1px solid #e9e6e1; color:#000; background:#e9e6e1;
+  font-weight:700; text-decoration:none; cursor:pointer; border-radius:999px;
+  transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+}
+.btn-pr:hover{ transform:translateY(-1px); background:#fff; border-color:#fff; }
+
+/* Responsive: columna única */
+@media (max-width: 860px){
+  .reserve-contact__wrap{ grid-template-columns: 1fr; }
+  .reserve-contact__form{ margin-top:6px; }
+}
+
+@media (max-width: 860px){
+  .reserve-contact__wrap{
+    grid-template-columns: 1fr;
+    padding: 0 20px; /* ✅ Espacio lateral en móviles */
+  }
+  .reserve-contact__form{
+    margin-top: 6px;
+  }
+}

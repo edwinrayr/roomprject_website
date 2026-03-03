@@ -1,0 +1,82 @@
+/* ===========================
+   CONTACTO · PROPIETARIA
+   (sobrescribe estilos globales)
+=========================== */
+.owner-cta{
+  background:#fff;            /* fondo blanco */
+  color:#0b0b0c;              /* texto oscuro */
+}
+
+.owner-cta__wrap{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;   /* texto | imagen */
+  align-items:center;
+  gap: clamp(24px, 5vw, 64px);
+  padding-block: clamp(40px, 7vw, 88px);
+}
+
+/* --- Imagen --- */
+.owner-cta__media img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:cover;
+  border-radius:0 !important;           /* sin radios */
+  box-shadow:0 10px 24px rgba(0,0,0,.16);
+}
+
+/* --- Texto --- */
+.owner-cta__title{
+  font-family: var(--ff-serif);
+  font-weight:800;
+  font-size: clamp(28px, 4.2vw, 46px);
+  line-height:1.1;
+  margin:0 0 8px;
+  color:#0b0b0c;
+}
+
+.owner-cta__subtitle{
+  font-weight:600;
+  margin:0 0 14px;
+  color:#222;
+}
+
+.owner-cta__text{
+  text-align:justify;                   /* ✅ justificado */
+  line-height:1.7;
+  margin:0 0 14px;
+  color:#222;
+}
+
+.owner-cta__data{
+  list-style:none;
+  padding:0;
+  margin: 8px 0 0;
+  color:#222;
+}
+.owner-cta__data li{ margin-bottom:6px; }
+
+/* --- Botones (usa tu estilo global .btn-pr) --- */
+.owner-cta__actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:18px;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 980px){
+  .owner-cta__wrap{
+    grid-template-columns: 1fr;         /* stack */
+    padding-inline: clamp(18px, 6vw, 28px);  /* + espacio laterales móvil */
+  }
+  .owner-cta__media img{ margin-top:8px; }
+  .owner-cta__actions{ justify-content:center; }
+}
+
+@media (max-width: 520px){
+  .owner-cta__wrap{ padding-inline: clamp(20px, 7vw, 32px); }
+  .owner-cta__title{ font-size: clamp(26px, 8.5vw, 36px); }
+}

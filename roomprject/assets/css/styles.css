@@ -1,0 +1,894 @@
+/* ===========================
+   Variables & Base
+=========================== */
+:root{
+  --bg:#0e0e10;
+  --bg-2:#141416;
+  --ink:#f3f2f0;
+  --ink-2:#e9e6e1;
+  --gold:#d9c6a3;
+  --muted:#a5a5a5;
+
+  --ff-serif:"Playfair Display", ui-serif, Georgia, serif;
+  --ff-script:"Kalnia", ui-serif, Georgia, serif;
+  --ff-sans:"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+
+  --max-w:1200px;
+  --radius:18px;
+  --gap:24px;
+
+  --header-h: 68px;
+  --mobile-pad: 16px; /* para alinear logo y hamburguesa en móvil */
+
+  --z-header:50;
+  --z-menu:60;
+  --z-overlay:59;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--ff-sans); line-height:1.6;
+  overflow-x:hidden;
+  padding-top: var(--header-h); /* ⬅️ agrega esta línea */
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{width:min(100% - 32px, var(--max-w)); margin-inline:auto}
+
+/* ===========================
+   Header
+=========================== */
+.site-header{
+  position: fixed;        /* ⬅️ antes: sticky */
+  top: 0;
+  left: 0;
+  width: 100%;            /* asegúrate de ocupar todo el ancho */
+  z-index: 1000;          /* por encima de cualquier sección */
+  background:#000;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.header-bar{
+  display:grid; grid-template-columns:1fr auto 1fr;
+  align-items:center; height:var(--header-h);
+  column-gap:clamp(24px,5vw,64px);
+}
+.nav{display:flex; align-items:center; gap:14px}
+.nav a{font-size:.95rem; padding:8px 10px; opacity:.9}
+.nav a:hover{opacity:1}
+.nav-right .cta{
+  padding:8px 14px; border:1px solid var(--ink-2);
+  border-radius:999px; font-weight:600;
+}
+.nav-left{justify-content:flex-end}
+.nav-right{justify-content:flex-start}
+.brand img{height:46px; width:auto; margin-inline:auto}
+
+/* Hamburguesa */
+.burger{
+  display:none;
+  position:absolute;
+  right:var(--mobile-pad);
+  top:calc((var(--header-h) - 20px)/2);
+  width:32px; height:20px;
+  background:none; border:0; cursor:pointer;
+}
+.burger span{
+  position:absolute; left:0; right:0;
+  height:2px; background:var(--ink);
+  transform-origin:center;
+  transition:transform .35s ease, opacity .25s ease, top .35s ease, bottom .35s ease;
+}
+.burger span:nth-child(1){ top:0; }
+.burger span:nth-child(2){ top:9px; }
+.burger span:nth-child(3){ bottom:0; }
+
+/* Estado X */
+.menu-open .burger span:nth-child(1){
+  top:9px; transform:rotate(45deg);
+}
+.menu-open .burger span:nth-child(2){
+  opacity:0;
+}
+.menu-open .burger span:nth-child(3){
+  bottom:auto; top:9px; transform:rotate(-45deg);
+}
+
+/* Panel móvil + overlay */
+.mobile-wrap{ position:relative; }
+.mobile-menu{
+  position:fixed;
+  inset:0 auto 0 0;                /* pegado al lado izquierdo */
+  width:min(85vw, 320px);
+  background:#000;
+  padding:20px;
+  display:flex; flex-direction:column; gap:6px;
+  transform:translateX(-100%);
+  transition:transform .45s cubic-bezier(.2,.8,.2,1);
+  z-index:var(--z-menu);
+}
+.mobile-menu a{
+  display:block; padding:14px 10px; border-bottom:1px solid rgba(255,255,255,.08);
+}
+.mobile-menu .cta{
+  margin-top:8px; text-align:center;
+  border:1px solid var(--ink-2); border-radius:999px;
+  background:transparent;
+}
+
+/* overlay */
+.scrim{
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.45);
+  opacity:0; pointer-events:none;
+  transition:opacity .35s ease;
+  z-index:var(--z-overlay);
+}
+
+/* Al abrir */
+.menu-open .mobile-menu{ transform:translateX(0); }
+.menu-open .scrim{ opacity:1; pointer-events:auto; }
+
+/* ===========================
+   HOME / Hero
+=========================== */
+.hero{
+  display:grid; grid-template-columns:1fr 1fr;
+  height:calc(100dvh - var(--header-h));
+}
+.hero-left{
+  background:linear-gradient(180deg, var(--ink), var(--ink-2));
+  color:#0b0b0c;
+  display:flex; flex-direction:column; justify-content:center;
+  /* desplazamiento hacia la derecha (dejaste 140px) */
+  padding: clamp(32px, 6vw, 72px) clamp(28px, 6vw, 72px) clamp(32px, 6vw, 72px) 140px;
+}
+.hero-right{ position:relative; overflow:hidden }
+.hero-right img{
+  width:100%; height:100%; object-fit:cover; object-position:center;
+  filter:brightness(.86) contrast(1.02);
+}
+
+/* Tipografía */
+.welcome{
+  font-family:var(--ff-serif);
+  line-height:.95; letter-spacing:.4px;
+  margin:0 0 12px; font-weight:800;
+  font-size:clamp(42px, 7vw, 86px);
+}
+.welcome span{display:block}
+.script-line{
+  font-family:var(--ff-script);
+  font-size:clamp(18px, 2.4vw, 26px);
+  margin:10px 0 12px;
+}
+.script-line em{
+  font-style:normal;
+  background:linear-gradient(90deg,#bba57c,#e7d6b0);
+  -webkit-background-clip:text; background-clip:text; color:transparent; font-weight:600;
+}
+.subtitle{ font-size:clamp(14px,1.6vw,16px); color:#2f2f2f; max-width:48ch }
+
+/* ===========================
+   Responsive
+=========================== */
+@media (max-width:1024px){
+  .hero{ grid-template-columns:1fr; height:auto }
+  .hero-right{ order:-1; height:48vh }
+  .hero-left{ padding: clamp(28px, 7vw, 64px); } /* reduce empuje en tablet */
+}
+@media (max-width:860px){
+  .nav{ display:none; }
+  .burger{ display:block; }
+
+  /* LOGO pegado a la izquierda con mismo espacio que el hamburguesa */
+  .header-bar{ grid-template-columns:auto 1fr auto; }
+  .brand{ justify-self:start; margin-left:var(--mobile-pad); }
+  .brand img{ height:40px; } /* un poco menor para móvil */
+
+  /* contenedor sin padding global para que respete márgenes deseados */
+  .container{ width:100%; }
+}
+@media (max-width:540px){
+  .welcome{ font-size: clamp(34px, 11vw, 64px); }
+}
+
+/* ===========================
+   Imagen sobrepuesta tipo editorial (desktop + móvil)
+=========================== */
+.overlay-image{
+  position:absolute;
+  top:62%;               /* desktop */
+  left:50%;
+  transform:translate(-40%, -50%);
+  z-index:5;
+  width:clamp(120px, 18vw, 230px);
+}
+.overlay-image img{
+  width:100%; display:block; height:auto; object-fit:cover;
+  box-shadow:0 4px 16px rgba(0,0,0,.25);
+}
+
+/* ✅ MÓVIL: sobre la FOTO (ajustada más arriba) */
+@media (max-width:1024px){
+  .hero{ position: relative; } /* referencia para el posicionamiento */
+  .overlay-image{
+    display:block;
+    position:absolute;
+    /* movemos más arriba dentro de la imagen grande */
+    top: calc(48vh - 200px);   /* 🔼 antes -140px — súbelo o bájalo desde aquí */
+    right: 16px;
+    left:auto; 
+    transform:none;
+    width: clamp(110px, 42vw, 190px);
+    z-index:6;                 /* sobre la foto */
+  }
+  .overlay-image img{
+    box-shadow:0 3px 10px rgba(0,0,0,.30);
+  }
+}
+
+/* Extra fino para pantallas muy pequeñas */
+@media (max-width:420px){
+  .overlay-image{
+    top: calc(48vh - 240px); /* un poco más arriba también en móviles pequeños */
+    right: 12px;
+    width: clamp(100px, 46vw, 170px);
+  }
+}
+
+/* ===========================
+   Loader Project Room (2s)
+=========================== */
+.pr-loader{
+  position: fixed;
+  inset: 0;                 /* top/right/bottom/left: 0 */
+  background: #ffffff;      /* fondo blanco */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;            /* por encima de todo */
+  opacity: 1; 
+  visibility: visible;
+  transition: opacity .4s ease, visibility .4s ease;
+}
+
+.pr-loader img{
+  width: clamp(84px, 18vw, 180px); /* responsivo */
+  height: auto;
+  animation: pr-spin 1.2s linear infinite;
+  will-change: transform;
+}
+
+/* giro continuo */
+@keyframes pr-spin{
+  from{ transform: rotate(0deg); }
+  to{   transform: rotate(360deg); }
+}
+
+/* estado oculto (después de los 2s) */
+.pr-loader.is-hidden{
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* ===========================
+   Loader Project Room (responsive mobile)
+=========================== */
+@media (max-width: 600px) {
+  .pr-loader img {
+    width: clamp(120px, 38vw, 220px); /* 🔼 más grande en móviles */
+  }
+}
+
+/* ===========================
+   Franja de reserva (compacta sin imágenes)
+=========================== */
+.reserve-band {
+  background: #000;
+  color: var(--ink);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-block: clamp(35px, 6vw, 60px); /* MUCHO menos espacio */
+}
+
+/* Texto centrado */
+.reserve-quote {
+  max-width: 60ch;
+  margin: 0 auto;
+  padding-inline: 1.5rem;
+}
+
+.reserve-quote p {
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--ink-2);
+  font-size: clamp(22px, 2.3vw, 28px);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.reserve-quote strong {
+  display: block;
+  font-style: normal;
+  font-weight: 800;
+  color: var(--ink);
+  margin-top: 6px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+  .reserve-band {
+    padding-block: clamp(28px, 10vw, 45px);
+  }
+  .reserve-quote p {
+    font-size: clamp(18px, 4vw, 24px);
+    line-height: 1.5;
+  }
+}
+
+/* ===========================
+   Sticker lateral izquierdo (pequeño y alto, flotando entre secciones)
+=========================== */
+.reserve-band {
+  position: relative;
+} /* referencia, no cambia tu layout */
+
+.reserve-sticker {
+  position: absolute;
+  left: clamp(42px, 7vw, 100px);   /* 👉 más a la derecha */
+  top: 3%;                        /* 🔽 más abajo */
+  transform: translateY(-28%);     /* mantiene el efecto entre secciones */
+  z-index: 3;
+  height: clamp(160px, 32vh, 340px); /* alta y responsiva */
+  width: auto;                       /* estrecha */
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+.reserve-sticker img {
+  height: 100%;
+  width: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 0; /* sin bordes curvos */
+}
+
+/* Ajustes móviles */
+@media (max-width: 640px) {
+  .reserve-sticker {
+    display: none; /* 🚫 no aparece en celular */
+  }
+}
+
+/* ===========================
+   Sticker lateral derecho (simétrico al izquierdo)
+=========================== */
+.reserve-sticker--right {
+  position: absolute;
+  right: clamp(42px, 7vw, 100px);  /* 👉 mismo margen que el izquierdo */
+  top: 14%;                        /* 🔽 misma altura */
+  transform: translateY(-28%);
+  z-index: 3;
+  height: clamp(160px, 32vh, 340px);
+  width: auto;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+.reserve-sticker--right img {
+  height: 100%;
+  width: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/* Ocultar también en móvil */
+@media (max-width: 640px) {
+  .reserve-sticker--right {
+    display: none;
+  }
+}
+
+/* ===========================
+   Stickers laterales (simétricos, con sombra, entre secciones)
+=========================== */
+.reserve-band {
+  position: relative;
+  overflow: visible;
+}
+
+/* Sticker base */
+.reserve-sticker {
+  position: absolute;
+  top: 0;
+  transform: translateY(-30%);          /* 🔽 flotando entre secciones */
+  z-index: 3;
+  height: clamp(200px, 34vh, 360px);    /* ✅ mismo alto en ambos lados */
+  width: clamp(110px, 12vw, 160px);     /* ✅ mismo ancho en ambos lados */
+  filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.45)); /* 💎 sombra elegante */
+}
+
+/* Imagen interna */
+.reserve-sticker img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* Izquierda */
+.reserve-sticker--left {
+  left: clamp(40px, 6vw, 90px);         /* 📍 margen lateral izquierdo */
+}
+
+/* Derecha */
+.reserve-sticker--right {
+  right: clamp(40px, 6vw, 90px);        /* 📍 margen lateral derecho */
+}
+
+/* Ocultas en móvil */
+@media (max-width: 640px) {
+  .reserve-sticker {
+    display: none;
+  }
+}
+
+/* === FIX: stickers a cada lado, sin encimarse (poner AL FINAL del CSS) === */
+.reserve-band { position: relative; overflow: visible; }
+
+/* Mantén tu posición/alto actual; no tocamos tamaños ni sombras */
+.reserve-band > .reserve-sticker { top: 0; transform: translateY(-30%); }
+
+/* Izquierda: asegura left y limpia right */
+.reserve-band > .reserve-sticker--left {
+  left: clamp(40px, 6vw, 90px);
+  right: auto;            /* reset para evitar encimar */
+}
+
+/* Derecha: asegura right y limpia left */
+.reserve-band > .reserve-sticker--right {
+  right: clamp(40px, 6vw, 90px);
+  left: auto;             /* reset para evitar encimar */
+}
+
+
+/* ===========================
+   ABOUT / Qué hacemos (ajuste de fondo completo)
+=========================== */
+.about-pr {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch; /* ✅ asegura que ambas columnas midan igual */
+  min-height: clamp(320px, 52vh, 580px);
+  background: var(--ink); /* color base de fondo (negro o tu variable) */
+}
+
+/* Imagen cuadrada */
+.about-hero {
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  align-self: stretch; /* ✅ se estira igual que el panel */
+}
+
+.about-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(.92);
+}
+
+/* Panel derecho */
+.about-panel {
+  position: relative;
+  background: #fff; /* ✅ fondo blanco visible de extremo a extremo */
+  color: #0b0b0c;
+  padding: clamp(28px, 4vw, 50px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-panel .eyebrow {
+  letter-spacing: .14em;
+  font-size: .8rem;
+  opacity: .7;
+  margin: 0 0 .5rem;
+}
+
+.about-title {
+  font-family: var(--ff-serif);
+  font-weight: 800;
+  letter-spacing: .02em;
+  font-size: clamp(36px, 5vw, 58px);
+  line-height: 1.1;
+  margin: 0 0 .75rem;
+}
+
+.about-intro {
+  max-width: 56ch;
+  margin: 0 0 1.1rem;
+  font-size: clamp(14px, 1.4vw, 16px);
+  line-height: 1.6;
+}
+
+.about-list {
+  list-style: none;
+  padding: 0;
+  margin: .75rem 0 1.25rem;
+  max-width: 48ch;
+}
+
+.about-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .12);
+  font-size: clamp(14px, 1.5vw, 16px);
+}
+
+.about-list li:last-child {
+  border-bottom: none;
+}
+
+.about-link {
+  margin-top: .25rem;
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 980px) {
+  .about-pr {
+    grid-template-columns: 1fr;
+  }
+
+  .about-panel {
+    order: 1;
+    padding: 24px 20px;
+  }
+
+  .about-hero {
+    order: 2;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    max-width: 90%;
+    margin: 20px auto 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .about-hero {
+    aspect-ratio: 1 / 1;
+    max-width: 100%;
+  }
+
+  .about-title {
+    font-size: clamp(28px, 6vw, 38px);
+  }
+
+  .about-intro {
+    line-height: 1.5;
+  }
+}
+/* Aviso legal solo para este texto */
+.copyright-notice {
+  font-size: 12px;          /* Letra más pequeña */
+  color: rgba(0, 0, 0, 0.6);/* Gris más claro */
+  display: block;
+  line-height: 1.4;
+  text-align: left;         /* Ajusta si lo quieres centrado */
+  margin-top: 10px;
+  font-weight: 300;         /* Menos marcado */
+}
+
+/* ===========================
+   SERVICIOS (3 columnas responsivas)
+=========================== */
+.services-pr {
+  background: #000;
+  color: var(--ink);
+  padding: clamp(48px, 8vw, 88px) 0;
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.services-wrap {
+  text-align: center;
+  padding-inline: clamp(16px, 5vw, 40px); /* 🧩 margen horizontal */
+}
+
+.services-eyebrow {
+  font-size: .8rem;
+  letter-spacing: .18em;
+  opacity: .7;
+  margin: 0 0 .5rem;
+}
+
+.services-title {
+  font-family: var(--ff-serif);
+  font-size: clamp(38px, 6vw, 74px);
+  line-height: 1;
+  margin: 0 0 clamp(28px, 4vw, 44px);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2.4vw, 28px);
+  margin-top: clamp(10px, 2vw, 16px);
+}
+
+/* Tarjetas */
+.service-card {
+  text-align: left;
+  background: #0b0b0b;
+  border-radius: 0;
+  transition: transform .4s ease;
+  overflow: hidden; /* ✅ evita bordes cortados */
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+}
+
+.service-media {
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: #111;
+}
+
+.service-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(.95);
+  transition: transform .6s ease, filter .6s ease;
+}
+
+.service-card:hover .service-media img {
+  transform: scale(1.03);
+  filter: brightness(1);
+}
+
+.service-copy {
+  padding: 12px 18px 20px; /* 🧩 margen interno mejorado */
+}
+
+.service-num {
+  font-size: .8rem;
+  letter-spacing: .14em;
+  opacity: .7;
+  margin-right: 8px;
+}
+
+.service-name {
+  display: inline-block;
+  font-family: var(--ff-serif);
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 800;
+  margin: .1rem 0 .35rem;
+}
+
+.service-desc {
+  font-size: clamp(13px, 1.3vw, 15px);
+  color: var(--ink-2);
+  line-height: 1.55;
+  max-width: 46ch;
+}
+
+/* Botón inferior */
+.btn-pr {
+  display: inline-block;
+  margin-top: clamp(28px, 3vw, 36px);
+  padding: 10px 28px;
+  border: 1px solid var(--ink-2);
+  border-radius: 999px;
+  font-weight: 600;
+  transition: all .3s ease;
+}
+
+.btn-pr:hover {
+  background: var(--ink);
+  color: #000;
+  transform: translateY(-2px);
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 980px) {
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 28px; /* 🧩 más aire entre tarjetas */
+  }
+
+  .service-card {
+    overflow: hidden;
+  }
+
+  .service-copy {
+    padding: 16px 20px 22px; /* 🧩 más aire al texto */
+  }
+
+  .services-wrap {
+    padding-inline: 24px; /* 🧩 margen lateral general */
+  }
+
+  .service-media img {
+    border-radius: 0;
+  }
+
+  .services-title {
+    font-size: clamp(34px, 10vw, 56px);
+  }
+}
+
+
+
+/* ===========================
+   FOOTER (versión clara)
+=========================== */
+.site-footer.is-light{
+  background:#fff;              /* fondo blanco */
+  color:#0b0b0c;                /* texto oscuro */
+  border-top:1px solid rgba(0,0,0,.08);
+}
+
+.site-footer.is-light .footer-link,
+.site-footer.is-light .brand-credits{ color:#222; }
+.site-footer.is-light .footer-link:hover,
+.site-footer.is-light .brand-credits:hover{ color:#000; }
+
+.footer-inner{
+  display:grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items:center;
+  gap: clamp(12px, 3vw, 24px);
+  padding: clamp(18px, 3.8vw, 28px) 0;
+}
+
+.footer-left{
+  display:flex; align-items:center; gap: clamp(10px, 2vw, 16px);
+  justify-self:start; opacity:.9;
+}
+.footer-link{ text-underline-offset:3px; }
+
+.footer-center{ text-align:center; justify-self:center; }
+.footer-logo{
+  height: clamp(42px, 6vw, 64px); width:auto; display:block; margin-inline:auto;
+}
+.lang-switch{
+  margin-top:6px; display:flex; align-items:center; justify-content:center;
+  gap:8px; font-weight:700; letter-spacing:.06em;
+}
+.lang-switch a{ color:#111; opacity:.6; transition:opacity .2s ease; }
+.lang-switch a:hover{ opacity:1; }
+.lang-switch a.active{ opacity:1; text-decoration:underline; }
+.lang-switch .sep{ opacity:.45; }
+
+.footer-right{
+  display:flex; align-items:center; gap: clamp(12px, 2vw, 18px);
+  justify-self:end;
+}
+.social{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:36px; height:36px; color:#111;
+  border:1px solid rgba(0,0,0,.25); border-radius:50%;
+  transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+}
+.social:hover{
+  background:#111; color:#fff; border-color:#111; transform:translateY(-2px);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 820px){
+  .footer-inner{ grid-template-columns: 1fr; text-align:center; }
+  .footer-left, .footer-right{ justify-content:center; }
+  .footer-left{ order:3; margin-top:6px; }
+  .footer-right{ order:2; }
+  .footer-center{ order:1; }
+}
+
+
+
+/* ===== Footer: fix mobile centering ===== */
+@media (max-width: 820px){
+  /* Contenedor del footer con padding lateral y centrado total */
+  .site-footer .footer-inner{
+    grid-template-columns: 1fr;        /* una sola columna */
+    justify-items: center;             /* centra todos los hijos */
+    text-align: center;
+    padding-inline: 20px;              /* espacio a los costados */
+  }
+
+  /* Bloques izquierdo y derecho centrados */
+  .site-footer .footer-left,
+  .site-footer .footer-right{
+    justify-content: center;
+  }
+
+  /* Línea de copyright + términos centrada y con salto si es necesario */
+  .site-footer .footer-left{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;           /* centra el contenido */
+    gap: 10px;
+    flex-wrap: wrap;                   /* permite bajar “Términos…” si falta espacio */
+    order: 3;
+    margin-top: 8px;
+  }
+
+  /* Asegura que ambos elementos se comporten en línea y centrados */
+  .site-footer .footer-left small,
+  .site-footer .footer-left .footer-link{
+    display: inline-block;
+  }
+
+  /* Íconos centrados */
+  .site-footer .footer-right{
+    order: 2;
+  }
+
+  /* Centro (logo + idiomas) arriba */
+  .site-footer .footer-center{
+    order: 1;
+    margin-bottom: 6px;
+  }
+}
+
+/* ===== Fix: centrar iconos del footer en móvil ===== */
+@media (max-width: 820px){
+  .site-footer .footer-inner{
+    grid-template-columns: 1fr;
+    justify-items: center;      /* centra TODOS los hijos del grid */
+    text-align: center;
+  }
+
+  .site-footer .footer-right{
+    order: 2;
+    justify-self: center !important; /* ← sobreescribe el 'end' de desktop */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;    /* centra los iconos dentro */
+    gap: clamp(12px, 4vw, 20px);
+    margin-top: 8px;
+  }
+
+  .site-footer .footer-left{
+    order: 3;
+    justify-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .site-footer .footer-center{
+    order: 1;
+  }
+}
+
+

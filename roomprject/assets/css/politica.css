@@ -1,0 +1,114 @@
+/* ===========================
+   Variables & Base
+=========================== */
+:root{
+  --bg:#0e0e10;
+  --bg-2:#141416;
+  --ink:#f3f2f0;
+  --ink-2:#e9e6e1;
+  --gold:#d9c6a3;
+  --muted:#a5a5a5;
+
+  --ff-serif:"Playfair Display", ui-serif, Georgia, serif;
+  --ff-script:"Kalnia", ui-serif, Georgia, serif;
+  --ff-sans:"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+
+  --max-w:1200px;
+  --radius:18px;
+  --gap:24px;
+
+  --header-h: 68px;
+  --mobile-pad: 16px; /* para alinear logo y hamburguesa en móvil */
+
+  --z-header:50;
+  --z-menu:60;
+  --z-overlay:59;
+}
+
+/* ===========================
+   Política de Privacidad
+=========================== */
+.policy {
+  background: #fff;            /* Fondo blanco */
+  color: #0b0b0c;              /* Texto oscuro */
+  padding: clamp(40px, 6vw, 80px) 0;
+}
+
+.policy-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-inline: clamp(20px, 4vw, 60px); /* Espacio lateral */
+}
+
+.policy-header {
+  text-align: center;
+  margin-bottom: clamp(24px, 5vw, 40px);
+}
+
+.policy-eyebrow {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 6px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.policy-title {
+  font-family: var(--ff-serif);
+  font-size: clamp(30px, 5vw, 46px);
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.policy-meta {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.policy-content {
+  text-align: justify;
+  font-size: clamp(15px, 1.3vw, 17px);
+  line-height: 1.8;
+  color: #222;
+}
+
+.policy-content h3 {
+  text-align: center;
+  font-family: var(--ff-serif);
+  font-size: clamp(20px, 2.4vw, 26px);
+  margin-top: 2.4rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.policy-content p {
+  margin-bottom: 1.2rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .policy-wrap {
+    padding-inline: clamp(26px, 7vw, 40px); /* más espacio a los lados */
+  }
+
+  .policy-content {
+    font-size: 15px;
+  }
+
+  .policy-content h3 {
+    margin-top: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .policy {
+    padding: clamp(32px, 10vw, 50px) 0;
+  }
+
+  .policy-wrap {
+    padding-inline: 32px; /* aún más espacio lateral en celular */
+  }
+}

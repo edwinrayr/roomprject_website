@@ -1,0 +1,542 @@
+/* ===========================
+   Variables & Base
+=========================== */
+:root{
+  --bg:#0e0e10;
+  --bg-2:#141416;
+  --ink:#f3f2f0;
+  --ink-2:#e9e6e1;
+  --gold:#d9c6a3;
+  --muted:#a5a5a5;
+
+  --ff-serif:"Playfair Display", ui-serif, Georgia, serif;
+  --ff-script:"Kalnia", ui-serif, Georgia, serif;
+  --ff-sans:"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+
+  --max-w:1200px;
+  --radius:18px;
+  --gap:24px;
+
+  --header-h: 68px;
+  --mobile-pad: 16px; /* para alinear logo y hamburguesa en móvil */
+
+  --z-header:50;
+  --z-menu:60;
+  --z-overlay:59;
+}
+
+
+/* ===========================
+   ACERCA / Banner con fondo opaco (ajuste final)
+=========================== */
+.about-cta {
+  position: relative;
+  --bg: var(--about-cta-bg, url('images/imagensalon1.webp'));
+  background-image:
+    /* 🔥 más oscura la capa */
+    linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.58)),
+    var(--bg);
+  background-size: cover;
+  background-position: center;
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  min-height: clamp(380px, 65vh, 640px); /* 🔼 más alto arriba y abajo */
+  padding-block: clamp(60px, 10vh, 100px); /* 🔼 más espacio superior e inferior */
+}
+
+.about-cta__inner {
+  width: min(100% - 32px, 960px);
+  margin-inline: auto;
+}
+
+.about-cta__title {
+  font-family: var(--ff-serif);
+  font-weight: 800;
+  letter-spacing: .02em;
+  line-height: 1.1;
+  font-size: clamp(28px, 4.8vw, 54px);
+  margin: 0 0 .5rem;
+}
+
+.about-cta__subtitle {
+  font-size: clamp(14px, 1.6vw, 16px);
+  line-height: 1.6;
+  color: var(--ink-2);
+  margin: 0 0 1.5rem;
+}
+
+/* Botón ya coherente con tu diseño global */
+.about-cta__btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--ink-2);
+  background: transparent;
+  font-weight: 600;
+  transition: transform .15s ease, background .25s ease, color .25s ease, border-color .25s ease;
+}
+
+.about-cta__btn:hover {
+  background: var(--ink);
+  color: #000;
+  border-color: var(--ink);
+  transform: translateY(-1px);
+}
+
+/* 🔽 más espacio lateral en móvil */
+@media (max-width: 520px) {
+  .about-cta__inner {
+    width: min(100% - 40px, 720px);
+  }
+}
+
+
+/* ===========================
+   QUIÉNES SOMOS (tarjeta con imágenes laterales)
+=========================== */
+.team-band{
+  background:#fff;
+  color:#0b0b0c;
+  padding-block: clamp(48px, 9vw, 88px);
+}
+
+.team-wrap{
+  width: min(100% - 32px, 1100px);
+  margin-inline: auto;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+/* Tarjeta central */
+.team-card{
+  --sage: #aebd9a; /* tono verde suave similar a la referencia */
+  background: var(--sage);
+  color:#0b0b0c;
+  border-radius: 10px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.12);
+  padding: clamp(20px, 4vw, 40px) clamp(22px, 5vw, 64px);
+  text-align: center;
+  max-width: 760px;
+  z-index: 2;
+}
+
+.team-title{
+  font-family: var(--ff-serif, "Playfair Display", serif);
+  font-weight: 800;
+  letter-spacing: .02em;
+  font-size: clamp(22px, 3.2vw, 34px);
+  margin: 0 0 .6rem;
+}
+
+.team-text{
+  margin: 0 0 1.1rem;
+  line-height: 1.65;
+  font-size: clamp(14px, 1.4vw, 16px);
+  max-width: 56ch;
+  margin-inline: auto;
+}
+
+/* Botón: mismo diseño que usamos antes */
+.btn-outline{
+  display:inline-block;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border:1px solid var(--ink-2, #e9e6e1);
+  background: transparent;
+  color:#000;
+  font-weight:600;
+  transition: transform .15s ease, background .25s ease, color .25s ease, border-color .25s ease;
+}
+.btn-outline:hover{
+  background: var(--ink, #f3f2f0);
+  color:#000;
+  border-color: var(--ink, #f3f2f0);
+  transform: translateY(-1px);
+}
+
+/* Imágenes laterales superpuestas */
+.team-img{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(140px, 26vw, 240px);
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 16px 36px rgba(0,0,0,.18);
+  z-index: 1;
+}
+.team-img img{
+  width:100%; height:100%; object-fit: cover; display:block;
+}
+
+/* Lados */
+.team-img--left{ left: max(-10px, -2vw); }
+.team-img--right{ right: max(-10px, -2vw); }
+
+/* ===== Responsivo ===== */
+@media (max-width: 920px){
+  .team-img{
+    width: clamp(120px, 34vw, 200px);
+  }
+  .team-img--left{ left: 12px; transform: translate(-10%, -50%); }
+  .team-img--right{ right: 12px; transform: translate(10%, -50%); }
+}
+
+@media (max-width: 720px){
+  /* En móvil, apilamos y mantenemos el look */
+  .team-wrap{
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: 16px;
+  }
+  .team-img{
+    position: relative;
+    top: auto; transform: none;
+    width: min(100%, 360px);
+    margin-inline: auto;
+    aspect-ratio: 3 / 2; /* más horizontal para móvil */
+  }
+  .team-img--left{ order: 1; }
+  .team-card{ order: 2; }
+  .team-img--right{ order: 3; }
+}
+
+/* ===========================
+   QUIÉNES SOMOS – ajustes solicitados
+   (sobrescribe la versión anterior)
+=========================== */
+
+/* Asegura que las imágenes puedan salirse de la tarjeta */
+.team-band { background:#fff; }
+.team-wrap { overflow: visible; }
+
+/* Tarjeta negra con texto claro */
+.team-card{
+  background:#000;             /* negro sólido */
+  color: var(--ink, #f3f2f0);  /* texto claro */
+  border-radius: 0;            /* SIN radios */
+  padding: clamp(24px, 5vw, 72px) clamp(28px, 6vw, 84px); /* un poco más para que no toque texto */
+}
+
+/* Título y párrafo heredan color claro */
+.team-title{ color: inherit; }
+.team-text{ color: inherit; }
+
+/* Botón outline: claro sobre fondo negro */
+.btn-outline{
+  color: var(--ink, #f3f2f0);
+  border: 1px solid rgba(243,242,240,.9);
+  background: transparent;
+}
+.btn-outline:hover{
+  background: var(--ink, #f3f2f0);
+  color: #000;
+  border-color: var(--ink, #f3f2f0);
+}
+
+/* Imágenes laterales ENCIMA de la tarjeta, cuadradas */
+.team-img{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(160px, 28vw, 260px);
+  aspect-ratio: 4 / 5;
+  z-index: 4;                 /* encima de la tarjeta */
+  border-radius: 0;           /* SIN radios */
+  box-shadow: 0 22px 48px rgba(0,0,0,.25);
+  pointer-events: none;       /* no bloquea clics del botón */
+}
+.team-img img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  display:block;
+}
+
+/* Posiciones: que “muerdan” las esquinas sin invadir texto */
+.team-img--left{
+  left: clamp(-48px, -6vw, -28px);
+  transform: translate(-6%, -50%);  /* un toque hacia fuera */
+}
+.team-img--right{
+  right: clamp(-48px, -6vw, -28px);
+  transform: translate(6%, -50%);
+}
+
+/* Responsivo: apilar y mantener contraste/forma */
+@media (max-width: 720px){
+  .team-wrap{
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: 16px;
+  }
+  .team-img{
+    position: relative;
+    top: auto; transform: none;
+    width: min(100%, 360px);
+    aspect-ratio: 3 / 2;
+    margin-inline: auto;
+  }
+  .team-img--left{ order:1; }
+  .team-card{ order:2; }
+  .team-img--right{ order:3; }
+}
+
+/* Ajuste adicional: imágenes más cerca de la tarjeta en móvil */
+@media (max-width: 720px) {
+  .team-img {
+    position: relative;
+    width: min(100%, 340px);
+    aspect-ratio: 3 / 2;
+    margin-inline: auto;
+  }
+
+  /* Imagen superior: más pegada arriba de la tarjeta */
+  .team-img--left {
+    order: 1;
+    margin-bottom: -28px; /* se superpone levemente */
+  }
+
+  /* Imagen inferior: más pegada debajo de la tarjeta */
+  .team-img--right {
+    order: 3;
+    margin-top: -28px; /* se superpone levemente */
+  }
+
+  .team-card {
+    order: 2;
+    padding: clamp(20px, 7vw, 40px);
+  }
+}
+
+/* ============== Características (fondo negro) ============== */
+.features-dark{
+  background:#000;
+  color:var(--ink, #f3f2f0);
+  padding-block: clamp(48px, 8vw, 88px);
+}
+.features-dark__inner{
+  display:grid;
+  grid-template-columns: 1.2fr .9fr;   /* galería + texto */
+  gap: clamp(24px, 4vw, 48px);
+  align-items:center;
+}
+
+/* Galería de 3 tarjetas verticales */
+.features-dark__gallery{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2.4vw, 24px);
+}
+.feature-card{
+  margin:0;
+}
+.feature-card img{
+  width:100%;
+  aspect-ratio: 3/4;         /* altas y elegantes */
+  object-fit:cover;
+  display:block;
+  filter:contrast(1.05) brightness(.95);
+  /* sin bordes curvos */
+}
+.feature-card figcaption{
+  margin-top:.6rem;
+  font-size:clamp(.85rem, 1.2vw, .95rem);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  opacity:.9;
+  border-bottom:1px solid rgba(255,255,255,.2);
+  width:fit-content;
+  padding-bottom:.35rem;
+}
+
+/* Columna de texto */
+.features-dark__copy{
+  max-width: 52ch;
+}
+.features-dark__title{
+  font-family: var(--ff-serif, "Playfair Display", serif);
+  font-weight:800;
+  font-size: clamp(28px, 4.2vw, 44px);
+  line-height:1.1;
+  margin:0 0 .6rem;
+}
+.features-dark__text{
+  color: var(--ink-2, #e9e6e1);
+  opacity:.95;
+  margin:0 0 1.2rem;
+}
+
+/* Responsivo */
+@media (max-width: 1024px){
+  .features-dark__inner{
+    grid-template-columns: 1fr;    /* apilar */
+    align-items:start;
+  }
+  .features-dark__gallery{
+    order:1;
+  }
+  .features-dark__copy{
+    order:2;
+  }
+}
+@media (max-width: 680px){
+  /* Galería en carrusel horizontal suave */
+  .features-dark__gallery{
+    display:flex;
+    gap:14px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    padding-bottom:6px;
+  }
+  .feature-card{
+    min-width: 70%;
+    scroll-snap-align:start;
+  }
+  .feature-card img{ aspect-ratio: 4/5; }
+  .features-dark__copy{ max-width: 100%; }
+
+  .feature-card figcaption{
+  font-size:clamp(.85rem, 1.2vw, 1.2rem);
+}
+}
+
+/* ---------- Mejoras generales ---------- */
+/* Zoom en hover (desktop/tablet con cursor) */
+.feature-card img{
+  transition: transform .45s ease, filter .25s ease;
+  will-change: transform;
+}
+.feature-card:hover img{
+  transform: scale(1.06);
+  filter: contrast(1.08) brightness(.98);
+}
+
+/* Botón sobre fondo negro: aseguro contraste y espaciado */
+.features-dark .cta{
+  display: inline-block;
+  margin-top: 12px;
+  border-color: var(--ink-2, #e9e6e1);
+  color: var(--ink, #f3f2f0);
+}
+.features-dark .cta:hover{
+  background: var(--ink, #f3f2f0);
+  color: #000;
+  border-color: transparent;
+}
+
+/* ---------- Mobile-first overrides ---------- */
+@media (max-width: 680px){
+  /* Apilar: primero el texto, luego la galería */
+  .features-dark__inner{
+    grid-template-columns: 1fr !important;
+    align-items: start;
+  }
+  .features-dark__copy{
+    order: 1;
+    max-width: 100%;
+    padding-inline: 12px;            /* más espacio a los costados */
+    margin-bottom: 10px;
+  }
+
+  /* Galería en columna, sin scroll horizontal */
+  .features-dark__gallery{
+    order: 2;
+    display: grid !important;
+    grid-template-columns: 1fr;       /* una por fila */
+    gap: 12px;
+    overflow: visible;                 /* cancela el carrusel horizontal */
+    padding: 0 12px 4px;               /* respiro lateral */
+  }
+  .feature-card{
+    min-width: 0;                      /* para que no fuerce ancho */
+  }
+  .feature-card img{
+    width: 100%;
+    aspect-ratio: 4/5;                 /* un poco más alta que ancha */
+    object-fit: cover;
+  }
+
+  /* Tipografía y botón un poco más cómodos en móvil */
+  .features-dark__title{
+    text-align: center;
+    font-size: clamp(22px, 6.5vw, 32px);
+    margin-bottom: .95rem;
+  }
+  .features-dark__text{
+    font-size: clamp(14px, 4vw, 15px);
+    line-height: 1.55;
+  }
+  .features-dark .cta{
+    margin-top: 10px;
+    padding: 10px 18px;
+  }
+}
+
+/* ====== Ajustes sección Características (features-dark) ====== */
+
+/* 1) Texto justificado */
+.features-dark__text{
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* 2) Botón con el mismo estilo global de tus CTA */
+.features-dark .cta{
+  display:inline-block;
+  padding:12px 22px;
+  border:1px solid var(--ink-2, #e9e6e1);
+  border-radius:999px;
+  font-weight:600;
+  line-height:1;
+  color:var(--ink, #f3f2f0);
+  background:transparent;
+  transition:background .25s ease, color .25s ease, border-color .25s ease, transform .1s ease;
+}
+.features-dark .cta:hover{
+  background:var(--ink, #f3f2f0);
+  color:#000;
+  border-color:transparent;
+  transform:translateY(-1px);
+}
+.features-dark .cta:active{
+  transform:translateY(0);
+}
+
+/* 3) Imágenes un poco más pequeñas en móvil y con buen layout */
+@media (max-width: 680px){
+  .features-dark__gallery{
+    grid-template-columns: 1fr;   /* una debajo de otra */
+    gap: 12px;
+  }
+  .feature-card{
+    min-width: 0;
+  }
+  .feature-card img{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/5;           /* más compacta en alto */
+    object-fit: cover;
+  }
+
+  /* respiro para el copy */
+  .features-dark__copy{
+    padding-inline: 12px;
+  }
+}
+
+/* 4) Suavizar zoom en desktop (si no lo tenías) */
+.feature-card img{
+  transition: transform .45s ease, filter .25s ease;
+  will-change: transform;
+}
+.feature-card:hover img{
+  transform: scale(1.06);
+  filter: contrast(1.08) brightness(.98);
+}
+
+
