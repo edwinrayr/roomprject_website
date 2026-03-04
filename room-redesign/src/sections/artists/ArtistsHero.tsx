@@ -9,64 +9,54 @@ export const ArtistsHero: React.FC = () => {
     }, []);
 
     return (
-        <section className="relative w-full h-[90dvh] md:h-screen flex items-center justify-center bg-bg-2 overflow-hidden">
+        <section className="relative w-full h-[90dvh] flex items-center justify-center bg-bg overflow-hidden">
             
-            {/* Elemento Decorativo: Líneas de Guía (Estética de Arquitecto) */}
-            <div className="absolute inset-0 opacity-10 pointer-events-none">
-                <div className="absolute left-1/4 h-full w-[1px] bg-ink"></div>
-                <div className="absolute left-2/4 h-full w-[1px] bg-ink"></div>
-                <div className="absolute left-3/4 h-full w-[1px] bg-ink"></div>
-            </div>
-
-            <div className="container-pr relative z-10 flex flex-col items-center">
+            <div className="container-pr grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
-                {/* Título Principal Disrrumpido */}
-                <div className="relative mb-12">
-                    <h1 className="font-serif text-[clamp(4rem,15vw,12rem)] leading-[0.8] text-ink font-black flex flex-col items-center">
-                        <span className={`transition-all duration-[1500ms] ease-luxury ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-                            THE
+                {/* Columna de Texto: Enfoque en la Autora */}
+                <div className="lg:col-span-6 z-10">
+                    <div className="overflow-hidden mb-6">
+                        <span className={`block text-gold text-xs font-bold tracking-[0.4em] uppercase transition-transform duration-[1000ms] ease-luxury ${isVisible ? 'translate-y-0' : 'translate-y-full'}`}>
+                            The Eye Behind the Lens
                         </span>
-                        <span className={`text-gold italic font-light transition-all duration-[1500ms] delay-300 ease-luxury ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
-                            Artists
-                        </span>
-                        <span className={`transition-all duration-[1500ms] delay-500 ease-luxury ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-20'}`}>
-                            LAB
-                        </span>
+                    </div>
+
+                    <h1 className="font-serif text-[clamp(3rem,7vw,5.5rem)] text-ink leading-[1.1] mb-8">
+                        Grecia <br />
+                        <span className={`italic font-light transition-all duration-[1200ms] delay-300 ease-luxury ${isVisible ? 'opacity-100' : 'opacity-0'}`}>Portorreal</span>
                     </h1>
+
+                    <div className={`max-w-md transition-all duration-[1000ms] delay-500 ease-luxury ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                        <p className="font-sans text-muted text-base md:text-lg leading-relaxed mb-8">
+                            Fundadora y artista principal de Project Room Bern. Su obra captura la esencia de los momentos atemporales, transformando el espacio en un diálogo visual entre la luz y la forma.
+                        </p>
+                        
+                        <div className="inline-block py-4 border-t border-gold/30">
+                            <p className="text-[10px] uppercase tracking-widest text-ink font-bold italic">
+                                All rights reserved — Featured Artist
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
-                {/* Composición de Imágenes Flotantes (Parallax sutil) */}
-                <div className="absolute inset-0 z-0 pointer-events-none">
-                    {/* Imagen 1: Arriba Izquierda */}
-                    <div className={`absolute top-[15%] left-[5%] w-32 md:w-56 aspect-square overflow-hidden transition-all duration-[2000ms] ease-luxury ${isVisible ? 'opacity-20 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
-                        <img src="/images/pinturas.png" className="w-full h-full object-cover grayscale" alt="texture" />
+                {/* Columna de Imagen: Obra Original */}
+                <div className="lg:col-span-6 relative flex justify-center lg:justify-end">
+                    <div className={`relative w-full max-w-md aspect-[4/5] overflow-hidden transition-all duration-[1500ms] delay-200 ease-luxury ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-110'}`}>
+                        <img 
+                            src="/images/PinturaGrecia (7).jpg" 
+                            alt="Grecia Portorreal Artwork" 
+                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-luxury"
+                        />
+                        {/* Overlay sutil */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-bg/20 to-transparent"></div>
                     </div>
                     
-                    {/* Imagen 2: Abajo Derecha */}
-                    <div className={`absolute bottom-[15%] right-[5%] w-40 md:w-72 aspect-[3/4] overflow-hidden transition-all duration-[2000ms] delay-500 ease-luxury ${isVisible ? 'opacity-30 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                        <img src="/images/PinturaGrecia (7).jpg" className="w-full h-full object-cover" alt="texture" />
+                    {/* Firma o Detalle Decorativo */}
+                    <div className={`absolute -bottom-4 right-0 lg:-right-8 bg-ink text-bg px-8 py-4 transition-all duration-1000 delay-800 ease-luxury ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+                        <p className="font-serif italic text-lg opacity-90">G. Portorreal</p>
                     </div>
                 </div>
 
-                {/* Texto de Cierre y CTA */}
-                <div className={`text-center max-w-lg transition-all duration-[1000ms] delay-800 ease-luxury ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-                    <p className="font-sans text-muted text-sm md:text-base tracking-[0.05em] leading-relaxed mb-8">
-                        Un espacio donde la experimentación no tiene límites. <br />
-                        Explora el portafolio de nuestros creadores residentes.
-                    </p>
-                    <div className="flex justify-center">
-                        <div className="w-12 h-[1px] bg-gold animate-pulse"></div>
-                    </div>
-                </div>
-
-            </div>
-
-            {/* Marcador de Página Vertical (Derecha) */}
-            <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-4">
-                <span className="text-[10px] font-bold tracking-[0.3em] text-gold uppercase -rotate-90 origin-center whitespace-nowrap">
-                    PRB — ARCHIVE 2026
-                </span>
-                <div className="w-[1px] h-32 bg-ink/10"></div>
             </div>
 
         </section>

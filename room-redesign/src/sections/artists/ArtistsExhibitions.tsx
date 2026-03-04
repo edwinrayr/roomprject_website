@@ -2,60 +2,84 @@ import React from 'react';
 
 export const Exhibitions: React.FC = () => {
     return (
-        <section className="w-full py-24 md:py-32 bg-ink text-bg relative z-10 overflow-hidden">
-            {/* Forzamos el fondo a la variable 'ink' (oscuro) y el texto a 'bg' (claro) para crear contraste */}
+        <section className="w-full py-24 md:py-32 bg-ink text-bg relative z-10 overflow-hidden" id="about-artist">
             <div className="container mx-auto px-6 md:px-12">
                 
-                {/* Encabezado de la Exhibición */}
-                <div className="mb-12 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-bg/20 pb-8">
-                    <div>
-                        <span className="text-gold text-xs font-bold tracking-[0.2em] uppercase mb-4 block">
-                            Exhibición Destacada
+                {/* 1. SECCIÓN BIOGRÁFICA (Split Layout) */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 mb-20 border-b border-bg/20 pb-16">
+                    
+                    {/* Columna Izquierda: Nombre */}
+                    <div className="lg:col-span-5 flex flex-col justify-center">
+                        <span className="text-gold text-xs font-bold tracking-[0.3em] uppercase mb-4 block">
+                            Artista & Fundadora
                         </span>
-                        <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
-                            Silence & <span className="italic font-light opacity-90">Shadows</span>
+                        <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-none">
+                            Grecia <br className="hidden lg:block" /> Portorreal
                         </h2>
+                        <p className="font-serif italic text-xl md:text-2xl text-gold">
+                            "Donde Cada Evento se Convierte en Arte"
+                        </p>
                     </div>
-                    {/* Fechas */}
-                    <p className="font-sans text-sm uppercase tracking-widest text-muted md:text-right">
-                        15 Oct — 28 Nov
+
+                    {/* Columna Derecha: Biografía EXACTA */}
+                    <div className="lg:col-span-7 flex flex-col justify-center space-y-6 font-sans text-bg/80 text-base md:text-lg leading-relaxed font-light">
+                        <p>
+                            <strong>Grecia Portorreal</strong> es originaria de la República Dominicana. Nació en Santo Domingo, donde estudió artes publicitarias en la Universidad Autónoma de Santo Domingo y bellas artes e ilustración en la Altos de Chavón School of Design, afiliada a la Parsons School of Design de Nueva York, obteniendo el mérito de Cum Laude.
+                        </p>
+                        <p>
+                            Al mismo tiempo, estudió bellas artes durante 5 años en la Escuela de Bellas Artes de Santo Domingo. Se trasladó a España e Italia, donde estudió la conservación y restauración del patrimonio cultural.
+                        </p>
+                        <p>
+                            Ha expuesto su obra en República Dominicana, Nueva York, España, Italia y Suiza.
+                        </p>
+                        <p className="text-white font-medium">
+                            Actualmente vive en Biel, Suiza, donde se encuentra su estudio de arte.
+                        </p>
+                    </div>
+                </div>
+
+                {/* 2. GALERÍA DE OBRAS */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+                    
+                    {/* Obra 1 */}
+                    <div className="group relative aspect-[3/4] overflow-hidden rounded-sm">
+                        <img 
+                            src="/images/PinturaGrecia (7).jpg" 
+                            alt="Obra de Grecia Portorreal" 
+                            className="w-full h-full object-cover transition-transform duration-[1500ms] ease-luxury group-hover:scale-105" 
+                        />
+                        <div className="absolute inset-0 bg-ink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-luxury"></div>
+                    </div>
+
+                    {/* Obra 2 (Asimétrica) */}
+                    <div className="group relative aspect-[3/4] overflow-hidden rounded-sm md:mt-16">
+                        <img 
+                            src="/images/pinturas.png" 
+                            alt="Obra de Grecia Portorreal" 
+                            className="w-full h-full object-cover transition-transform duration-[1500ms] ease-luxury group-hover:scale-105" 
+                        />
+                        <div className="absolute inset-0 bg-ink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-luxury"></div>
+                    </div>
+
+                    {/* Obra 3 */}
+                    <div className="group relative aspect-[3/4] overflow-hidden rounded-sm lg:mt-8">
+                        <img 
+                            src="/images/chicas.jpg" 
+                            alt="Espacio de Grecia Portorreal" 
+                            className="w-full h-full object-cover transition-transform duration-[1500ms] ease-luxury group-hover:scale-105 grayscale hover:grayscale-0" 
+                        />
+                        <div className="absolute inset-0 bg-ink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-luxury"></div>
+                    </div>
+                </div>
+
+                {/* 3. AVISO LEGAL DE DERECHOS DE AUTOR */}
+                <div className="mt-24 text-center border-t border-bg/20 pt-16">
+                    <p className="font-sans text-[11px] md:text-xs text-bg/50 uppercase tracking-[0.2em] leading-loose max-w-2xl mx-auto">
+                        Todas las imágenes publicadas están protegidas por derechos de autor y pertenecen a Grecia Portorreal. <br className="hidden md:block" />
+                        Queda prohibida su reproducción, distribución o uso sin autorización por escrito.
                     </p>
                 </div>
 
-                {/* Contenido Principal (Split Layout) */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-0 items-center">
-                    
-                    {/* Imagen de la Exhibición */}
-                    <div className="lg:col-span-7 relative aspect-[4/3] md:aspect-[16/9] lg:aspect-[4/3] w-full overflow-hidden group">
-                        <img 
-                            src="/images/PinturaGrecia (7).jpg" 
-                            alt="Vista de la exhibición Silence & Shadows" 
-                            className="w-full h-full object-cover transition-transform duration-[1500ms] ease-luxury group-hover:scale-105"
-                        />
-                    </div>
-
-                    {/* Texto y Llamado a la Acción */}
-                    <div className="lg:col-span-5 lg:pl-16 flex flex-col justify-center">
-                        <h3 className="font-serif text-2xl md:text-3xl font-bold mb-6">
-                            Un viaje a través del minimalismo contemporáneo.
-                        </h3>
-                        <p className="font-sans text-bg/80 text-base leading-relaxed mb-10">
-                            Explora cómo el espacio y el vacío dialogan en esta instalación inmersiva. "Silence & Shadows" reúne a artistas que desafían nuestra percepción de la luz en entornos cerrados. Una experiencia curada exclusivamente para Project Room Bern.
-                        </p>
-                        
-                        {/* Botón con microinteracción elegante (línea que se expande) */}
-                        <div>
-                            <a 
-                                href="#reservar" 
-                                className="group inline-flex items-center gap-4 text-sm font-bold uppercase tracking-widest text-gold hover:text-white transition-colors duration-300"
-                            >
-                                <span>RSVP Now</span>
-                                <span className="w-8 h-[1px] bg-gold group-hover:bg-white group-hover:w-16 transition-all duration-500 ease-luxury"></span>
-                            </a>
-                        </div>
-                    </div>
-                    
-                </div>
             </div>
         </section>
     );

@@ -38,10 +38,14 @@ export const Navbar: React.FC = () => {
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
     const toggleTheme = () => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
 
+    // 1. ELIMINAMOS "RESERVE" DE AQUÍ (Solo queda Contact)
     const navLinks = [
         { name: 'Exhibitions', href: '/#exhibitions', isHash: true },
-        { name: 'Artists', href: '/artists', isHash: false },
-        { name: 'About', href: '/#about', isHash: true },
+        { name: 'Artist', href: '/artists', isHash: false },
+        { name: 'Services', href: '/services', isHash: false},
+        { name: 'About', href: '/about', isHash: false },
+        { name: 'Rules', href: '/rules', isHash: false},
+        { name: 'Contact', href: '/contact', isHash: false } 
     ];
 
     return (
@@ -67,7 +71,6 @@ export const Navbar: React.FC = () => {
 
                     <nav className="hidden md:flex justify-center items-center gap-8 lg:gap-10 z-[60]">
                         {navLinks.map((link) => (
-                            // Usamos Link si es una página nueva, y <a> si es un ancla (#) en la misma página
                             link.isHash ? (
                                 <a
                                     key={link.name}
@@ -91,15 +94,17 @@ export const Navbar: React.FC = () => {
                     </nav>
 
                     <div className="flex items-center justify-end gap-3 md:gap-5 z-[60]">
-                        <a
-                            href="/#contact"
+                        
+                        {/* 2. AQUÍ ESTÁ EL BOTÓN DE "RESERVE" */}
+                        <Link
+                            to="/reserve"
                             className={`hidden md:inline-flex items-center justify-center px-6 py-2.5 rounded-full text-xs font-bold tracking-widest uppercase transition-all duration-300 ${isScrolled
                                     ? 'bg-ink text-bg hover:bg-gold hover:text-white'
                                     : 'bg-white text-black hover:bg-gold hover:text-white'
                                 }`}
                         >
-                            Contact
-                        </a>
+                            Reserve
+                        </Link>
 
                         <button
                             onClick={toggleTheme}
@@ -133,7 +138,8 @@ export const Navbar: React.FC = () => {
                 </div>
 
                 <nav className="flex flex-col gap-6">
-                    {[...navLinks, { name: 'Contact', href: '/#contact', isHash: true }].map((link, index) => (
+                    {/* 3. AQUÍ AGREGAMOS "RESERVE" AL MENÚ MÓVIL */}
+                    {[...navLinks, { name: 'Reserve', href: '/reserve', isHash: false }].map((link, index) => (
                         <div key={link.name} className="overflow-hidden">
                             {link.isHash ? (
                                 <a
