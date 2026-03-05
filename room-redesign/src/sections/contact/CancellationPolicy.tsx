@@ -1,50 +1,89 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export const CancellationPolicy: React.FC = () => {
+    // Estado y Referencia para la animación al hacer scroll
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    if (sectionRef.current) observer.unobserve(sectionRef.current);
+                }
+            },
+            { threshold: 0.15 } // Se activa cuando el 15% es visible
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) observer.unobserve(sectionRef.current);
+        };
+    }, []);
+
     return (
-        <section className="w-full py-20 md:py-32 bg-bg text-ink relative z-10 border-t border-ink/5">
-            <div className="container-pr grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-                
-                {/* Imagen (Ajustada a la captura de pantalla) */}
-                <div className="lg:col-span-5">
-                    <div className="relative w-full aspect-[4/5] overflow-hidden rounded-sm shadow-xl">
-                        <img 
-                            src="/images/PinturaGrecia (3).jpg" 
-                            alt="Políticas de cancelación Project Room Bern" 
-                            className="w-full h-full object-cover transition-transform duration-[2000ms] ease-luxury hover:scale-105"
+        <section
+            ref={sectionRef}
+            className="w-full py-20 md:py-32 bg-bg text-ink relative z-10 border-t border-ink/10 transition-colors duration-500 overflow-hidden"
+        >
+            <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+
+                {/* COLUMNA IZQUIERDA: Imagen Conceptual */}
+                <div className={`lg:col-span-5 relative group transition-all duration-[1500ms] ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0'}`}>
+                    <div className="relative w-full max-w-md mx-auto lg:max-w-full aspect-[4/5] overflow-hidden rounded-sm shadow-xl">
+                        <img
+                            src="/images/PinturaGrecia (3).jpg"
+                            alt="Project Room Bern - Terms and Conditions"
+                            className="w-full h-full object-cover filter grayscale transition-all duration-[2000ms] ease-luxury group-hover:scale-105 group-hover:grayscale-0"
                         />
+                        {/* Velo para profundidad */}
+                        <div className="absolute inset-0 bg-ink/5 pointer-events-none"></div>
                     </div>
                 </div>
 
-                {/* Texto (Copiado EXACTAMENTE de tu HTML y screenshot) */}
+                {/* COLUMNA DERECHA: Políticas y Reglas */}
                 <div className="lg:col-span-7 flex flex-col justify-center">
-                    <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-8">
-                        Políticas de <br className="hidden lg:block"/> Cancelación
+
+                    <span className={`text-gold text-xs font-bold tracking-[0.3em] uppercase mb-4 block transition-all duration-1000 delay-200 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                        Terms & Conditions
+                    </span>
+
+                    <h2 className={`font-serif text-[clamp(2.5rem,5vw,4.5rem)] font-extrabold tracking-tight mb-8 leading-[1.05] transition-all duration-1000 delay-300 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                        Cancellation <br className="hidden lg:block" />
+                        <span className="italic font-light">Policy.</span>
                     </h2>
-                    
-                    <p className="font-sans text-muted text-base leading-relaxed font-light mb-10">
-                        En <strong className="font-medium text-ink">Project Room Bern</strong> valoramos la planificación responsable y el respeto al tiempo de nuestros clientes y equipo. A continuación, te presentamos nuestras políticas de cancelación aplicables a las reservas del espacio.
+
+                    <p className={`font-sans text-ink/70 text-base md:text-lg leading-relaxed font-light mb-12 max-w-[50ch] transition-all duration-1000 delay-400 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                        At <strong className="font-medium text-ink">Project Room Bern</strong>, we value responsible planning and respect the time of our clients and team. Below are our cancellation policies applicable to all space reservations.
                     </p>
 
-                    <div className="space-y-6">
+                    <div className="space-y-8">
+
                         {/* Regla 1 */}
-                        <div className="border-t border-ink/10 pt-6">
-                            <p className="font-sans text-base leading-relaxed font-light">
-                                <strong className="font-semibold text-ink">Reservas de un solo día:</strong> Si se cancela con más de 30 días de anticipación, se ofrece un <strong className="font-semibold text-ink">reembolso total</strong>. Si la cancelación ocurre dentro de los 30 días previos al evento, <strong className="font-semibold text-ink">no se realiza reembolso</strong>.
+                        <div className={`border-t border-ink/10 pt-8 transition-all duration-1000 delay-500 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                            <h4 className="font-serif text-xl md:text-2xl font-bold mb-3">Single-Day Bookings</h4>
+                            <p className="font-sans text-base leading-relaxed font-light text-ink/80 max-w-[55ch]">
+                                If canceled more than <strong>30 days in advance</strong>, a <strong className="font-medium text-ink">full refund</strong> is offered. If the cancellation occurs within the 30 days prior to the event, <strong className="font-medium text-ink">no refund</strong> will be issued.
                             </p>
                         </div>
 
                         {/* Regla 2 */}
-                        <div className="border-t border-ink/10 pt-6 border-b pb-6">
-                            <p className="font-sans text-base leading-relaxed font-light">
-                                <strong className="font-semibold text-ink">Reservas de 15 días o más:</strong> Si se cancela con más de 2 meses de anticipación, se ofrece un <strong className="font-semibold text-ink">reembolso total</strong>. Si la cancelación ocurre dentro de los 2 meses previos, se otorga un <strong className="font-semibold text-ink">reembolso del 50%</strong>.
+                        <div className={`border-t border-ink/10 pt-8 border-b pb-8 transition-all duration-1000 delay-600 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                            <h4 className="font-serif text-xl md:text-2xl font-bold mb-3">Extended Bookings (15+ Days)</h4>
+                            <p className="font-sans text-base leading-relaxed font-light text-ink/80 max-w-[55ch]">
+                                If canceled more than <strong>2 months in advance</strong>, a <strong className="font-medium text-ink">full refund</strong> is offered. If the cancellation occurs within the 2 months prior, a <strong className="font-medium text-ink">50% refund</strong> is granted.
                             </p>
                         </div>
-                        
+
                         {/* Conclusión */}
-                        <p className="font-sans text-sm text-ink/60 leading-relaxed font-light italic">
-                            Estas políticas buscan garantizar una gestión equitativa y sostenible tanto para el usuario como para la administración del espacio.
+                        <p className={`font-sans text-sm text-ink/50 leading-relaxed font-light italic max-w-[55ch] transition-all duration-1000 delay-700 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                            These policies aim to ensure equitable and sustainable management for both our guests and the space administration.
                         </p>
+
                     </div>
                 </div>
 
