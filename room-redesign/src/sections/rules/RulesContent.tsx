@@ -46,7 +46,7 @@ export const RulesContent: React.FC = () => {
                 <div className={`lg:col-span-5 relative lg:sticky lg:top-32 transition-all duration-[1500ms] ease-luxury transform ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
                     <div className="relative w-full aspect-[3/4] md:aspect-[4/5] overflow-hidden rounded-sm shadow-2xl group">
                         <img
-                            src="/images/504440699_18075163993909812_4565038911395423983_n.jpg"
+                            src="/images/504440699_18075163993909812_4565038911395423983_n.webp"
                             alt="Project Room Bern - Environment"
                             className="w-full h-full object-cover transition-transform duration-[2000ms] ease-luxury group-hover:scale-105 filter grayscale hover:grayscale-0"
                         />

@@ -24,7 +24,7 @@ export const SpaceFeatures: React.FC = () => {
         {
             id: 3,
             title: t('space_features.cards.scenic', "SCENIC ATMOSPHERE"),
-            image: "/images/salon.png",
+            image: "/images/salon.webp",
             alt: "Scenic atmosphere"
         }
     ];

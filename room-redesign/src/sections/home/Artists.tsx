@@ -76,7 +76,7 @@ export const Artists: React.FC = () => {
                     </div>
 
                     <div className={`transition-all duration-1000 delay-300 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
-                        <a href="#all-artists" className="btn-pr shrink-0">
+                        <a href="/artists" className="btn-pr shrink-0">
                             {t('home_artists.cta', 'View Directory')}
                         </a>
                     </div>

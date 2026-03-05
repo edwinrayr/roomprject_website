@@ -68,7 +68,9 @@ export const ArtistCTA: React.FC = () => {
 
                             {/* Botón Secundario: Descargar Portafolio */}
                             <a
-                                href="#portfolio"
+                                href="https://grecia-portorreal.ch/portofolio"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="group flex items-center gap-3 border border-ink/20 text-ink px-8 py-3.5 rounded-full font-bold text-xs tracking-widest uppercase hover:border-gold hover:text-gold transition-all duration-300"
                             >
                                 {t('artist_cta.portfolio_btn', 'Request Portfolio')}

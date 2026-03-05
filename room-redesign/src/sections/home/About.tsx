@@ -106,7 +106,7 @@ export const About: React.FC = () => {
                     {/* Botón final animado */}
                     <div className={`transition-all duration-1000 delay-700 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                         <a
-                            href="#artists"
+                            href="/artists"
                             className="inline-flex items-center gap-2 font-bold text-sm tracking-widest uppercase text-ink group"
                         >
                             {t('home_about.cta', 'Discover our artists')}

@@ -63,7 +63,7 @@ export const Booking: React.FC = () => {
                     {/* Botón interactivo */}
                     <div className={`transition-all duration-1000 delay-400 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                         <a
-                            href="#contact"
+                            href="/contact"
                             className="inline-flex items-center gap-4 bg-white text-ink pl-8 pr-2 py-2 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-gold hover:text-white transition-all duration-500 shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(217,198,163,0.3)]"
                         >
                             {t('home_booking.cta', 'Inquire About Spaces')}

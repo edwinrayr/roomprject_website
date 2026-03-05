@@ -84,7 +84,7 @@ export const Exhibitions: React.FC = () => {
                     {/* Obra 1 */}
                     <div className={`group relative aspect-[3/4] overflow-hidden rounded-sm transition-all duration-[1200ms] delay-500 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0'}`}>
                         <img
-                            src="/images/PinturaGrecia (7).jpg"
+                            src="/images/PinturaGrecia (7).webp"
                             alt="Grecia Portorreal Artwork 1"
                             className="w-full h-full object-cover transition-transform duration-[2000ms] ease-luxury group-hover:scale-110"
                         />
@@ -104,7 +104,7 @@ export const Exhibitions: React.FC = () => {
                     {/* Obra 3 (Punto intermedio) */}
                     <div className={`group relative aspect-[3/4] overflow-hidden rounded-sm lg:mt-10 transition-all duration-[1200ms] delay-900 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0'}`}>
                         <img
-                            src="/images/chicas.jpg"
+                            src="/images/chicas.webp"
                             alt="Grecia Portorreal Studio Space"
                             className="w-full h-full object-cover transition-transform duration-[2000ms] ease-luxury group-hover:scale-110 grayscale hover:grayscale-0"
                         />

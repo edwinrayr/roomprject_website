@@ -39,7 +39,7 @@ export const CancellationPolicy: React.FC = () => {
                 <div className={`lg:col-span-5 relative group transition-all duration-[1500ms] ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0'}`}>
                     <div className="relative w-full max-w-md mx-auto lg:max-w-full aspect-[4/5] overflow-hidden rounded-sm shadow-xl">
                         <img
-                            src="/images/PinturaGrecia (3).jpg"
+                            src="/images/PinturaGrecia (3).webp"
                             alt="Project Room Bern - Terms and Conditions"
                             className="w-full h-full object-cover filter grayscale transition-all duration-[2000ms] ease-luxury group-hover:scale-105 group-hover:grayscale-0"
                         />

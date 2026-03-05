@@ -75,7 +75,7 @@ export const Services: React.FC = () => {
                     </div>
 
                     <div className={`transition-all duration-1000 delay-300 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
-                        <a href="#contact" className="btn-pr">
+                        <a href="/contact" className="btn-pr">
                             {t('home_services.cta_inquire', 'Inquire Now')}
                         </a>
                     </div>
@@ -116,7 +116,7 @@ export const Services: React.FC = () => {
                                 </p>
 
                                 <div className="mt-auto">
-                                    <a href="#contact" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ink group-hover:text-gold transition-colors duration-300">
+                                    <a href="/contact" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ink group-hover:text-gold transition-colors duration-300">
                                         {t('home_services.cta_view', 'View Service')}
                                         <ArrowRight size={16} strokeWidth={2} className="transform group-hover:translate-x-1.5 transition-transform duration-300" />
                                     </a>

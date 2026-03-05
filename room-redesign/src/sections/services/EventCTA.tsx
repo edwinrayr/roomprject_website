@@ -56,7 +56,7 @@ export const EventCTA: React.FC = () => {
                         <div className={`flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-6 transition-all duration-1000 delay-600 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
 
                             <a
-                                href="#reserve"
+                                href="/reserve"
                                 className="group flex items-center gap-3 bg-bg text-ink px-8 py-4 rounded-full font-bold text-xs tracking-widest uppercase hover:bg-gold hover:text-white transition-all duration-300 w-full sm:w-auto justify-center"
                             >
                                 <Calendar size={18} strokeWidth={1.5} />

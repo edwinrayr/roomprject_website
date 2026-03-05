@@ -47,7 +47,7 @@ export const ArtistsHero: React.FC = () => {
 
                     <div className={`relative w-full max-w-[16rem] sm:max-w-sm md:max-w-md aspect-[4/5] overflow-hidden transition-all duration-[1500ms] delay-200 ease-luxury shadow-2xl ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-110'}`}>
                         <img
-                            src="/images/PinturaGrecia (7).jpg"
+                            src="/images/PinturaGrecia (7).webp"
                             alt="Grecia Portorreal Artwork"
                             className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-[1500ms] ease-luxury"
                         />

@@ -20,31 +20,31 @@ export const ServicesGrid: React.FC = () => {
             id: '01',
             title: t('services_grid.items.s1.title', 'Art Exhibitions'),
             description: t('services_grid.items.s1.desc', 'The perfect environment to showcase talent and creativity. Featuring curated lighting and a contemporary atmosphere, your artwork will connect with the audience in a unique way. Ideal for solo or collective exhibitions.'),
-            imageUrl: '/images/pinturas.png',
+            imageUrl: '/images/pinturas.webp',
         },
         {
             id: '02',
             title: t('services_grid.items.s2.title', 'Cultural Workshops'),
             description: t('services_grid.items.s2.desc', 'An inspiring setting for learning, collaboration, and cultural exchange. Adaptable spaces offering comfort and excellent acoustics. Perfect for creative workshops, literary circles, and artistic development.'),
-            imageUrl: '/images/culura.jpg',
+            imageUrl: '/images/culura.webp',
         },
         {
             id: '03',
             title: t('services_grid.items.s3.title', 'Cinema & Screenings'),
             description: t('services_grid.items.s3.desc', 'Experience high-quality visual and acoustic screenings in a community-focused environment. Perfect for independent premieres, thematic cycles, or film forums and audiovisual presentations.'),
-            imageUrl: '/images/proyeccion.jpg',
+            imageUrl: '/images/proyeccion.webp',
         },
         {
             id: '04',
             title: t('services_grid.items.s4.title', 'Private Gatherings'),
             description: t('services_grid.items.s4.desc', 'Intimate and welcoming spaces designed for sharing special moments in total privacy. Whether a family gathering or a personal celebration, we provide the flexibility and service to make it unforgettable.'),
-            imageUrl: '/images/convivencia.png',
+            imageUrl: '/images/convivencia.webp',
         },
         {
             id: '05',
             title: t('services_grid.items.s5.title', 'Conferences & Recitals'),
             description: t('services_grid.items.s5.desc', 'Designed to elevate communication and the attendee experience. Equipped with modern technology and elegant design, our rooms are ideal for conferences, recitals, and professional training.'),
-            imageUrl: '/images/reunion.png',
+            imageUrl: '/images/reunion.webp',
         },
         {
             id: '06',
@@ -132,7 +132,7 @@ export const ServicesGrid: React.FC = () => {
                 </div>
 
                 <div className={`mt-24 flex justify-center transition-all duration-1000 delay-1000 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
-                    <a href="#contact" className="group flex items-center gap-3 bg-ink text-bg px-10 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-gold hover:text-white transition-all duration-300">
+                    <a href="/contact" className="group flex items-center gap-3 bg-ink text-bg px-10 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-gold hover:text-white transition-all duration-300">
                         {t('services_grid.cta', 'Request a Quote')}
                         <ArrowRight size={18} strokeWidth={2} className="group-hover:translate-x-1 transition-transform" />
                     </a>

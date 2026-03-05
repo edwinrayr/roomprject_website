@@ -51,7 +51,7 @@ export const Hero: React.FC = () => {
                         <a href="/exhibitions" className="group flex items-center gap-3 bg-white text-ink px-8 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-gold hover:text-white transition-all duration-500 ease-luxury shadow-lg">
                             {t('home_hero.cta_primary', 'Explore Collection')}
                         </a>
-                        <a href="#about" className="text-sm font-semibold tracking-wide text-white hover:text-gold transition-colors underline underline-offset-4 decoration-white/30 hover:decoration-gold drop-shadow-md">
+                        <a href="/about" className="text-sm font-semibold tracking-wide text-white hover:text-gold transition-colors underline underline-offset-4 decoration-white/30 hover:decoration-gold drop-shadow-md">
                             {t('home_hero.cta_secondary', 'Our Story')}
                         </a>
                     </div>
