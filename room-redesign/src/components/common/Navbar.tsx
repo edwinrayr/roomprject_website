@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Instagram, Facebook } from 'lucide-react'; // Eliminados Sun y Moon
+import { Menu, X, Instagram, Facebook, Linkedin } from 'lucide-react'; // <-- Importamos Linkedin
 import { Link, useLocation } from 'react-router-dom';
 
 export const Navbar: React.FC = () => {
@@ -31,6 +31,9 @@ export const Navbar: React.FC = () => {
     // Cerrar el menú automáticamente si la URL o el anclaje (#) cambian
     useEffect(() => {
         setIsMenuOpen(false);
+        if (!location.hash) {
+            window.scrollTo(0, 0);
+        }
     }, [location.pathname, location.hash]);
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -59,7 +62,7 @@ export const Navbar: React.FC = () => {
 
                     {/* LADO IZQUIERDO: Logo */}
                     <div className="flex justify-start">
-                        <Link to="/" onClick={() => setIsMenuOpen(false)} className="relative overflow-hidden group block">
+                        <Link to="/" className="relative overflow-hidden group block">
                             <img
                                 src="/projectroombern-logo.png"
                                 alt="Project Room Bern Logo"
@@ -119,28 +122,33 @@ export const Navbar: React.FC = () => {
 
             {/* Menú Mobile Fullscreen: z-[55] (Siempre oscuro) */}
             <div
-                className={`fixed inset-0 bg-ink z-[55] flex flex-col justify-center px-8 md:px-16 transition-all duration-[800ms] ease-luxury pointer-events-none ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0'
-                    }`}
+                className={`fixed inset-0 bg-ink z-[55] flex flex-col justify-center px-8 md:px-16 transition-all duration-[800ms] ease-luxury ${
+                    isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                }`}
             >
-                <nav className="flex flex-col gap-6 mt-12">
+                {/* Ajustamos mt-16 y gap-5 para móviles */}
+                <nav className="flex flex-col gap-5 mt-16 md:gap-6 md:mt-12">
                     {[...navLinks, { name: 'Reserve Space', href: '/reserve', isHash: false }].map((link, index) => (
                         <div key={link.name} className="overflow-hidden">
                             {link.isHash ? (
                                 <a
+                                    key={link.name}
                                     href={link.href}
-                                    onClick={() => setIsMenuOpen(false)}
-                                    className={`block w-fit text-4xl md:text-6xl font-serif font-light text-bg hover:text-gold transition-transform duration-[800ms] ease-luxury ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-[120%] opacity-0'
-                                        }`}
+                                    onClick={() => {
+                                        setIsMenuOpen(false);
+                                        const targetId = link.href.split('#')[1];
+                                        document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+                                    }}
+                                    className={`block w-fit text-left text-2xl md:text-5xl font-serif font-light text-bg hover:text-gold transition-transform duration-[800ms] ease-luxury ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-[120%] opacity-0'}`}
                                     style={{ transitionDelay: `${isMenuOpen ? index * 80 + 150 : 0}ms` }}
                                 >
                                     {link.name}
                                 </a>
                             ) : (
                                 <Link
+                                    key={link.name}
                                     to={link.href}
-                                    onClick={() => setIsMenuOpen(false)}
-                                    className={`block w-fit text-4xl md:text-6xl font-serif font-light text-bg hover:text-gold transition-transform duration-[800ms] ease-luxury ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-[120%] opacity-0'
-                                        }`}
+                                    className={`block w-fit text-left text-2xl md:text-5xl font-serif font-light text-bg hover:text-gold transition-transform duration-[800ms] ease-luxury ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-[120%] opacity-0'}`}
                                     style={{ transitionDelay: `${isMenuOpen ? index * 80 + 150 : 0}ms` }}
                                 >
                                     {link.name}
@@ -151,15 +159,24 @@ export const Navbar: React.FC = () => {
                 </nav>
 
                 {/* Pie del menú móvil */}
-                <div className={`mt-16 overflow-hidden transition-all duration-700 ease-luxury ${isMenuOpen ? 'opacity-100 translate-y-0 delay-[600ms]' : 'opacity-0 translate-y-8 delay-0'}`}>
+                <div className={`mt-12 md:mt-16 overflow-hidden transition-all duration-700 ease-luxury ${isMenuOpen ? 'opacity-100 translate-y-0 delay-[600ms]' : 'opacity-0 translate-y-8 delay-0'}`}>
                     <div className="w-full h-px bg-bg/10 mb-6"></div>
                     <div className="flex justify-between items-center">
                         <p className="text-bg/50 text-[10px] font-bold uppercase tracking-[0.2em]">
                             Project Room Bern
                         </p>
+                        
+                        {/* 👇 AHORA CON LINKEDIN 👇 */}
                         <div className="flex gap-4">
-                            <a href="#" className="text-bg hover:text-gold transition-colors"><Instagram size={18} strokeWidth={1.5} /></a>
-                            <a href="#" className="text-bg hover:text-gold transition-colors"><Facebook size={18} strokeWidth={1.5} /></a>
+                            <a href="https://www.instagram.com/greciaportorreal/" target="_blank" rel="noopener noreferrer" className="text-bg hover:text-gold transition-colors">
+                                <Instagram size={18} strokeWidth={1.5} />
+                            </a>
+                            <a href="https://www.facebook.com/greciaportorreal12/" target="_blank" rel="noopener noreferrer" className="text-bg hover:text-gold transition-colors">
+                                <Facebook size={18} strokeWidth={1.5} />
+                            </a>
+                            <a href="https://ch.linkedin.com/in/grecia-portorreal-6a42b72b4" target="_blank" rel="noopener noreferrer" className="text-bg hover:text-gold transition-colors">
+                                <Linkedin size={18} strokeWidth={1.5} />
+                            </a>
                         </div>
                     </div>
                 </div>
