@@ -1,4 +1,60 @@
 {
+    "home_services": {
+        "eyebrow": "Our Expertise",
+        "title_1": "Elevating the",
+        "title_2": "Experience.",
+        "cta_inquire": "Inquire Now",
+        "cta_view": "View Service",
+        "items": {
+            "service_1": {
+                "name": "Art Exhibitions",
+                "desc": "Curated showcases of contemporary artists, providing a dynamic platform for innovative visual expressions."
+            },
+            "service_2": {
+                "name": "Private Events",
+                "desc": "Exclusive architectural spaces tailored for intimate gatherings, corporate events, and cultural celebrations."
+            },
+            "service_3": {
+                "name": "Advisory & Curation",
+                "desc": "Expert guidance for collectors and institutions in acquiring, managing, and displaying fine art portfolios."
+            }
+            }
+    },
+    "home_hero": {
+        "eyebrow": "The art of modern spaces",
+        "title_1": "Curating",
+        "title_2": "Vision.",
+        "description": "Explore an exclusive collection where contemporary art meets avant-garde design. An immersive visual experience curated for those who appreciate pure aesthetics.",
+        "cta_primary": "Explore Collection",
+        "cta_secondary": "Our Story",
+        "scroll": "Scroll"
+    },
+    "home_booking": {
+        "eyebrow": "Experience the space",
+        "title_1": "Ready to bring your",
+        "title_2": "vision to life?",
+        "cta": "Inquire About Spaces"
+    },
+    "home_artists": {
+        "eyebrow": "The Roster",
+        "title_1": "Selected",
+        "title_2": "Artists.",
+        "cta": "View Directory",
+        "categories": {
+            "photography": "Fine Art Photography",
+            "sculpture": "Neo-Classical Sculpture",
+            "curation": "Contemporary Curation"
+        }
+    },
+    "home_about": {
+        "eyebrow": "About the gallery",
+        "title": "Redefining the space between art & observer.",
+        "description": "Project Room is more than an exhibition space; it is an architectural canvas dedicated to contemporary masterpieces. We curate immersive environments that challenge perception and elevate the dialogue between the artwork and its environment.",
+        "list_1": "Curated Contemporary Exhibitions",
+        "list_2": "Private Art Advisory & Acquisitions",
+        "list_3": "Cultural Events & Artist Workshops",
+        "cta": "Discover our artists"
+    },
     "contact_hero": {
         "eyebrow": "Get in Touch",
         "title_1": "Let's discuss",

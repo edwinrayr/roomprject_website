@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next'; // <-- Importamos useTranslation
 
 export const About: React.FC = () => {
+    const { t } = useTranslation(); // <-- Extraemos t
+    
     // Estado y Referencia para el Intersection Observer (Animaciones al hacer scroll)
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
@@ -8,10 +11,8 @@ export const About: React.FC = () => {
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                // Cuando el 20% de la sección es visible, disparamos la animación
                 if (entry.isIntersecting) {
                     setIsVisible(true);
-                    // Una vez que se anima, podemos dejar de observar para mejorar el rendimiento
                     if (sectionRef.current) observer.unobserve(sectionRef.current);
                 }
             },
@@ -26,6 +27,13 @@ export const About: React.FC = () => {
             if (sectionRef.current) observer.unobserve(sectionRef.current);
         };
     }, []);
+
+    // Lista de enfoques traducida
+    const focusItems = [
+        t('home_about.list_1', 'Curated Contemporary Exhibitions'),
+        t('home_about.list_2', 'Private Art Advisory & Acquisitions'),
+        t('home_about.list_3', 'Cultural Events & Artist Workshops')
+    ];
 
     return (
         <section
@@ -68,30 +76,26 @@ export const About: React.FC = () => {
 
                     <div className={`transition-all duration-1000 delay-100 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                         <span className="text-gold text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-4 block">
-                            About the gallery
+                            {t('home_about.eyebrow', 'About the gallery')}
                         </span>
 
                         <h2 className="font-serif text-[clamp(2.5rem,4vw,4rem)] leading-[1.05] font-extrabold mb-8 tracking-tight">
-                            Redefining the space between art & observer.
+                            {t('home_about.title', 'Redefining the space between art & observer.')}
                         </h2>
                     </div>
 
                     <p className={`font-sans text-sm md:text-base leading-relaxed opacity-80 max-w-[52ch] mb-10 transition-all duration-1000 delay-300 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                        Project Room is more than an exhibition space; it is an architectural canvas dedicated to contemporary masterpieces. We curate immersive environments that challenge perception and elevate the dialogue between the artwork and its environment.
+                        {t('home_about.description', 'Project Room is more than an exhibition space; it is an architectural canvas dedicated to contemporary masterpieces. We curate immersive environments that challenge perception and elevate the dialogue between the artwork and its environment.')}
                     </p>
 
-                    {/* Lista de enfoques con íconos personalizados */}
+                    {/* Lista de enfoques */}
                     <ul className="flex flex-col gap-4 mb-12 max-w-[48ch]">
-                        {[
-                            'Curated Contemporary Exhibitions',
-                            'Private Art Advisory & Acquisitions',
-                            'Cultural Events & Artist Workshops'
-                        ].map((item, index) => (
+                        {focusItems.map((item, index) => (
                             <li
                                 key={index}
                                 className={`pb-4 border-b border-ink/10 text-sm md:text-base font-medium flex items-center gap-4 transition-all duration-1000 ease-out transform ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'
                                     }`}
-                                style={{ transitionDelay: `${400 + (index * 150)}ms` }} // Retraso escalonado
+                                style={{ transitionDelay: `${400 + (index * 150)}ms` }}
                             >
                                 <span className="flex-shrink-0 w-2 h-2 rounded-full bg-gold"></span>
                                 {item}
@@ -105,8 +109,7 @@ export const About: React.FC = () => {
                             href="#artists"
                             className="inline-flex items-center gap-2 font-bold text-sm tracking-widest uppercase text-ink group"
                         >
-                            Discover our artists
-                            {/* Línea animada al hacer hover */}
+                            {t('home_about.cta', 'Discover our artists')}
                             <span className="relative overflow-hidden w-8 h-[1px] bg-ink/30 group-hover:bg-gold transition-colors block ml-2">
                                 <span className="absolute inset-0 bg-gold -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
                             </span>

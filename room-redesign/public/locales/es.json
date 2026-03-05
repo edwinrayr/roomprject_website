@@ -1,4 +1,60 @@
 {
+    "home_services": {
+        "eyebrow": "Nuestra Experiencia",
+        "title_1": "Elevando la",
+        "title_2": "Experiencia.",
+        "cta_inquire": "Consultar Ahora",
+        "cta_view": "Ver Servicio",
+        "items": {
+            "service_1": {
+                "name": "Exposiciones de Arte",
+                "desc": "Muestras curadas de artistas contemporáneos, proporcionando una plataforma dinámica para expresiones visuales innovadoras."
+            },
+            "service_2": {
+                "name": "Eventos Privados",
+                "desc": "Espacios arquitectónicos exclusivos diseñados para reuniones íntimas, eventos corporativos y celebraciones culturales."
+            },
+            "service_3": {
+                "name": "Asesoría y Curaduría",
+                "desc": "Guía experta para coleccionistas e instituciones en la adquisición, gestión y exhibición de portafolios de bellas artes."
+            }
+        }
+    },
+    "home_hero": {
+        "eyebrow": "El arte de los espacios modernos",
+        "title_1": "Curando",
+        "title_2": "Visión.",
+        "description": "Explora una colección exclusiva donde el arte contemporáneo se encuentra con el diseño de vanguardia. Una experiencia visual inmersiva curada para quienes aprecian la estética pura.",
+        "cta_primary": "Explorar Colección",
+        "cta_secondary": "Nuestra Historia",
+        "scroll": "Deslizar"
+    },
+    "home_booking": {
+        "eyebrow": "Vive el espacio",
+        "title_1": "¿Listo para dar vida",
+        "title_2": "a tu visión?",
+        "cta": "Consultar Espacios"
+    },
+    "home_artists": {
+        "eyebrow": "El Catálogo",
+        "title_1": "Artistas",
+        "title_2": "Seleccionados.",
+        "cta": "Ver Directorio",
+        "categories": {
+            "photography": "Fotografía Artística",
+            "sculpture": "Escultura Neoclásica",
+            "curation": "Curaduría Contemporánea"
+        }
+    },
+    "home_about": {
+        "eyebrow": "Sobre la galería",
+        "title": "Redefiniendo el espacio entre el arte y el observador.",
+        "description": "Project Room es más que un espacio de exhibición; es un lienzo arquitectónico dedicado a obras maestras contemporáneas. Curamos entornos inmersivos que desafían la percepción y elevan el diálogo entre la obra y su entorno.",
+        "list_1": "Exposiciones contemporáneas curadas",
+        "list_2": "Asesoría de arte privada y adquisiciones",
+        "list_3": "Eventos culturales y talleres de artistas",
+        "cta": "Descubre nuestros artistas"
+    },
     "contact_hero": {
         "eyebrow": "Ponte en Contacto",
         "title_1": "Hablemos de",
