@@ -1,4 +1,54 @@
 {
+    "services_hero": {
+        "eyebrow": "Exclusividad y Estilo",
+        "title_1": "Espacios Curados",
+        "title_2": "para Eventos.",
+        "description": "ofrece entornos elegantes y versátiles para bodas, conferencias corporativas, exposiciones y celebraciones privadas. Cada detalle está meticulosamente diseñado para crear experiencias memorables con distinción.",
+        "scroll_text": "Descubre nuestros espacios",
+        "alt_main": "Eventos en Project Room Bern",
+        "alt_secondary": "Detalles del evento"
+    },
+    "services_grid": {
+        "subtitle": "Elige Tu Experiencia",
+        "title": "Nuestros Servicios.",
+        "learn_more": "Saber Más",
+        "cta": "Solicitar Cotización",
+        "items": {
+            "s1": {
+                "title": "Exhibiciones de Arte",
+                "desc": "El entorno perfecto para mostrar talento y creatividad. Con iluminación curada y una atmósfera contemporánea, tu obra conectará con el público de manera única. Ideal para muestras individuales o colectivas."
+            },
+            "s2": {
+                "title": "Talleres Culturales",
+                "desc": "Un escenario inspirador para el aprendizaje, la colaboración y el intercambio cultural. Espacios adaptables que ofrecen comodidad y excelente acústica. Perfecto para talleres creativos y círculos literarios."
+            },
+            "s3": {
+                "title": "Cine y Proyecciones",
+                "desc": "Vive proyecciones visuales y acústicas de alta calidad en un entorno enfocado a la comunidad. Perfecto para estrenos independientes, ciclos temáticos o foros de discusión cinematográfica y audiovisual."
+            },
+            "s4": {
+                "title": "Reuniones Privadas",
+                "desc": "Espacios íntimos y acogedores diseñados para compartir momentos especiales en total privacidad. Ya sea una reunión familiar o una celebración personal, brindamos la flexibilidad para hacerla inolvidable."
+            },
+            "s5": {
+                "title": "Conferencias y Recitales",
+                "desc": "Diseñados para elevar la comunicación y la experiencia del asistente. Equipados con tecnología moderna y diseño elegante, nuestros salones son ideales para conferencias, recitales y formación profesional."
+            },
+            "s6": {
+                "title": "Eventos Corporativos",
+                "desc": "El equilibrio perfecto entre elegancia y funcionalidad para aniversarios corporativos o celebraciones boutique. Atención a medida, mobiliario versátil y una atmósfera sofisticada que fomenta la conexión."
+            }
+        }
+    },
+    "event_cta": {
+        "eyebrow": "Experiencias a Medida",
+        "title_1": "Demos vida a tu",
+        "title_2": "visión.",
+        "description": "Ya sea que estés planeando una reunión íntima o un evento corporativo a gran escala, nuestro equipo dedicado trabajará estrechamente contigo para personalizar cada detalle arquitectónico y logístico.",
+        "schedule_btn": "Agendar una Visita",
+        "email_btn": "Contactar al Equipo",
+        "badge": "Aceptando reservas para 2026"
+    },
     "rules_hero": {
         "eyebrow": "Directrices Oficiales",
         "title_1": "Reglas y",

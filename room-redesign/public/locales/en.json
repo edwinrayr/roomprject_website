@@ -1,4 +1,54 @@
 {
+    "services_hero": {
+        "eyebrow": "Exclusivity & Style",
+        "title_1": "Curated Spaces",
+        "title_2": "for Events.",
+        "description": "provides elegant and versatile environments for weddings, corporate conferences, exhibitions, and private celebrations. Every detail is meticulously designed to craft memorable experiences with distinction.",
+        "scroll_text": "Discover our spaces",
+        "alt_main": "Project Room Bern Events",
+        "alt_secondary": "Event details"
+    },
+    "services_grid": {
+        "subtitle": "Choose Your Experience",
+        "title": "Our Services.",
+        "learn_more": "Learn More",
+        "cta": "Request a Quote",
+        "items": {
+            "s1": {
+                "title": "Art Exhibitions",
+                "desc": "The perfect environment to showcase talent and creativity. Featuring curated lighting and a contemporary atmosphere, your artwork will connect with the audience in a unique way. Ideal for solo or collective exhibitions."
+            },
+            "s2": {
+                "title": "Cultural Workshops",
+                "desc": "An inspiring setting for learning, collaboration, and cultural exchange. Adaptable spaces offering comfort and excellent acoustics. Perfect for creative workshops, literary circles, and artistic development."
+            },
+            "s3": {
+                "title": "Cinema & Screenings",
+                "desc": "Experience high-quality visual and acoustic screenings in a community-focused environment. Perfect for independent premieres, thematic cycles, or film forums and audiovisual presentations."
+            },
+            "s4": {
+                "title": "Private Gatherings",
+                "desc": "Intimate and welcoming spaces designed for sharing special moments in total privacy. Whether a family gathering or a personal celebration, we provide the flexibility and service to make it unforgettable."
+            },
+            "s5": {
+                "title": "Conferences & Recitals",
+                "desc": "Designed to elevate communication and the attendee experience. Equipped with modern technology and elegant design, our rooms are ideal for conferences, recitals, and professional training."
+            },
+            "s6": {
+                "title": "Corporate Events",
+                "desc": "The perfect balance of elegance and functionality for corporate anniversaries or boutique celebrations. Tailored attention, versatile furniture, and a sophisticated atmosphere that fosters connection."
+            }
+        }
+    },
+    "event_cta": {
+        "eyebrow": "Tailored Experiences",
+        "title_1": "Let's bring your",
+        "title_2": "vision to life.",
+        "description": "Whether you are planning an intimate gathering or a large-scale corporate event, our dedicated team will work closely with you to customize every architectural and logistical detail.",
+        "schedule_btn": "Schedule a Tour",
+        "email_btn": "Email our Team",
+        "badge": "Now accepting 2026 bookings"
+    },
     "rules_hero": {
         "eyebrow": "Official Guidelines",
         "title_1": "Rules &",
