@@ -1,38 +1,49 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+// Componentes Globales
+import { ScrollToTop } from './components/ScrollToTop';
+import { Preloader } from './components/Preloader';
 import { Navbar } from './components/common/Navbar';
-import { Home } from './pages/Home';
-import { ArtistsPage } from './pages/ArtistsPage';
 import { Footer } from './components/common/Footer';
-import { ServicesPage } from './pages/ServicesPage';
+
+// Paginas
+import { Home } from './pages/Home';
 import { AboutPage } from './pages/AboutPage';
+import { ServicesPage } from './pages/ServicesPage';
+import { ArtistsPage } from './pages/ArtistsPage';
 import { RulesPage } from './pages/RulesPage';
 import { ContactPage } from './pages/ContactPage';
 import { ReservePage } from './pages/ReservePage';
 
-function App() {
+export const App: React.FC = () => {
   return (
     <Router>
-      <div className="min-h-screen bg-bg text-ink transition-colors duration-500 font-sans">
-        {/* El Navbar siempre se muestra arriba */}
+      <ScrollToTop />
+      <Preloader />
+
+      <div className="flex flex-col min-h-screen bg-bg text-ink transition-colors duration-500 font-sans selection:bg-gold selection:text-white">
+
         <Navbar />
 
-        {/* El Router decide qué componente mostrar en medio */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/artists" element={<ArtistsPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/rules" element={<RulesPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/reserve" element={<ReservePage />} />
-        </Routes>
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/artists" element={<ArtistsPage />} />
+            <Route path="/rules" element={<RulesPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/reserve" element={<ReservePage />} />
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </main>
 
-        {/* El Footer siempre se muestra abajo */}
         <Footer />
+
       </div>
     </Router>
   );
-}
+};
 
 export default App;
