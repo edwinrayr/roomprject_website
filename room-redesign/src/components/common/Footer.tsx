@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Linkedin, Mail, ArrowRight, ArrowUp } from 'lucide-react'; // <-- Cambié Twitter por Linkedin
+import { Instagram, Facebook, Linkedin, Mail, ArrowRight, ArrowUp } from 'lucide-react';
+import { useTranslation } from 'react-i18next'; // <-- Importamos useTranslation
 
 export const Footer: React.FC = () => {
+    const { t, i18n } = useTranslation(); // <-- Extraemos t y la instancia i18n
     const currentYear = new Date().getFullYear();
 
     // Animaciones al hacer scroll
@@ -34,19 +36,28 @@ export const Footer: React.FC = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    // Enlaces de navegación adaptados a tus rutas de App.tsx
+    // Función para cambiar idioma
+    const toggleLanguage = () => {
+        const currentLang = i18n.language || 'en';
+        const newLang = currentLang.startsWith('es') ? 'en' : 'es';
+        i18n.changeLanguage(newLang);
+    };
+
+    const isSpanish = i18n.language?.startsWith('es');
+
+    // Enlaces de navegación con traducciones
     const exploreLinks = [
-        { name: 'Home', path: '/' },
-        { name: 'About', path: '/about' },
-        { name: 'Services', path: '/services' },
-        { name: 'Artists', path: '/artists' },
-        { name: 'Contact', path: '/contact' }
+        { name: t('footer.links.home', 'Home'), path: '/' },
+        { name: t('footer.links.about', 'About'), path: '/about' },
+        { name: t('footer.links.services', 'Services'), path: '/services' },
+        { name: t('footer.links.artists', 'Artists'), path: '/artists' },
+        { name: t('footer.links.contact', 'Contact'), path: '/contact' }
     ];
 
     const legalLinks = [
-        { name: 'Privacy Policy', path: '#' },
-        { name: 'Terms of Service', path: '#' },
-        { name: 'Rules & Guidelines', path: '/rules' } // Vinculado a tu página de reglas
+        { name: t('footer.links.privacy', 'Privacy Policy'), path: '#' },
+        { name: t('footer.links.terms', 'Terms of Service'), path: '#' },
+        { name: t('footer.links.rules', 'Rules & Guidelines'), path: '/rules' }
     ];
 
     // Redes Sociales Limpias
@@ -81,7 +92,7 @@ export const Footer: React.FC = () => {
                             className="h-8 md:h-10 w-auto object-contain mb-8 dark:invert-0 invert"
                         />
                         <p className="text-sm opacity-70 leading-relaxed max-w-[30ch] mb-8 font-sans">
-                            An architectural canvas dedicated to contemporary masterpieces and immersive aesthetic experiences.
+                            {t('footer.description', 'An architectural canvas dedicated to contemporary masterpieces and immersive aesthetic experiences.')}
                         </p>
                         <a href="mailto:greportorreal@gmail.com" className="text-sm font-bold tracking-wide hover:text-gold transition-colors flex items-center gap-3 group">
                             <Mail size={16} strokeWidth={1.5} className="group-hover:-translate-y-0.5 transition-transform" />
@@ -91,7 +102,7 @@ export const Footer: React.FC = () => {
 
                     {/* Columna 2: Navegación Rápida */}
                     <div className={`flex flex-col transition-all duration-1000 delay-300 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
-                        <h4 className="font-serif text-lg md:text-xl font-bold mb-8 text-gold">Explore</h4>
+                        <h4 className="font-serif text-lg md:text-xl font-bold mb-8 text-gold">{t('footer.explore', 'Explore')}</h4>
                         <nav className="flex flex-col gap-5">
                             {exploreLinks.map((link) => (
                                 <Link
@@ -108,7 +119,7 @@ export const Footer: React.FC = () => {
 
                     {/* Columna 3: Legal e Información */}
                     <div className={`flex flex-col transition-all duration-1000 delay-400 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
-                        <h4 className="font-serif text-lg md:text-xl font-bold mb-8 text-gold">Information</h4>
+                        <h4 className="font-serif text-lg md:text-xl font-bold mb-8 text-gold">{t('footer.information', 'Information')}</h4>
                         <nav className="flex flex-col gap-5">
                             {legalLinks.map((link) => (
                                 <Link
@@ -125,15 +136,15 @@ export const Footer: React.FC = () => {
 
                     {/* Columna 4: Newsletter y Redes */}
                     <div className={`flex flex-col transition-all duration-1000 delay-500 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
-                        <h4 className="font-serif text-lg md:text-xl font-bold mb-8 text-gold">Stay Updated</h4>
+                        <h4 className="font-serif text-lg md:text-xl font-bold mb-8 text-gold">{t('footer.stay_updated', 'Stay Updated')}</h4>
                         <p className="text-sm opacity-70 mb-6 max-w-[30ch] leading-relaxed">
-                            Subscribe to receive exclusive invitations to upcoming exhibitions and private events.
+                            {t('footer.subscribe_text', 'Subscribe to receive exclusive invitations to upcoming exhibitions and private events.')}
                         </p>
 
                         <form className="relative flex items-center mb-10 border-b border-ink/20 focus-within:border-gold transition-colors pb-1">
                             <input
                                 type="email"
-                                placeholder="Enter your email"
+                                placeholder={t('footer.enter_email', 'Enter your email')}
                                 className="w-full bg-transparent py-2 text-sm outline-none placeholder:text-ink/40 text-ink font-light"
                             />
                             <button type="button" aria-label="Subscribe" className="text-ink hover:text-gold transition-transform duration-300 hover:translate-x-1 p-2">
@@ -141,7 +152,7 @@ export const Footer: React.FC = () => {
                             </button>
                         </form>
 
-                        {/* Redes Sociales Limpias */}
+                        {/* Redes Sociales */}
                         <div className="flex items-center gap-4">
                             {socialLinks.map(({ Icon, url }, idx) => (
                                 <a
@@ -171,18 +182,25 @@ export const Footer: React.FC = () => {
                         onClick={scrollToTop}
                         className="group flex items-center gap-3 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-ink/70 hover:text-gold transition-colors order-1 md:order-2"
                     >
-                        Back to top
+                        {t('footer.back_to_top', 'Back to top')}
                         <span className="flex items-center justify-center w-8 h-8 rounded-full border border-ink/10 group-hover:border-gold group-hover:bg-gold/5 transition-all duration-500 ease-luxury">
                             <ArrowUp size={14} strokeWidth={1.5} className="group-hover:-translate-y-1 transition-transform duration-500 ease-luxury" />
                         </span>
                     </button>
 
-                    <div className="flex gap-4 text-xs font-bold tracking-[0.2em] uppercase opacity-70 order-2 md:order-3">
-                        <button className="text-gold">EN</button>
-                        <span className="opacity-20">|</span>
-                        <button className="hover:text-gold transition-colors">ES</button>
-                        <span className="opacity-20">|</span>
-                        <button className="hover:text-gold transition-colors">DE</button>
+                    {/* 👇 EL BOTÓN DE BANDERA IGUAL AL DE LA NAVBAR 👇 */}
+                    <div className="flex items-center order-2 md:order-3">
+                        <button 
+                            onClick={toggleLanguage} 
+                            className="transition-all duration-300 hover:scale-110 opacity-90 hover:opacity-100 flex items-center gap-2"
+                            aria-label="Cambiar idioma"
+                        >
+                            <img 
+                                src={isSpanish ? "https://flagcdn.com/w40/mx.png" : "https://flagcdn.com/w40/us.png"} 
+                                alt={isSpanish ? "Español" : "English"} 
+                                className="w-5 md:w-6 h-auto rounded-[2px] shadow-sm" 
+                            />
+                        </button>
                     </div>
 
                 </div>

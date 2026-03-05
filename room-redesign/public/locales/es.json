@@ -1,4 +1,23 @@
 {
+    "footer": {
+        "description": "Un lienzo arquitectónico dedicado a obras maestras contemporáneas y experiencias estéticas inmersivas.",
+        "explore": "Explorar",
+        "information": "Información",
+        "stay_updated": "Mantente Actualizado",
+        "subscribe_text": "Suscríbete para recibir invitaciones exclusivas a próximas exposiciones y eventos privados.",
+        "enter_email": "Ingresa tu correo",
+        "back_to_top": "Volver arriba",
+        "links": {
+            "home": "Inicio",
+            "about": "Nosotros",
+            "services": "Servicios",
+            "artists": "Artistas",
+            "contact": "Contacto",
+            "privacy": "Aviso de Privacidad",
+            "terms": "Términos de Servicio",
+            "rules": "Reglas y Normativas"
+        }
+    },
     "nav": {
         "exhibitions": "Exposiciones",
         "artists": "Artistas",

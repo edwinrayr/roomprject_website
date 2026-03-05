@@ -1,4 +1,23 @@
 {
+    "footer": {
+    "description": "An architectural canvas dedicated to contemporary masterpieces and immersive aesthetic experiences.",
+    "explore": "Explore",
+    "information": "Information",
+    "stay_updated": "Stay Updated",
+    "subscribe_text": "Subscribe to receive exclusive invitations to upcoming exhibitions and private events.",
+    "enter_email": "Enter your email",
+    "back_to_top": "Back to top",
+    "links": {
+      "home": "Home",
+      "about": "About",
+      "services": "Services",
+      "artists": "Artists",
+      "contact": "Contact",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "rules": "Rules & Guidelines"
+    }
+  },
     "nav": {
         "exhibitions": "Exhibitions",
         "artists": "Artists",
