@@ -1,4 +1,27 @@
 {
+    "rules_hero": {
+        "eyebrow": "Directrices Oficiales",
+        "title_1": "Reglas y",
+        "title_2": "Normativas.",
+        "description": "Para asegurar un ambiente armonioso y respetuoso que preserve tanto la obra de arte como la experiencia, pedimos amablemente a todos los invitados y organizadores que cumplan con las siguientes políticas."
+    },
+    "rules": {
+        "badge_title": "Armonía Visual",
+        "badge_subtitle": "Respeto por el espacio",
+        "title_1": "Normas de",
+        "title_2": "Uso del Espacio.",
+        "intro_1": "En",
+        "intro_2": "nos esforzamos por mantener un ambiente respetuoso, seguro y funcional para todos nuestros visitantes y colaboradores. A continuación se presentan las normas generales que aseguran una experiencia armoniosa dentro de nuestras instalaciones.",
+        "items": {
+            "rule_1": "Está estrictamente prohibido fumar dentro de las instalaciones.",
+            "rule_2": "El espacio debe dejarse limpio a menos que se contrate un servicio de limpieza profesional.",
+            "rule_3": "Cualquier daño al mobiliario o a las instalaciones será responsabilidad exclusiva del usuario.",
+            "rule_4": "Se requiere un consumo responsable de bebidas dentro del local.",
+            "rule_5": "Se requiere aviso previo si se necesita asistencia técnica o una configuración específica."
+        },
+        "quote": "La belleza del espacio reside en cómo lo cuidamos.",
+        "thanks": "Gracias por tu colaboración"
+    },
     "reserve_hero": {
         "eyebrow": "Asegura Tu Espacio",
         "title_1": "Reserva Tu",

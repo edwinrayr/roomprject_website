@@ -1,15 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
-
-// Traducción profesional al inglés (Tono curatorial)
-const rulesList = [
-    "Smoking is strictly prohibited inside the premises.",
-    "The space must be left clean unless a professional cleaning service is contracted.",
-    "Any damage to furniture or facilities will be the sole responsibility of the user.",
-    "Responsible consumption of beverages within the venue is required.",
-    "Advanced notice is required if technical assistance or specific setup is needed."
-];
+import React, { useEffect, useRef, useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next'; // <-- Importamos useTranslation
 
 export const RulesContent: React.FC = () => {
+    const { t } = useTranslation(); // <-- Extraemos t
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
 
@@ -33,6 +26,15 @@ export const RulesContent: React.FC = () => {
         };
     }, []);
 
+    // Lista de reglas traducida dinámicamente
+    const rulesList = useMemo(() => [
+        t('rules.items.rule_1', "Smoking is strictly prohibited inside the premises."),
+        t('rules.items.rule_2', "The space must be left clean unless a professional cleaning service is contracted."),
+        t('rules.items.rule_3', "Any damage to furniture or facilities will be the sole responsibility of the user."),
+        t('rules.items.rule_4', "Responsible consumption of beverages within the venue is required."),
+        t('rules.items.rule_5', "Advanced notice is required if technical assistance or specific setup is needed.")
+    ], [t]);
+
     return (
         <section
             ref={sectionRef}
@@ -52,8 +54,8 @@ export const RulesContent: React.FC = () => {
 
                         {/* Placa decorativa traducida */}
                         <div className="absolute bottom-6 left-6 bg-bg/95 backdrop-blur-md px-6 py-4 shadow-xl">
-                            <p className="font-serif italic text-lg text-ink">Visual Harmony</p>
-                            <p className="font-sans text-[10px] uppercase tracking-widest text-gold font-bold">Respect for the space</p>
+                            <p className="font-serif italic text-lg text-ink">{t('rules.badge_title', 'Visual Harmony')}</p>
+                            <p className="font-sans text-[10px] uppercase tracking-widest text-gold font-bold">{t('rules.badge_subtitle', 'Respect for the space')}</p>
                         </div>
                     </div>
                 </div>
@@ -64,10 +66,10 @@ export const RulesContent: React.FC = () => {
                     {/* Introducción Traducida */}
                     <div className={`mb-16 transition-all duration-1000 delay-200 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                         <h2 className="font-serif text-4xl md:text-5xl font-extrabold mb-8 tracking-tight">
-                            Space Usage <br className="hidden md:block" /> <span className="italic font-light text-gold">Guidelines.</span>
+                            {t('rules.title_1', 'Space Usage')} <br className="hidden md:block" /> <span className="italic font-light text-gold">{t('rules.title_2', 'Guidelines.')}</span>
                         </h2>
                         <p className="font-sans text-ink/70 text-base md:text-lg leading-relaxed font-light max-w-[55ch]">
-                            At <strong className="font-medium text-ink">Project Room Bern</strong>, we strive to maintain a respectful, safe, and functional environment for all our visitors and collaborators. Below are the general rules that ensure a harmonious experience within our facilities.
+                            {t('rules.intro_1', 'At')} <strong className="font-medium text-ink">Project Room Bern</strong>, {t('rules.intro_2', 'we strive to maintain a respectful, safe, and functional environment for all our visitors and collaborators. Below are the general rules that ensure a harmonious experience within our facilities.')}
                         </p>
                         <div className="w-12 h-[1px] bg-gold mt-8"></div>
                     </div>
@@ -95,9 +97,9 @@ export const RulesContent: React.FC = () => {
 
                     {/* Nota final traducida */}
                     <div className={`mt-16 bg-ink text-bg p-8 md:p-12 rounded-sm transition-all duration-1000 delay-[1200ms] ease-luxury transform ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}>
-                        <p className="font-serif italic text-2xl mb-6 opacity-90 leading-tight">"The beauty of the space lies in how we care for it."</p>
+                        <p className="font-serif italic text-2xl mb-6 opacity-90 leading-tight">"{t('rules.quote', 'The beauty of the space lies in how we care for it.')}"</p>
                         <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-gold font-bold">
-                            Thank you for your collaboration
+                            {t('rules.thanks', 'Thank you for your collaboration')}
                         </p>
                     </div>
 

@@ -1,4 +1,27 @@
 {
+    "rules_hero": {
+        "eyebrow": "Official Guidelines",
+        "title_1": "Rules &",
+        "title_2": "Regulations.",
+        "description": "To ensure a harmonious and respectful environment that preserves both the artwork and the experience, we kindly ask all guests and organizers to adhere to the following policies."
+    },
+    "rules": {
+        "badge_title": "Visual Harmony",
+        "badge_subtitle": "Respect for the space",
+        "title_1": "Space Usage",
+        "title_2": "Guidelines.",
+        "intro_1": "At",
+        "intro_2": "we strive to maintain a respectful, safe, and functional environment for all our visitors and collaborators. Below are the general rules that ensure a harmonious experience within our facilities.",
+        "items": {
+            "rule_1": "Smoking is strictly prohibited inside the premises.",
+            "rule_2": "The space must be left clean unless a professional cleaning service is contracted.",
+            "rule_3": "Any damage to furniture or facilities will be the sole responsibility of the user.",
+            "rule_4": "Responsible consumption of beverages within the venue is required.",
+            "rule_5": "Advanced notice is required if technical assistance or specific setup is needed."
+        },
+        "quote": "The beauty of the space lies in how we care for it.",
+        "thanks": "Thank you for your collaboration"
+    },
     "reserve_hero": {
         "eyebrow": "Secure Your Space",
         "title_1": "Book Your",
