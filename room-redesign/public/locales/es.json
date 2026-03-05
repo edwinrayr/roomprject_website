@@ -1,4 +1,57 @@
 {
+    "who_we_are": {
+        "subtitle": "Quiénes Somos",
+        "title_1": "Un espacio de",
+        "title_2": "resistencia cultural.",
+        "lead_text": "es un nuevo espacio, abierto a todxs y al arte en todas sus formas.",
+        "p1": "Colaboramos continuamente con artistas emergentes que buscan oportunidades de exposición, así como con curadores, gestores culturales, educadores, artesanos y conferencistas, para promover el arte, la cultura y el desarrollo personal.",
+        "p2_1": "Ubicado en el corazón de Berna, dentro del emblemático",
+        "p2_2": "—un centro vibrante reconocido por su programación ecléctica y su compromiso con las artes contemporáneas. Este lugar alberga conciertos de música experimental, performances artísticos, talleres participativos y eventos comunitarios, sirviendo como una verdadera plataforma para creadores.",
+        "p3": "Al establecernos en un pilar tan simbólico de la escena cultural de Berna, amplificamos nuestra iniciativa, uniéndonos a una larga tradición de innovación social y resistencia cultural."
+    },
+    "space_features": {
+        "cards": {
+            "exhibition": "ÁREA DE EXPOSICIÓN",
+            "audiovisual": "ZONA AUDIOVISUAL",
+            "scenic": "ATMÓSFERA ESCÉNICA"
+        },
+        "collection": "La Colección",
+        "title_1": "Características",
+        "title_2": "del Espacio.",
+        "desc_1": "En",
+        "desc_2": "reunimos tres pilares para elevar cualquier evento: un",
+        "highlight_1": "área de exposición",
+        "desc_3": "con iluminación de galería para obras de arte, una",
+        "highlight_2": "zona audiovisual",
+        "desc_4": "equipada para proyecciones inmersivas, y una",
+        "highlight_3": "atmósfera escénica",
+        "desc_5": "diseñada para crear entornos memorables.",
+        "quote": "Flexibilidad, estética y técnica en un solo lugar."
+    },
+    "about_hero": {
+        "vision": "La Visión",
+        "title_1": "Donde Cada",
+        "title_2": "Evento se Convierte en",
+        "title_3": "Arte.",
+        "description": "Descubre la historia, el espacio y la filosofía detrás de Project Room Bern. Un lienzo arquitectónico dedicado a redefinir las reuniones culturales y privadas."
+    },
+    "about_details": {
+    "image_caption": "Iluminación de Galería",
+    "concept": "El Concepto",
+    "title_1": "Un Espacio",
+    "title_2": "Realmente Único.",
+    "desc_1": "es una sala íntima y versátil dedicada al arte, la cultura, proyecciones, talleres, celebraciones privadas y conferencias. Un espacio que cuenta con",
+    "gallery_lighting": "iluminación de galería",
+    "desc_2": ", una estética cuidada y la flexibilidad para crear",
+    "unique_experiences": "experiencias únicas",
+    "list": {
+      "corporate": "Eventos corporativos y de marca",
+      "private": "Reuniones privadas y familiares",
+      "screenings": "Proyecciones y cine-foros",
+      "workshops": "Talleres y encuentros culturales"
+    },
+    "view_services": "Ver Servicios"
+  },
     "footer": {
         "description": "Un lienzo arquitectónico dedicado a obras maestras contemporáneas y experiencias estéticas inmersivas.",
         "explore": "Explorar",

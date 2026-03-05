@@ -1,4 +1,57 @@
 {
+    "who_we_are": {
+        "subtitle": "Who We Are",
+        "title_1": "A space for",
+        "title_2": "cultural resistance.",
+        "lead_text": "is a new space, open to everyone and to art in all its forms.",
+        "p1": "We continuously collaborate with emerging artists seeking exhibition opportunities, as well as curators, cultural managers, educators, artisans, and lecturers, to promote art, culture, and personal development.",
+        "p2_1": "Located in the heart of Bern, within the emblematic",
+        "p2_2": "—a vibrant center renowned for its eclectic programming and commitment to contemporary arts. This venue hosts experimental music concerts, artistic performances, participatory workshops, and community events, serving as a true platform for creators.",
+        "p3": "By establishing ourselves in such a symbolic cornerstone of Bern's cultural scene, we amplify our initiative, joining a long-standing tradition of social innovation and cultural resistance."
+    },
+    "space_features": {
+        "cards": {
+            "exhibition": "EXHIBITION AREA",
+            "audiovisual": "AUDIOVISUAL ZONE",
+            "scenic": "SCENIC ATMOSPHERE"
+        },
+        "collection": "The Collection",
+        "title_1": "Space",
+        "title_2": "Features.",
+        "desc_1": "At",
+        "desc_2": "we bring together three pillars to elevate any event: an",
+        "highlight_1": "exhibition area",
+        "desc_3": "featuring gallery lighting for artworks, an",
+        "highlight_2": "audiovisual zone",
+        "desc_4": "equipped for immersive screenings, and a",
+        "highlight_3": "scenic atmosphere",
+        "desc_5": "crafted to design memorable environments.",
+        "quote": "Flexibility, aesthetics, and technique in one place."
+    },
+    "about_hero": {
+        "vision": "The Vision",
+        "title_1": "Where Every",
+        "title_2": "Event Becomes",
+        "title_3": "Art.",
+        "description": "Discover the story, the space, and the philosophy behind Project Room Bern. An architectural canvas dedicated to redefining cultural and private gatherings."
+    },
+    "about_details": {
+    "image_caption": "Gallery Lighting",
+    "concept": "The Concept",
+    "title_1": "A Truly",
+    "title_2": "Unique Space.",
+    "desc_1": "is an intimate and versatile room dedicated to art, culture, screenings, workshops, private celebrations, and conferences. A space featuring",
+    "gallery_lighting": "gallery lighting",
+    "desc_2": ", meticulous aesthetics, and the flexibility to create",
+    "unique_experiences": "unique experiences",
+    "list": {
+      "corporate": "Corporate & brand events",
+      "private": "Private & family gatherings",
+      "screenings": "Screenings & film forums",
+      "workshops": "Workshops & cultural meetings"
+    },
+    "view_services": "View Services"
+  },
     "footer": {
     "description": "An architectural canvas dedicated to contemporary masterpieces and immersive aesthetic experiences.",
     "explore": "Explore",

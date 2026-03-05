@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next'; // <-- Importamos useTranslation
 
 export const WhoWeAre: React.FC = () => {
+    const { t } = useTranslation(); // <-- Extraemos t
+    
     // Estado y Referencia para la animación al hacer scroll
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
@@ -51,12 +54,12 @@ export const WhoWeAre: React.FC = () => {
                 <div className="lg:col-span-7 flex flex-col justify-center mt-8 lg:mt-0">
 
                     <span className={`text-gold text-xs font-bold tracking-[0.3em] uppercase mb-6 block transition-all duration-1000 delay-200 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                        Who We Are
+                        {t('who_we_are.subtitle', 'Who We Are')}
                     </span>
 
                     <h2 className={`font-serif text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] font-extrabold tracking-tight mb-10 transition-all duration-1000 delay-400 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                        A space for <br className="hidden lg:block" />
-                        <span className="italic font-light">cultural resistance.</span>
+                        {t('who_we_are.title_1', 'A space for')} <br className="hidden lg:block" />
+                        <span className="italic font-light">{t('who_we_are.title_2', 'cultural resistance.')}</span>
                     </h2>
 
                     {/* Inyectamos y adaptamos el texto de la visión y ubicación */}
@@ -64,19 +67,19 @@ export const WhoWeAre: React.FC = () => {
 
                         {/* Párrafo destacado (Lead Paragraph) */}
                         <p className="text-xl md:text-2xl font-serif text-ink mb-6 leading-snug">
-                            <strong>Project Room Bern</strong> is a new space, open to everyone and to art in all its forms.
+                            <strong>Project Room Bern</strong> {t('who_we_are.lead_text', 'is a new space, open to everyone and to art in all its forms.')}
                         </p>
 
                         <p>
-                            We continuously collaborate with emerging artists seeking exhibition opportunities, as well as curators, cultural managers, educators, artisans, and lecturers, to promote art, culture, and personal development.
+                            {t('who_we_are.p1', 'We continuously collaborate with emerging artists seeking exhibition opportunities, as well as curators, cultural managers, educators, artisans, and lecturers, to promote art, culture, and personal development.')}
                         </p>
 
                         <p>
-                            Located in the heart of Bern, within the emblematic <strong>Das Dazwischen</strong>—a vibrant center renowned for its eclectic programming and commitment to contemporary arts. This venue hosts experimental music concerts, artistic performances, participatory workshops, and community events, serving as a true platform for creators.
+                            {t('who_we_are.p2_1', 'Located in the heart of Bern, within the emblematic')} <strong>Das Dazwischen</strong>{t('who_we_are.p2_2', '—a vibrant center renowned for its eclectic programming and commitment to contemporary arts. This venue hosts experimental music concerts, artistic performances, participatory workshops, and community events, serving as a true platform for creators.')}
                         </p>
 
                         <p>
-                            By establishing ourselves in such a symbolic cornerstone of Bern's cultural scene, we amplify our initiative, joining a long-standing tradition of social innovation and cultural resistance.
+                            {t('who_we_are.p3', 'By establishing ourselves in such a symbolic cornerstone of Bern\'s cultural scene, we amplify our initiative, joining a long-standing tradition of social innovation and cultural resistance.')}
                         </p>
 
                     </div>

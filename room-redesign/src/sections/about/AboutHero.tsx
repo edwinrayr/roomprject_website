@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next'; // <-- Importamos useTranslation
 
 export const AboutHero: React.FC = () => {
+    const { t } = useTranslation(); // <-- Extraemos t
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -19,16 +21,17 @@ export const AboutHero: React.FC = () => {
             <div className="container mx-auto px-6 md:px-12 text-center relative z-10 flex flex-col items-center">
 
                 <span className={`text-gold text-xs md:text-sm font-bold tracking-[0.4em] uppercase mb-8 block transition-all duration-[1000ms] ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
-                    The Vision
+                    {t('about_hero.vision', 'The Vision')}
                 </span>
 
                 <h1 className={`font-serif text-[clamp(4rem,10vw,9.5rem)] text-ink font-black tracking-tighter mb-8 leading-[0.85] transition-all duration-[1200ms] delay-300 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}>
-                    Where Every <br /> Event Becomes <br />
-                    <span className="italic font-light opacity-90 text-gold">Art.</span>
+                    {t('about_hero.title_1', 'Where Every')} <br /> 
+                    {t('about_hero.title_2', 'Event Becomes')} <br />
+                    <span className="italic font-light opacity-90 text-gold">{t('about_hero.title_3', 'Art.')}</span>
                 </h1>
 
                 <p className={`font-sans text-ink/60 text-base md:text-lg max-w-[50ch] mx-auto leading-relaxed mb-16 transition-all duration-[1200ms] delay-500 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
-                    Discover the story, the space, and the philosophy behind Project Room Bern. An architectural canvas dedicated to redefining cultural and private gatherings.
+                    {t('about_hero.description', 'Discover the story, the space, and the philosophy behind Project Room Bern. An architectural canvas dedicated to redefining cultural and private gatherings.')}
                 </p>
 
                 {/* Línea decorativa dinámica que invita a hacer scroll */}

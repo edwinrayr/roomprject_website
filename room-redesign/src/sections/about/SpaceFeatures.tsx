@@ -1,34 +1,33 @@
 import React, { useState, useEffect, useRef } from 'react';
-
-// Textos y títulos traducidos al inglés
-const features = [
-    {
-        id: 1,
-        title: "EXHIBITION AREA",
-        image: "/images/exposicion.png",
-        alt: "Art exhibition area"
-    },
-    {
-        id: 2,
-        title: "AUDIOVISUAL ZONE",
-        image: "/images/proyeccion.jpg",
-        alt: "Audiovisual zone"
-    },
-    {
-        id: 3,
-        title: "SCENIC ATMOSPHERE",
-        image: "/images/salon.png",
-        alt: "Scenic atmosphere"
-    }
-];
+import { useTranslation } from 'react-i18next'; // <-- Importamos useTranslation
 
 export const SpaceFeatures: React.FC = () => {
-    // Estado para la microinteracción del tríptico
+    const { t } = useTranslation(); // <-- Extraemos t
     const [hoveredId, setHoveredId] = useState<number | null>(null);
-
-    // Estado y Referencia para la animación de scroll
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
+
+    // Mover el arreglo ADENTRO del componente para poder usar t()
+    const features = [
+        {
+            id: 1,
+            title: t('space_features.cards.exhibition', "EXHIBITION AREA"),
+            image: "/images/exposicion.png",
+            alt: "Art exhibition area"
+        },
+        {
+            id: 2,
+            title: t('space_features.cards.audiovisual', "AUDIOVISUAL ZONE"),
+            image: "/images/proyeccion.jpg",
+            alt: "Audiovisual zone"
+        },
+        {
+            id: 3,
+            title: t('space_features.cards.scenic', "SCENIC ATMOSPHERE"),
+            image: "/images/salon.png",
+            alt: "Scenic atmosphere"
+        }
+    ];
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -56,7 +55,6 @@ export const SpaceFeatures: React.FC = () => {
             className="w-full py-24 md:py-32 bg-ink text-bg relative z-10 overflow-hidden transition-colors duration-500"
             id="caracteristicas"
         >
-            {/* Elemento decorativo de fondo sutil */}
             <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none">
                 <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
                     <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="currentColor" strokeWidth="0.5" vectorEffect="non-scaling-stroke" />
@@ -67,13 +65,10 @@ export const SpaceFeatures: React.FC = () => {
 
             <div className="container mx-auto px-6 md:px-12 relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
 
-                {/* COLUMNA IZQUIERDA: EL TRÍPTICO INTERACTIVO */}
                 <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 relative h-auto md:h-[500px] lg:h-[600px] items-center order-2 lg:order-1">
                     {features.map((feature, index) => {
                         const isHovered = hoveredId === feature.id;
                         const isDimmed = hoveredId !== null && !isHovered;
-
-                        // Desplazamiento asimétrico solo en escritorio (md: y lg:)
                         const translateY = index === 1 ? 'md:translate-y-12' : index === 2 ? 'md:-translate-y-8' : '';
 
                         return (
@@ -104,23 +99,24 @@ export const SpaceFeatures: React.FC = () => {
                     })}
                 </div>
 
-                {/* COLUMNA DERECHA: EL MANIFIESTO */}
                 <div className="lg:col-span-5 flex flex-col justify-center relative order-1 lg:order-2 text-center lg:text-left">
                     <span className={`text-gold text-xs font-bold tracking-[0.4em] uppercase mb-6 block transition-all duration-1000 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                        The Collection
+                        {t('space_features.collection', 'The Collection')}
                     </span>
 
                     <h2 className={`font-serif text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] font-extrabold tracking-tight mb-8 transition-all duration-[1200ms] delay-200 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
-                        Space <br className="hidden lg:block" />
-                        <span className="italic font-light">Features.</span>
+                        {t('space_features.title_1', 'Space')} <br className="hidden lg:block" />
+                        <span className="italic font-light">{t('space_features.title_2', 'Features.')}</span>
                     </h2>
 
                     <div className={`w-16 h-[2px] bg-bg/20 mb-8 mx-auto lg:mx-0 transition-all duration-1000 delay-400 ease-luxury transform ${isVisible ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'}`}></div>
 
                     <p className={`font-sans text-bg/70 text-base md:text-lg leading-relaxed font-light max-w-[45ch] mx-auto lg:mx-0 transition-all duration-[1200ms] delay-600 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
-                        At <strong className="text-white font-medium">Project Room Bern</strong>, we bring together three pillars to elevate any event: an <em className="text-white not-italic font-normal border-b border-gold/50 pb-1">exhibition area</em> featuring gallery lighting for artworks, an <em className="text-white not-italic font-normal border-b border-gold/50 pb-1">audiovisual zone</em> equipped for immersive screenings, and a <em className="text-white not-italic font-normal border-b border-gold/50 pb-1">scenic atmosphere</em> crafted to design memorable environments.
+                        {t('space_features.desc_1', 'At')} <strong className="text-white font-medium">Project Room Bern</strong>, {t('space_features.desc_2', 'we bring together three pillars to elevate any event: an')} <em className="text-white not-italic font-normal border-b border-gold/50 pb-1">{t('space_features.highlight_1', 'exhibition area')}</em> {t('space_features.desc_3', 'featuring gallery lighting for artworks, an')} <em className="text-white not-italic font-normal border-b border-gold/50 pb-1">{t('space_features.highlight_2', 'audiovisual zone')}</em> {t('space_features.desc_4', 'equipped for immersive screenings, and a')} <em className="text-white not-italic font-normal border-b border-gold/50 pb-1">{t('space_features.highlight_3', 'scenic atmosphere')}</em> {t('space_features.desc_5', 'crafted to design memorable environments.')}
                         <br /><br />
-                        <span className="text-white text-xl font-serif italic">Flexibility, aesthetics, and technique in one place.</span>
+                        <span className="text-white text-xl font-serif italic">
+                            {t('space_features.quote', 'Flexibility, aesthetics, and technique in one place.')}
+                        </span>
                     </p>
                 </div>
 
