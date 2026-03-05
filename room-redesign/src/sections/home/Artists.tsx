@@ -23,7 +23,7 @@ export const Artists: React.FC = () => {
             id: '03',
             name: 'Elena Volkov',
             category: t('home_artists.categories.curation', 'Contemporary Curation'),
-            img: '/images/pinturas.png',
+            img: '/images/PinturaGrecia-_1_.webp',
         },
     ], [t]);
 

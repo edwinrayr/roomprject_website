@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next'; // <-- Importamos useTranslation
+import { useTranslation } from 'react-i18next';
 
 export const Hero: React.FC = () => {
-    const { t } = useTranslation(); // <-- Extraemos t
+    const { t } = useTranslation();
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
+        // Retraso para asegurar que la animación se dispare tras el montaje
         const timer = setTimeout(() => {
             setIsVisible(true);
         }, 100);
@@ -16,7 +17,7 @@ export const Hero: React.FC = () => {
     return (
         <section className="relative w-full h-[100dvh] flex items-center justify-center overflow-hidden">
 
-            {/* Imagen de Fondo a Pantalla Completa */}
+            {/* Imagen de Fondo con Zoom Suave */}
             <div className="absolute inset-0 z-0 bg-ink">
                 <img
                     src="/images/imagensalon1.webp"
@@ -26,9 +27,10 @@ export const Hero: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/50 to-ink/30 z-10"></div>
             </div>
 
-            {/* Contenedor del Texto Principal */}
+            {/* Contenido Principal */}
             <div className="relative z-20 container mx-auto px-6 md:px-12 flex flex-col items-center justify-center text-center">
 
+                {/* Títulos con animación en cascada */}
                 <div className={`transition-all duration-[1500ms] ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
                     <span className="text-gold text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-4 block drop-shadow-md">
                         {t('home_hero.eyebrow', 'The art of modern spaces')}
@@ -46,7 +48,7 @@ export const Hero: React.FC = () => {
                     </p>
 
                     <div className="flex flex-wrap items-center justify-center gap-6">
-                        <a href="#exhibitions" className="group flex items-center gap-3 bg-white text-ink px-8 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-gold hover:text-white transition-all duration-500 ease-luxury shadow-lg">
+                        <a href="/exhibitions" className="group flex items-center gap-3 bg-white text-ink px-8 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-gold hover:text-white transition-all duration-500 ease-luxury shadow-lg">
                             {t('home_hero.cta_primary', 'Explore Collection')}
                         </a>
                         <a href="#about" className="text-sm font-semibold tracking-wide text-white hover:text-gold transition-colors underline underline-offset-4 decoration-white/30 hover:decoration-gold drop-shadow-md">
@@ -56,7 +58,7 @@ export const Hero: React.FC = () => {
                 </div>
             </div>
 
-            {/* Indicador de Scroll */}
+            {/* Indicador de Scroll Animado */}
             <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center transition-all duration-[1500ms] delay-700 ease-luxury ${isVisible ? 'opacity-60' : 'opacity-0'}`}>
                 <span className="text-[10px] uppercase tracking-widest text-white mb-2 writing-vertical-rl">
                     {t('home_hero.scroll', 'Scroll')}

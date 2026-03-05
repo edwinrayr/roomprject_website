@@ -1,4 +1,9 @@
 {
+    "exhibitions_x": {
+        "hero_eyebrow": "Special Collection",
+        "hero_description": "A deep dive into the strokes and textures that define our creative pulse. A visual journey through the unseen works of the collection.",
+        "item_label": "Work No."
+    },
     "services_hero": {
         "eyebrow": "Exclusivity & Style",
         "title_1": "Curated Spaces",

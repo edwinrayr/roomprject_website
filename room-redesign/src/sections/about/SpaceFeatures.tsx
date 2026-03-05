@@ -18,7 +18,7 @@ export const SpaceFeatures: React.FC = () => {
         {
             id: 2,
             title: t('space_features.cards.audiovisual', "AUDIOVISUAL ZONE"),
-            image: "/images/proyeccion.jpg",
+            image: "/images/comida.webp",
             alt: "Audiovisual zone"
         },
         {

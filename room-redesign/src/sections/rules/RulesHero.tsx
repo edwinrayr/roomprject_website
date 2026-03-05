@@ -17,7 +17,7 @@ export const RulesHero: React.FC = () => {
             {/* Fondo con textura hiper-sutil */}
             <div className="absolute inset-0 z-0 opacity-10 dark:opacity-5 pointer-events-none">
                 <img
-                    src="/images/salon.png"
+                    src="/images/proyector.webp"
                     alt="Project Room Bern Texture"
                     className="w-full h-full object-cover grayscale blur-sm"
                 />

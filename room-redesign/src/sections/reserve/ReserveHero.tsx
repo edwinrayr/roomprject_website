@@ -16,7 +16,7 @@ export const ReserveHero: React.FC = () => {
             {/* Imagen de fondo inmersiva */}
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <img
-                    src="/images/artistas.webp"
+                    src="/images/platica.webp"
                     alt="Project Room Bern Ambiance"
                     className="w-full h-full object-cover opacity-10 dark:opacity-5 grayscale scale-105 transition-transform duration-[10s] ease-luxury hover:scale-100"
                 />

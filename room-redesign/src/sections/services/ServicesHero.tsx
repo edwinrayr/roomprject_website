@@ -44,7 +44,7 @@ export const ServicesHero: React.FC = () => {
                         {/* Imagen Principal */}
                         <div className={`relative w-full max-w-md lg:max-w-full aspect-[4/5] overflow-hidden rounded-sm shadow-2xl transition-all duration-[1500ms] delay-300 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-24 opacity-0 scale-105'}`}>
                             <img
-                                src="/images/reunion.png"
+                                src="/images/serviceshome.webp"
                                 alt={t('services_hero.alt_main', 'Project Room Bern Events')}
                                 className="w-full h-full object-cover filter brightness-95 hover:brightness-100 hover:scale-105 transition-all duration-[2s] ease-luxury"
                             />

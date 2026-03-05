@@ -17,6 +17,7 @@ import { ArtistsPage } from './pages/ArtistsPage';
 import { RulesPage } from './pages/RulesPage';
 import { ContactPage } from './pages/ContactPage';
 import { ReservePage } from './pages/ReservePage';
+import { ExhibitionsPage } from './pages/ExhibitionsPage';
 
 export const App: React.FC = () => {
   return (
@@ -37,6 +38,7 @@ export const App: React.FC = () => {
               <Route path="/rules" element={<RulesPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/reserve" element={<ReservePage />} />
+              <Route path="/exhibitions" element={<ExhibitionsPage/>} />
               <Route path="*" element={<Home />} />
             </Routes>
           </main>

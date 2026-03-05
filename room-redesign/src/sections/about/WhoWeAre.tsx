@@ -40,7 +40,7 @@ export const WhoWeAre: React.FC = () => {
 
                     <div className="relative w-full max-w-md mx-auto lg:max-w-full aspect-[4/5] overflow-hidden rounded-sm z-10 shadow-lg">
                         <img
-                            src="/images/IMG_6892.webp"
+                            src="/images/imagensalon2.webp"
                             alt="Project Room Bern Space"
                             className="w-full h-full object-cover transition-transform duration-[2000ms] ease-luxury group-hover:scale-105 filter brightness-95 group-hover:brightness-100"
                         />

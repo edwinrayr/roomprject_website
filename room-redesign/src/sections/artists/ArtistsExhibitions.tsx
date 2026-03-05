@@ -94,7 +94,7 @@ export const Exhibitions: React.FC = () => {
                     {/* Obra 2 (Asimétrica - Desfasada hacia abajo) */}
                     <div className={`group relative aspect-[3/4] overflow-hidden rounded-sm md:mt-20 transition-all duration-[1200ms] delay-700 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0'}`}>
                         <img
-                            src="/images/pinturas.png"
+                            src="/images/arte.webp"
                             alt="Grecia Portorreal Artwork 2"
                             className="w-full h-full object-cover transition-transform duration-[2000ms] ease-luxury group-hover:scale-110"
                         />

@@ -1,4 +1,9 @@
 {
+    "exhibitions_x": {
+        "hero_eyebrow": "Colección Especial",
+        "hero_description": "Una inmersión profunda en los trazos y texturas que definen nuestro pulso creativo. Un viaje visual a través de las obras inéditas de la colección.",
+        "item_label": "Obra No."
+    },
     "services_hero": {
         "eyebrow": "Exclusividad y Estilo",
         "title_1": "Espacios Curados",

@@ -65,7 +65,7 @@ export const Navbar: React.FC = () => {
     };
 
     const navLinks = [
-        { name: t('nav.exhibitions', 'Exhibitions'), href: '/#exhibitions', isHash: true },
+        { name: t('nav.exhibitions', 'Exhibitions'), href: '/exhibitions', isHash: false },
         { name: t('nav.artists', 'Artists'), href: '/artists', isHash: false },
         { name: t('nav.services', 'Services'), href: '/services', isHash: false },
         { name: t('nav.about', 'About'), href: '/about', isHash: false },

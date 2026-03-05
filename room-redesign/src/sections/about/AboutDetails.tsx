@@ -48,7 +48,7 @@ export const AboutDetails: React.FC = () => {
                 <div className={`lg:col-span-6 relative transition-all duration-[1500ms] ease-luxury transform ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-16'}`}>
                     <div className="relative w-full max-w-md mx-auto lg:max-w-full aspect-[4/5] md:aspect-[3/4] overflow-hidden rounded-sm shadow-xl">
                         <img
-                            src="/images/taller.webp"
+                            src="/images/jardin.webp"
                             alt="Project Room Bern Ambiance"
                             className="w-full h-full object-cover filter brightness-95 hover:brightness-100 hover:scale-105 transition-all duration-[2s] ease-luxury"
                         />
