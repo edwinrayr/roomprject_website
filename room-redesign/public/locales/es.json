@@ -1,4 +1,45 @@
 {
+    "reserve_hero": {
+        "eyebrow": "Asegura Tu Espacio",
+        "title_1": "Reserva Tu",
+        "title_2": "Fecha.",
+        "description": "Organiza tu evento en el lugar más exclusivo de Berna. Donde el arte, la cultura y la creatividad convergen en un único espacio transformador."
+    },
+    "reserve_form": {
+        "eyebrow": "Reservaciones",
+        "title_1": "Diseñemos una",
+        "title_2": "experiencia a medida.",
+        "description": "Cada evento es un lienzo en blanco. Por favor, comparte los detalles de lo que tienes en mente. Nos pondremos en contacto contigo a la brevedad para confirmar disponibilidad y ajustar cada detalle de tu reserva en Project Room Bern.",
+        "labels": {
+            "name": "Nombre Completo",
+            "email": "Correo Electrónico",
+            "phone": "Teléfono (Opcional)",
+            "date": "Fecha Estimada",
+            "type": "Tipo de Evento",
+            "details": "Detalles Adicionales"
+        },
+        "placeholders": {
+            "name": "ej. Elena Rostova",
+            "message": "Cuéntanos más sobre tu idea..."
+        },
+        "options": {
+            "default": "Selecciona una opción...",
+            "exhibition": "Exhibición de Arte",
+            "workshop": "Taller o Encuentro Cultural",
+            "screening": "Proyección o Cine-Foro",
+            "gathering": "Reunión Privada / Celebración",
+            "corporate": "Evento Corporativo"
+        },
+        "button": "Solicitar Reservación",
+        "email": {
+            "subject": "Solicitud de Reservación",
+            "hello": "Hola Grecia,",
+            "intro": "Me gustaría solicitar una reservación para un evento en Project Room Bern.",
+            "header": "DETALLES DE LA SOLICITUD",
+            "msg_header": "MENSAJE ADICIONAL",
+            "footer": "Quedo a la espera de tu respuesta."
+        }
+    },
     "home_services": {
         "eyebrow": "Nuestra Experiencia",
         "title_1": "Elevando la",

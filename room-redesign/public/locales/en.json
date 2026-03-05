@@ -1,4 +1,45 @@
 {
+    "reserve_hero": {
+        "eyebrow": "Secure Your Space",
+        "title_1": "Book Your",
+        "title_2": "Date.",
+        "description": "Host your event in Bern's most unique venue. Where art, culture, and creativity converge in a single, transformative space."
+    },
+    "reserve_form": {
+        "eyebrow": "Bookings",
+        "title_1": "Let's design a",
+        "title_2": "bespoke experience.",
+        "description": "Every event is a blank canvas. Please share the details of what you have in mind. We will contact you shortly to confirm availability and fine-tune every detail of your reservation at Project Room Bern.",
+        "labels": {
+            "name": "Full Name",
+            "email": "Email Address",
+            "phone": "Phone (Optional)",
+            "date": "Estimated Date",
+            "type": "Event Type",
+            "details": "Additional Details"
+        },
+        "placeholders": {
+            "name": "e.g. Elena Rostova",
+            "message": "Tell us more about your idea..."
+        },
+        "options": {
+            "default": "Select an option...",
+            "exhibition": "Art Exhibition",
+            "workshop": "Workshop or Cultural Meeting",
+            "screening": "Screening or Film Forum",
+            "gathering": "Private Gathering / Celebration",
+            "corporate": "Corporate Event"
+        },
+        "button": "Request Reservation",
+        "email": {
+            "subject": "Reservation Request",
+            "hello": "Hello Grecia,",
+            "intro": "I would like to request a reservation for an event at Project Room Bern.",
+            "header": "REQUEST DETAILS",
+            "msg_header": "ADDITIONAL MESSAGE",
+            "footer": "I look forward to your prompt response."
+        }
+    },
     "home_services": {
         "eyebrow": "Our Expertise",
         "title_1": "Elevating the",
