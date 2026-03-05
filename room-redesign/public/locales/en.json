@@ -166,13 +166,13 @@
         }
     },
     "home_about": {
-        "eyebrow": "About the gallery",
-        "title": "Redefining the space between art & observer.",
-        "description": "Project Room is more than an exhibition space; it is an architectural canvas dedicated to contemporary masterpieces. We curate immersive environments that challenge perception and elevate the dialogue between the artwork and its environment.",
-        "list_1": "Curated Contemporary Exhibitions",
-        "list_2": "Private Art Advisory & Acquisitions",
-        "list_3": "Cultural Events & Artist Workshops",
-        "cta": "Discover our artists"
+        "eyebrow": "Our Vision",
+        "title": "A space for art, culture, and social innovation.",
+        "description": "Located in the heart of Bern, within the iconic Das Dazwischen, Project Room Bern is an inclusive space open to everyone. We are dedicated to disseminating art across all disciplines, fostering personal development through social innovation and cultural resistance.",
+        "list_1": "Continuous collaboration with young emerging artists",
+        "list_2": "A hub for curators, educators, and artisans",
+        "list_3": "Artistic exchange in the heart of Switzerland",
+        "cta": "Explore the collection"
     },
     "contact_hero": {
         "eyebrow": "Get in Touch",
@@ -255,23 +255,23 @@
         "p3": "By establishing ourselves in such a symbolic cornerstone of Bern's cultural scene, we amplify our initiative, joining a long-standing tradition of social innovation and cultural resistance."
     },
     "space_features": {
-        "cards": {
-            "exhibition": "EXHIBITION AREA",
-            "audiovisual": "AUDIOVISUAL ZONE",
-            "scenic": "SCENIC ATMOSPHERE"
-        },
-        "collection": "The Collection",
+        "collection": "The Infrastructure",
         "title_1": "Space",
         "title_2": "Features.",
         "desc_1": "At",
-        "desc_2": "we bring together three pillars to elevate any event: an",
+        "desc_2": "we have designed a professional environment optimized for creativity: an",
         "highlight_1": "exhibition area",
-        "desc_3": "featuring gallery lighting for artworks, an",
-        "highlight_2": "audiovisual zone",
-        "desc_4": "equipped for immersive screenings, and a",
-        "highlight_3": "scenic atmosphere",
-        "desc_5": "crafted to design memorable environments.",
-        "quote": "Flexibility, aesthetics, and technique in one place."
+        "desc_3": "equipped with a modern retractable hanging system and adjustable lighting, a",
+        "highlight_2": "high-tech audiovisual zone",
+        "desc_4": "featuring a premium projector and screen, and",
+        "highlight_3": "versatile facilities",
+        "desc_5": "that include a functional kitchen, coffee station, and modular furniture for any group size.",
+        "quote": "Retractable systems, professional lighting, and full hospitality equipment.",
+        "cards": {
+            "exhibition": "Exhibition Area",
+            "audiovisual": "Audiovisual Zone",
+            "scenic": "Equipped Facility"
+        }
     },
     "about_hero": {
         "vision": "The Vision",

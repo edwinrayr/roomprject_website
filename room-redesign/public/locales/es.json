@@ -166,13 +166,13 @@
         }
     },
     "home_about": {
-        "eyebrow": "Sobre la galería",
-        "title": "Redefiniendo el espacio entre el arte y el observador.",
-        "description": "Project Room es más que un espacio de exhibición; es un lienzo arquitectónico dedicado a obras maestras contemporáneas. Curamos entornos inmersivos que desafían la percepción y elevan el diálogo entre la obra y su entorno.",
-        "list_1": "Exposiciones contemporáneas curadas",
-        "list_2": "Asesoría de arte privada y adquisiciones",
-        "list_3": "Eventos culturales y talleres de artistas",
-        "cta": "Descubre nuestros artistas"
+        "eyebrow": "Nuestra Visión",
+        "title": "Un espacio para el arte, la cultura y la innovación social.",
+        "description": "Ubicado en el corazón de Berna, dentro del emblemático Das Dazwischen, Project Room Bern es un espacio inclusivo abierto a todos. Nos dedicamos a difundir el arte en todas sus áreas, fomentando el desarrollo personal a través de la innovación social y la resistencia cultural.",
+        "list_1": "Colaboración continua con jóvenes artistas emergentes",
+        "list_2": "Un centro para curadores, educadores y artesanos",
+        "list_3": "Intercambio artístico en el corazón de Suiza",
+        "cta": "Explora la colección"
     },
     "contact_hero": {
         "eyebrow": "Ponte en Contacto",
@@ -254,24 +254,24 @@
         "p2_2": "—un centro vibrante reconocido por su programación ecléctica y su compromiso con las artes contemporáneas. Este lugar alberga conciertos de música experimental, performances artísticos, talleres participativos y eventos comunitarios, sirviendo como una verdadera plataforma para creadores.",
         "p3": "Al establecernos en un pilar tan simbólico de la escena cultural de Berna, amplificamos nuestra iniciativa, uniéndonos a una larga tradición de innovación social y resistencia cultural."
     },
-    "space_features": {
-        "cards": {
-            "exhibition": "ÁREA DE EXPOSICIÓN",
-            "audiovisual": "ZONA AUDIOVISUAL",
-            "scenic": "ATMÓSFERA ESCÉNICA"
-        },
-        "collection": "La Colección",
+        "space_features": {
+        "collection": "La Infraestructura",
         "title_1": "Características",
         "title_2": "del Espacio.",
         "desc_1": "En",
-        "desc_2": "reunimos tres pilares para elevar cualquier evento: un",
+        "desc_2": "hemos diseñado un entorno profesional optimizado para la creatividad: un",
         "highlight_1": "área de exposición",
-        "desc_3": "con iluminación de galería para obras de arte, una",
+        "desc_3": "con sistema de colgado retráctil, tomas de corriente extra e iluminación ajustable, una",
         "highlight_2": "zona audiovisual",
-        "desc_4": "equipada para proyecciones inmersivas, y una",
-        "highlight_3": "atmósfera escénica",
-        "desc_5": "diseñada para crear entornos memorables.",
-        "quote": "Flexibilidad, estética y técnica en un solo lugar."
+        "desc_4": "equipada con proyector y pantalla de alta calidad, e",
+        "highlight_3": "instalaciones versátiles",
+        "desc_5": "que incluyen cocina funcional, estación de café y mobiliario modular para cualquier tipo de grupo.",
+        "quote": "Sistemas retráctiles, iluminación profesional y equipamiento completo de hostelería.",
+        "cards": {
+            "exhibition": "Área de Exposición",
+            "audiovisual": "Zona Audiovisual",
+            "scenic": "Instalación Equipada"
+        }
     },
     "about_hero": {
         "vision": "La Visión",
