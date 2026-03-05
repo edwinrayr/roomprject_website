@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
 /* ===========================
-   Sistema de Tema Dual
+   Sistema de Tema Dual (Variables CSS)
 =========================== */
 :root {
-  /* Tema Claro (Por defecto) */
-  --color-base-bg: #f3f2f0;
+  /* Tema Claro (Base) */
+  --color-base-bg: #f8f5f2;
+  /* Ligeramente más cálido para dar textura de papel/galería */
   --color-base-bg-2: #e9e6e1;
-  --color-base-ink: #0e0e10;
+  --color-base-ink: #0a0a0a;
+  /* Negro más profundo y elegante */
   --color-base-ink-2: #141416;
   --color-base-gold: #c3b08c;
   --color-base-muted: #737373;
@@ -15,9 +17,9 @@
 
 .dark {
   /* Tema Oscuro */
-  --color-base-bg: #0e0e10;
+  --color-base-bg: #0a0a0a;
   --color-base-bg-2: #141416;
-  --color-base-ink: #f3f2f0;
+  --color-base-ink: #f8f5f2;
   --color-base-ink-2: #e9e6e1;
   --color-base-gold: #d9c6a3;
   --color-base-muted: #a5a5a5;
@@ -27,7 +29,7 @@
    Configuración de Tailwind v4
 =========================== */
 @theme {
-  /* Colores dinámicos basados en el tema */
+  /* Mapeo de Colores */
   --color-bg: var(--color-base-bg);
   --color-bg-2: var(--color-base-bg-2);
   --color-ink: var(--color-base-ink);
@@ -35,58 +37,75 @@
   --color-gold: var(--color-base-gold);
   --color-muted: var(--color-base-muted);
 
-  /* Tipografía */
+  /* Tipografía Editorial */
   --font-serif: "Playfair Display", ui-serif, Georgia, serif;
-  --font-script: "Kalnia", ui-serif, Georgia, serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
 
-  /* Espaciado y Layout */
-  --spacing-mobile-pad: 16px;
-  --spacing-gap-base: 24px;
-
-  /* Utilidades personalizadas */
-  --radius-base: 18px;
-  --width-container: min(100% - 32px, 1200px);
-
-  /* NUEVO: Curva de animación de alta gama */
+  /* Nuestra Curva de Animación Estrella */
   --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ===========================
-   Estilos Base y Resets
+   Estilos Base y Resets de Alta Gama
 =========================== */
 @layer base {
-  html {
-    scroll-behavior: smooth;
+
+  /* Scroll suave respetando las preferencias del sistema del usuario (Accesibilidad) */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  html,
+  body {
     height: 100%;
   }
 
   body {
-    @apply bg-bg text-ink font-sans antialiased;
+    @apply bg-bg text-ink font-sans;
     margin: 0;
-    height: 100%;
     line-height: 1.6;
     overflow-x: hidden;
+
+    /* Optimizadores de renderizado de fuentes para monitores de alta resolución (Crucial para sitios de arte) */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
-  img {
-    @apply max-w-full block;
+  /* Color de selección global */
+  ::selection {
+    @apply bg-gold text-white;
   }
 
-  a {
-    @apply text-inherit no-underline;
+  /* ===========================
+     Scrollbar Personalizado (Estética Lujo)
+  =========================== */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-bg;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ink/20 rounded-full transition-colors;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gold;
   }
 }
 
 /* ===========================
-   Componentes Globales
+   Componentes Reutilizables
 =========================== */
 @layer components {
-  .container-pr {
-    @apply w-container mx-auto;
-  }
 
+  /* Botón genérico optimizado y sincronizado con el diseño que armamos */
   .btn-pr {
-    @apply inline-block px-7 py-2.5 border border-ink-2 rounded-full font-semibold transition-all duration-300 hover:bg-ink hover:text-bg hover:-translate-y-0.5;
+    @apply inline-flex items-center justify-center px-8 py-3.5 border border-ink rounded-full font-bold text-xs tracking-widest uppercase hover:bg-ink hover:text-bg transition-all duration-500 ease-luxury;
   }
 }

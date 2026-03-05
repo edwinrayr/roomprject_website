@@ -1,0 +1,10 @@
+
+User-agent: *
+Allow: /
+
+# Bloquear rutas internas o de desarrollo si las hubiera en el futuro
+# Disallow: /api/
+# Disallow: /admin/
+
+# Enlace directo al Sitemap para facilitar la indexación
+Sitemap: https://projectroombern.ch/sitemap.xml
