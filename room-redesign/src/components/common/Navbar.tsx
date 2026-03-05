@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Instagram, Facebook, Linkedin } from 'lucide-react'; // <-- Importamos Linkedin
-import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, Instagram, Facebook, Linkedin } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const Navbar: React.FC = () => {
+    const { t, i18n } = useTranslation();
     const [isScrolled, setIsScrolled] = useState<boolean>(false);
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
     const location = useLocation();
+    const navigate = useNavigate();
 
-    // Efecto de Scroll para la Navbar
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 20);
@@ -16,7 +18,6 @@ export const Navbar: React.FC = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Bloquear el scroll del cuerpo cuando el menú móvil está abierto
     useEffect(() => {
         if (isMenuOpen) {
             document.body.style.overflow = 'hidden';
@@ -28,7 +29,6 @@ export const Navbar: React.FC = () => {
         };
     }, [isMenuOpen]);
 
-    // Cerrar el menú automáticamente si la URL o el anclaje (#) cambian
     useEffect(() => {
         setIsMenuOpen(false);
         if (!location.hash) {
@@ -38,18 +38,46 @@ export const Navbar: React.FC = () => {
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+    const handleMobileNavigation = (e: React.MouseEvent, href: string, isHash: boolean) => {
+        e.preventDefault(); 
+        setIsMenuOpen(false); 
+
+        setTimeout(() => {
+            if (isHash) {
+                const targetId = href.split('#')[1];
+                if (location.pathname === '/') {
+                    document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    window.location.href = href;
+                }
+            } else {
+                navigate(href);
+                window.scrollTo(0, 0); 
+            }
+        }, 150);
+    };
+
+    // 👇 NUEVA FUNCIÓN: Alternar entre Inglés y Español 👇
+    const toggleLanguage = () => {
+        const currentLang = i18n.language || 'en';
+        const newLang = currentLang.startsWith('es') ? 'en' : 'es';
+        i18n.changeLanguage(newLang);
+    };
+
     const navLinks = [
-        { name: 'Exhibitions', href: '/#exhibitions', isHash: true },
-        { name: 'Artists', href: '/artists', isHash: false },
-        { name: 'Services', href: '/services', isHash: false },
-        { name: 'About', href: '/about', isHash: false },
-        { name: 'Rules', href: '/rules', isHash: false },
-        { name: 'Contact', href: '/contact', isHash: false },
+        { name: t('nav.exhibitions', 'Exhibitions'), href: '/#exhibitions', isHash: true },
+        { name: t('nav.artists', 'Artists'), href: '/artists', isHash: false },
+        { name: t('nav.services', 'Services'), href: '/services', isHash: false },
+        { name: t('nav.about', 'About'), href: '/about', isHash: false },
+        { name: t('nav.rules', 'Rules'), href: '/rules', isHash: false },
+        { name: t('nav.contact', 'Contact'), href: '/contact', isHash: false },
     ];
+
+    // Variable para saber si estamos en español
+    const isSpanish = i18n.language?.startsWith('es');
 
     return (
         <>
-            {/* Cabecera Editorial Persistente: Siempre fondo oscuro */}
             <header
                 className={`fixed top-0 left-0 z-[60] w-full transition-all duration-[600ms] ease-luxury bg-ink border-b ${isMenuOpen
                         ? 'py-5 md:py-6 border-transparent'
@@ -60,9 +88,8 @@ export const Navbar: React.FC = () => {
             >
                 <div className="container mx-auto px-6 md:px-12 grid grid-cols-2 lg:grid-cols-[200px_1fr_200px] items-center">
 
-                    {/* LADO IZQUIERDO: Logo */}
                     <div className="flex justify-start">
-                        <Link to="/" className="relative overflow-hidden group block">
+                        <Link to="/" onClick={() => setIsMenuOpen(false)} className="relative overflow-hidden group block">
                             <img
                                 src="/projectroombern-logo.png"
                                 alt="Project Room Bern Logo"
@@ -71,7 +98,6 @@ export const Navbar: React.FC = () => {
                         </Link>
                     </div>
 
-                    {/* CENTRO: Enlaces de Navegación (Desktop) */}
                     <nav className="hidden lg:flex justify-center items-center gap-6 xl:gap-10">
                         {navLinks.map((link) => (
                             link.isHash ? (
@@ -96,18 +122,30 @@ export const Navbar: React.FC = () => {
                         ))}
                     </nav>
 
-                    {/* LADO DERECHO: Controles */}
                     <div className="flex items-center justify-end gap-3 md:gap-5">
                         
-                        {/* Botón Reserve (Desktop) */}
+                        {/* 👇 UN SOLO BOTÓN DE BANDERA EN COMPUTADORA 👇 */}
+                        <div className="hidden md:flex items-center mr-2">
+                            <button 
+                                onClick={toggleLanguage} 
+                                className="transition-all duration-300 hover:scale-110 opacity-90 hover:opacity-100"
+                                aria-label="Cambiar idioma"
+                            >
+                                <img 
+                                    src={isSpanish ? "https://flagcdn.com/w40/mx.png" : "https://flagcdn.com/w40/us.png"} 
+                                    alt={isSpanish ? "Español" : "English"} 
+                                    className="w-5 md:w-6 h-auto rounded-[2px] shadow-sm" 
+                                />
+                            </button>
+                        </div>
+
                         <Link
                             to="/reserve"
                             className="hidden md:inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-bg/20 text-bg text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-500 hover:border-gold hover:bg-gold hover:text-ink"
                         >
-                            Reserve
+                            {t('nav.reserve', 'Reserve')}
                         </Link>
 
-                        {/* Menú Móvil Toggle */}
                         <button
                             onClick={toggleMenu}
                             className="lg:hidden p-2 rounded-full text-bg hover:text-gold transition-colors duration-300 flex items-center justify-center"
@@ -120,62 +158,53 @@ export const Navbar: React.FC = () => {
                 </div>
             </header>
 
-            {/* Menú Mobile Fullscreen: z-[55] (Siempre oscuro) */}
             <div
                 className={`fixed inset-0 bg-ink z-[55] flex flex-col justify-center px-8 md:px-16 transition-all duration-[800ms] ease-luxury ${
                     isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                 }`}
             >
-                {/* Ajustamos mt-16 y gap-5 para móviles */}
                 <nav className="flex flex-col gap-5 mt-16 md:gap-6 md:mt-12">
-                    {[...navLinks, { name: 'Reserve Space', href: '/reserve', isHash: false }].map((link, index) => (
+                    {[...navLinks, { name: t('nav.reserve', 'Reserve'), href: '/reserve', isHash: false }].map((link, index) => (
                         <div key={link.name} className="overflow-hidden">
-                            {link.isHash ? (
-                                <a
-                                    key={link.name}
-                                    href={link.href}
-                                    onClick={() => {
-                                        setIsMenuOpen(false);
-                                        const targetId = link.href.split('#')[1];
-                                        document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
-                                    }}
-                                    className={`block w-fit text-left text-2xl md:text-5xl font-serif font-light text-bg hover:text-gold transition-transform duration-[800ms] ease-luxury ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-[120%] opacity-0'}`}
-                                    style={{ transitionDelay: `${isMenuOpen ? index * 80 + 150 : 0}ms` }}
-                                >
-                                    {link.name}
-                                </a>
-                            ) : (
-                                <Link
-                                    key={link.name}
-                                    to={link.href}
-                                    className={`block w-fit text-left text-2xl md:text-5xl font-serif font-light text-bg hover:text-gold transition-transform duration-[800ms] ease-luxury ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-[120%] opacity-0'}`}
-                                    style={{ transitionDelay: `${isMenuOpen ? index * 80 + 150 : 0}ms` }}
-                                >
-                                    {link.name}
-                                </Link>
-                            )}
+                            <button
+                                onClick={(e) => handleMobileNavigation(e, link.href, link.isHash)}
+                                className={`block w-fit text-left text-2xl md:text-5xl font-serif font-light text-bg hover:text-gold transition-transform duration-[800ms] ease-luxury ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-[120%] opacity-0'}`}
+                                style={{ transitionDelay: `${isMenuOpen ? index * 80 + 150 : 0}ms` }}
+                            >
+                                {link.name}
+                            </button>
                         </div>
                     ))}
                 </nav>
 
-                {/* Pie del menú móvil */}
                 <div className={`mt-12 md:mt-16 overflow-hidden transition-all duration-700 ease-luxury ${isMenuOpen ? 'opacity-100 translate-y-0 delay-[600ms]' : 'opacity-0 translate-y-8 delay-0'}`}>
                     <div className="w-full h-px bg-bg/10 mb-6"></div>
                     <div className="flex justify-between items-center">
-                        <p className="text-bg/50 text-[10px] font-bold uppercase tracking-[0.2em]">
-                            Project Room Bern
-                        </p>
                         
-                        {/* 👇 AHORA CON LINKEDIN 👇 */}
+                        {/* 👇 UN SOLO BOTÓN DE BANDERA EN MÓVIL 👇 */}
+                        <div className="flex items-center">
+                            <button 
+                                onClick={() => { toggleLanguage(); setIsMenuOpen(false); }} 
+                                className="transition-all duration-300 hover:scale-110 opacity-90 hover:opacity-100"
+                                aria-label="Cambiar idioma"
+                            >
+                                <img 
+                                    src={isSpanish ? "https://flagcdn.com/w40/mx.png" : "https://flagcdn.com/w40/us.png"} 
+                                    alt={isSpanish ? "Español" : "English"} 
+                                    className="w-7 md:w-8 h-auto rounded-[2px] shadow-sm" 
+                                />
+                            </button>
+                        </div>
+
                         <div className="flex gap-4">
                             <a href="https://www.instagram.com/greciaportorreal/" target="_blank" rel="noopener noreferrer" className="text-bg hover:text-gold transition-colors">
-                                <Instagram size={18} strokeWidth={1.5} />
+                                <Instagram size={20} strokeWidth={1.5} />
                             </a>
                             <a href="https://www.facebook.com/greciaportorreal12/" target="_blank" rel="noopener noreferrer" className="text-bg hover:text-gold transition-colors">
-                                <Facebook size={18} strokeWidth={1.5} />
+                                <Facebook size={20} strokeWidth={1.5} />
                             </a>
                             <a href="https://ch.linkedin.com/in/grecia-portorreal-6a42b72b4" target="_blank" rel="noopener noreferrer" className="text-bg hover:text-gold transition-colors">
-                                <Linkedin size={18} strokeWidth={1.5} />
+                                <Linkedin size={20} strokeWidth={1.5} />
                             </a>
                         </div>
                     </div>

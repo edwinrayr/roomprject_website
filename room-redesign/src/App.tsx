@@ -7,6 +7,7 @@ import { ScrollToTop } from './components/ScrollToTop';
 import { Preloader } from './components/Preloader';
 import { Navbar } from './components/common/Navbar';
 import { Footer } from './components/common/Footer';
+import './i18n';
 
 // Páginas
 import { Home } from './pages/Home';
