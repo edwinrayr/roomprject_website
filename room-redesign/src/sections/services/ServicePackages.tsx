@@ -36,7 +36,7 @@ export const ServicePackages: React.FC = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[
                             { img: '/images/culura.webp', key: 'workshops' },
-                            { img: '/images/cine.webp', key: 'screenings' },
+                            { img: '/images/PinturaGrecia (7).webp', key: 'screenings' },
                             { img: '/images/baile.png', key: 'celebrations' }
                         ].map((item, i) => (
                             <div key={i} className="group relative overflow-hidden aspect-[4/5] rounded-sm">
