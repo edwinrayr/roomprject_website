@@ -1,4 +1,46 @@
 {
+    "contact_hero": {
+        "eyebrow": "Get in Touch",
+        "title_1": "Let's discuss",
+        "title_2": "your vision."
+    },
+    "contact": {
+        "title_1": "Let's talk about",
+        "title_2": "your event.",
+        "subtitle": "Grecia Portorreal — Owner of Project Room Bern",
+        "bio_p1_1": "Grecia is a visual artist originally from the Dominican Republic. She studied advertising arts at the Universidad Autónoma de Santo Domingo and Fine Arts and Illustration at Altos de Chavón (affiliated with Parsons, NY), graduating",
+        "bio_p1_cum_laude": "Cum Laude",
+        "bio_p1_2": ". She also completed eight years of rigorous training at the National School of Fine Arts (SD).",
+        "bio_p2_1": "A specialist in the conservation and restoration of cultural heritage (Spain and Italy), her work has been exhibited across the Dominican Republic, New York, Spain, Italy, and Switzerland. She currently resides in Biel, where she leads",
+        "bio_p2_2": "to intertwine art, personal development, female entrepreneurship, and social commitment.",
+        "portfolio_label": "Official Portfolio",
+        "website": "Website",
+        "whatsapp_label": "Immediate Response",
+        "whatsapp_msg": "Hello Grecia, I would like information about Project Room Bern."
+    },
+    "cancellation": {
+        "terms_label": "Terms & Conditions",
+        "title_1": "Cancellation",
+        "title_2": "Policy.",
+        "description_1": "At",
+        "description_2": "we value responsible planning and respect the time of our clients and team. Below are our cancellation policies applicable to all space reservations.",
+        "single_title": "Single-Day Bookings",
+        "days_30": "30 days in advance",
+        "full_refund": "full refund",
+        "no_refund": "no refund",
+        "single_desc_1": "If canceled more than",
+        "single_desc_2": "a",
+        "single_desc_3": "is offered. If the cancellation occurs within the 30 days prior to the event,",
+        "single_desc_4": "will be issued.",
+        "extended_title": "Extended Bookings (15+ Days)",
+        "months_2": "2 months in advance",
+        "refund_50": "50% refund",
+        "extended_desc_1": "If canceled more than",
+        "extended_desc_2": "a",
+        "extended_desc_3": "is offered. If the cancellation occurs within the 2 months prior, a",
+        "extended_desc_4": "is granted.",
+        "conclusion": "These policies aim to ensure equitable and sustainable management for both our guests and the space administration."
+    },
     "artist_hero": {
         "eyebrow": "The Eye Behind the Lens",
         "first_name": "Grecia",

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next'; // <-- Importamos useTranslation
 
 export const ContactHero: React.FC = () => {
+    const { t } = useTranslation(); // <-- Extraemos t
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -21,12 +23,12 @@ export const ContactHero: React.FC = () => {
             <div className="relative z-20 container mx-auto px-6 md:px-12 text-center flex flex-col items-center">
 
                 <span className={`text-gold text-xs font-bold tracking-[0.4em] uppercase mb-6 block transition-all duration-[1000ms] ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                    Get in Touch
+                    {t('contact_hero.eyebrow', 'Get in Touch')}
                 </span>
 
                 <h1 className={`font-serif text-[clamp(3.8rem,9vw,8.5rem)] text-ink font-black tracking-tighter leading-[0.9] mb-12 transition-all duration-[1200ms] delay-300 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
-                    Let's discuss <br />
-                    <span className="italic font-light opacity-90">your vision.</span>
+                    {t('contact_hero.title_1', "Let's discuss")} <br />
+                    <span className="italic font-light opacity-90">{t('contact_hero.title_2', "your vision.")}</span>
                 </h1>
 
                 {/* Línea decorativa dinámica que invita a hacer scroll hacia la información */}

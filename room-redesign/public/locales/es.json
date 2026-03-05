@@ -1,4 +1,46 @@
 {
+    "contact_hero": {
+        "eyebrow": "Ponte en Contacto",
+        "title_1": "Hablemos de",
+        "title_2": "tu visión."
+    },
+    "contact": {
+        "title_1": "Hablemos de",
+        "title_2": "tu evento.",
+        "subtitle": "Grecia Portorreal — Propietaria de Project Room Bern",
+        "bio_p1_1": "Grecia es una artista visual originaria de la República Dominicana. Estudió artes publicitarias en la Universidad Autónoma de Santo Domingo y Bellas Artes e Ilustración en Altos de Chavón (afiliada a Parsons, NY), graduándose",
+        "bio_p1_cum_laude": "Cum Laude",
+        "bio_p1_2": ". También completó ocho años de rigurosa formación en la Escuela Nacional de Bellas Artes (SD).",
+        "bio_p2_1": "Especialista en la conservación y restauración del patrimonio cultural (España e Italia), su obra ha sido expuesta en la República Dominicana, Nueva York, España, Italia y Suiza. Actualmente reside en Biel, donde lidera",
+        "bio_p2_2": "para entrelazar el arte, el desarrollo personal, el emprendimiento femenino y el compromiso social.",
+        "portfolio_label": "Portafolio Oficial",
+        "website": "Sitio Web",
+        "whatsapp_label": "Respuesta Inmediata",
+        "whatsapp_msg": "Hola Grecia, me gustaría recibir información sobre Project Room Bern."
+    },
+    "cancellation": {
+        "terms_label": "Términos y Condiciones",
+        "title_1": "Política de",
+        "title_2": "Cancelación.",
+        "description_1": "En",
+        "description_2": "valoramos la planificación responsable y respetamos el tiempo de nuestros clientes y equipo. A continuación se presentan nuestras políticas de cancelación aplicables a todas las reservas del espacio.",
+        "single_title": "Reservas de un Solo Día",
+        "days_30": "30 días de antelación",
+        "full_refund": "reembolso completo",
+        "no_refund": "no se emitirá ningún reembolso",
+        "single_desc_1": "Si se cancela con más de",
+        "single_desc_2": "se ofrece un",
+        "single_desc_3": ". Si la cancelación ocurre dentro de los 30 días previos al evento,",
+        "single_desc_4": ".",
+        "extended_title": "Reservas Extendidas (15+ Días)",
+        "months_2": "2 meses de antelación",
+        "refund_50": "reembolso del 50%",
+        "extended_desc_1": "Si se cancela con más de",
+        "extended_desc_2": "se ofrece un",
+        "extended_desc_3": ". Si la cancelación ocurre dentro de los 2 meses previos, se otorga un",
+        "extended_desc_4": ".",
+        "conclusion": "Estas políticas tienen como objetivo asegurar una gestión equitativa y sostenible tanto para nuestros huéspedes como para la administración del espacio."
+    },
     "artist_hero": {
         "eyebrow": "El Ojo Detrás del Lente",
         "first_name": "Grecia",

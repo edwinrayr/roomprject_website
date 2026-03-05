@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Globe, ArrowUpRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next'; // <-- Importamos useTranslation
 
 export const ContactContent: React.FC = () => {
+    const { t } = useTranslation(); // <-- Extraemos t
+    
     // Observer setup for scroll animations
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
@@ -26,6 +29,9 @@ export const ContactContent: React.FC = () => {
         };
     }, []);
 
+    // Generamos el link de WhatsApp con el mensaje traducido
+    const whatsappLink = `https://wa.me/41782378276?text=${encodeURIComponent(t('contact.whatsapp_msg', 'Hello Grecia, I would like information about Project Room Bern.'))}`;
+
     return (
         <section
             ref={sectionRef}
@@ -37,20 +43,20 @@ export const ContactContent: React.FC = () => {
                 {/* LEFT COLUMN: Text and Artistic Buttons */}
                 <div className="lg:col-span-7 flex flex-col justify-center order-2 lg:order-1 text-center lg:text-left">
                     <h2 className={`font-serif text-[clamp(2.5rem,5vw,4.5rem)] font-extrabold tracking-tight mb-4 leading-none transition-all duration-1000 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
-                        Let's talk about <br className="hidden md:block" />
-                        <span className="italic font-light text-gold">your event.</span>
+                        {t('contact.title_1', "Let's talk about")} <br className="hidden md:block" />
+                        <span className="italic font-light text-gold">{t('contact.title_2', "your event.")}</span>
                     </h2>
                     <p className={`font-sans text-xs md:text-sm uppercase tracking-[0.2em] text-ink/50 font-bold mb-10 transition-all duration-1000 delay-200 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                        Grecia Portorreal — Owner of Project Room Bern
+                        {t('contact.subtitle', "Grecia Portorreal — Owner of Project Room Bern")}
                     </p>
 
                     {/* Biography translated to professional English */}
                     <div className={`font-sans text-ink/80 text-base md:text-lg leading-relaxed font-light space-y-6 mb-12 max-w-[55ch] mx-auto lg:mx-0 transition-all duration-1000 delay-400 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
                         <p>
-                            Grecia is a visual artist originally from the Dominican Republic. She studied advertising arts at the Universidad Autónoma de Santo Domingo and Fine Arts and Illustration at Altos de Chavón (affiliated with Parsons, NY), graduating <em className="font-serif text-lg text-ink font-medium">Cum Laude</em>. She also completed eight years of rigorous training at the National School of Fine Arts (SD).
+                            {t('contact.bio_p1_1', "Grecia is a visual artist originally from the Dominican Republic. She studied advertising arts at the Universidad Autónoma de Santo Domingo and Fine Arts and Illustration at Altos de Chavón (affiliated with Parsons, NY), graduating")} <em className="font-serif text-lg text-ink font-medium">{t('contact.bio_p1_cum_laude', "Cum Laude")}</em>{t('contact.bio_p1_2', ". She also completed eight years of rigorous training at the National School of Fine Arts (SD).")}
                         </p>
                         <p>
-                            A specialist in the conservation and restoration of cultural heritage (Spain and Italy), her work has been exhibited across the Dominican Republic, New York, Spain, Italy, and Switzerland. She currently resides in Biel, where she leads <strong className="font-medium text-ink">Project Room Bern</strong> to intertwine art, personal development, female entrepreneurship, and social commitment.
+                            {t('contact.bio_p2_1', "A specialist in the conservation and restoration of cultural heritage (Spain and Italy), her work has been exhibited across the Dominican Republic, New York, Spain, Italy, and Switzerland. She currently resides in Biel, where she leads")} <strong className="font-medium text-ink">Project Room Bern</strong> {t('contact.bio_p2_2', "to intertwine art, personal development, female entrepreneurship, and social commitment.")}
                         </p>
                     </div>
 
@@ -76,7 +82,6 @@ export const ContactContent: React.FC = () => {
                                 rel="noopener noreferrer"
                                 className="group relative overflow-hidden border border-ink/20 p-6 md:p-8 flex flex-col justify-between bg-bg hover:border-gold transition-colors duration-700 rounded-sm min-h-[160px] text-left"
                             >
-                                {/* Expanding hover circle */}
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 bg-gold rounded-full group-hover:w-[250%] group-hover:aspect-square transition-all duration-[1000ms] ease-luxury"></div>
 
                                 <div className="relative z-10 flex justify-between items-start mb-6">
@@ -86,10 +91,10 @@ export const ContactContent: React.FC = () => {
 
                                 <div className="relative z-10">
                                     <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-ink/60 group-hover:text-bg/80 transition-colors duration-500 block mb-2 font-bold">
-                                        Official Portfolio
+                                        {t('contact.portfolio_label', "Official Portfolio")}
                                     </span>
                                     <h3 className="font-serif text-2xl font-bold text-ink group-hover:text-bg transition-colors duration-500">
-                                        Website
+                                        {t('contact.website', "Website")}
                                     </h3>
                                 </div>
                             </a>
@@ -98,12 +103,11 @@ export const ContactContent: React.FC = () => {
                         {/* 2. Artistic Card: WhatsApp */}
                         <div className={`transition-all duration-[1200ms] delay-[1000ms] ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}>
                             <a
-                                href="https://wa.me/41782378276?text=Hello%20Grecia,%20I%20would%20like%20information%20about%20Project%20Room%20Bern."
+                                href={whatsappLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="group relative overflow-hidden border border-ink/20 p-6 md:p-8 flex flex-col justify-between bg-bg hover:border-gold transition-colors duration-700 rounded-sm min-h-[160px] text-left"
                             >
-                                {/* Expanding hover circle (slight delay) */}
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 bg-gold rounded-full group-hover:w-[250%] group-hover:aspect-square transition-all duration-[1000ms] ease-luxury delay-75"></div>
 
                                 <div className="relative z-10 flex justify-between items-start mb-6">
@@ -115,7 +119,7 @@ export const ContactContent: React.FC = () => {
 
                                 <div className="relative z-10">
                                     <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-ink/60 group-hover:text-bg/80 transition-colors duration-500 block mb-2 font-bold">
-                                        Immediate Response
+                                        {t('contact.whatsapp_label', "Immediate Response")}
                                     </span>
                                     <h3 className="font-serif text-2xl font-bold text-ink group-hover:text-bg transition-colors duration-500">
                                         WhatsApp
