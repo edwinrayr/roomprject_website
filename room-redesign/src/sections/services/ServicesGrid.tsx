@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { ArrowRight } from 'lucide-react';
 
-// Interfaz estricta basada en tu HTML
 interface Service {
     id: string;
     title: string;
@@ -8,100 +8,137 @@ interface Service {
     imageUrl: string;
 }
 
-// Información 100% copiada de tu archivo servicios.html
 const servicesData: Service[] = [
     {
         id: '01',
-        title: 'Exposiciones de Arte',
-        description: 'Nuestro espacio ofrece el entorno perfecto para exhibir talento y creatividad. Con una iluminación cuidadosamente diseñada, amplias áreas y una atmósfera contemporánea, tus obras podrán brillar y conectar con el público de manera única. Ideal para exposiciones individuales, colectivas o lanzamientos artísticos que merecen un escenario de alto nivel.',
+        title: 'Art Exhibitions',
+        description: 'The perfect environment to showcase talent and creativity. Featuring curated lighting and a contemporary atmosphere, your artwork will connect with the audience in a unique way. Ideal for solo or collective exhibitions.',
         imageUrl: '/images/pinturas.png',
     },
     {
         id: '02',
-        title: 'Talleres Culturales',
-        description: 'Creamos el ambiente ideal para el aprendizaje, la colaboración y el intercambio cultural. Nuestras áreas se adaptan fácilmente a las necesidades de cada grupo, ofreciendo comodidad, buena acústica y un entorno inspirador. Perfecto para talleres creativos, círculos literarios, clases prácticas o encuentros que promuevan el desarrollo personal y artístico.',
+        title: 'Cultural Workshops',
+        description: 'An inspiring setting for learning, collaboration, and cultural exchange. Adaptable spaces offering comfort and excellent acoustics. Perfect for creative workshops, literary circles, and artistic development.',
         imageUrl: '/images/culura.jpg',
     },
     {
         id: '03',
-        title: 'Cine-foros y Proyecciones',
-        description: 'Disfruta de proyecciones con gran calidad visual y acústica en un espacio preparado para vivir el cine en comunidad. Ya sea un estreno independiente, un ciclo temático o un cine-foro con debate posterior, nuestros espacios brindan la comodidad y el ambiente adecuado para cada función. Ideal para cinéfilos, colectivos culturales o presentaciones audiovisuales.',
+        title: 'Cinema & Screenings',
+        description: 'Experience high-quality visual and acoustic screenings in a community-focused environment. Perfect for independent premieres, thematic cycles, or film forums and audiovisual presentations.',
         imageUrl: '/images/proyeccion.jpg',
     },
     {
         id: '04',
-        title: 'Reuniones privadas o familiares',
-        description: 'Ofrecemos espacios íntimos y acogedores pensados para compartir momentos especiales en total privacidad. Ya sea una reunión familiar, un cumpleaños o una celebración personal, contamos con el ambiente, la flexibilidad y el servicio que harán de tu evento una experiencia inolvidable. Cada detalle está pensado para que te sientas como en casa.',
+        title: 'Private Gatherings',
+        description: 'Intimate and welcoming spaces designed for sharing special moments in total privacy. Whether a family gathering or a personal celebration, we provide the flexibility and service to make it unforgettable.',
         imageUrl: '/images/convivencia.png',
     },
     {
         id: '05',
-        title: 'Conferencias, recitales o eventos formativos',
-        description: 'Espacios diseñados para potenciar la comunicación y la experiencia de cada asistente. Equipados con tecnología moderna, excelente acústica y un diseño elegante, son ideales para conferencias, presentaciones, recitales o capacitaciones. Comodidad, profesionalismo y estilo se combinan para que tu evento genere un verdadero impacto.',
+        title: 'Conferences & Recitals',
+        description: 'Designed to elevate communication and the attendee experience. Equipped with modern technology and elegant design, our rooms are ideal for conferences, recitals, and professional training.',
         imageUrl: '/images/reunion.png',
     },
     {
         id: '06',
-        title: 'Celebraciones pequeñas y eventos empresariales',
-        description: 'Si buscas un lugar con estilo para convivencias, aniversarios o reuniones corporativas, este espacio ofrece el equilibrio perfecto entre elegancia y funcionalidad. Adaptamos cada rincón a tu tipo de evento, brindando atención personalizada, mobiliario versátil y un ambiente que fomenta la conexión y el disfrute. Cada celebración aquí se convierte en un recuerdo especial.',
+        title: 'Corporate Events',
+        description: 'The perfect balance of elegance and functionality for corporate anniversaries or boutique celebrations. Tailored attention, versatile furniture, and a sophisticated atmosphere that fosters connection.',
         imageUrl: '/images/baile.png',
     }
 ];
 
 export const ServicesGrid: React.FC = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    if (sectionRef.current) observer.unobserve(sectionRef.current);
+                }
+            },
+            { threshold: 0.1 }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) observer.unobserve(sectionRef.current);
+        };
+    }, []);
+
     return (
-        <section className="w-full py-24 md:py-32 bg-bg text-ink relative z-10" id="servicios">
-            <div className="container-pr">
-                
-                {/* Encabezado copiado de tu HTML */}
-                <div className="flex flex-col items-center text-center mb-16 md:mb-24">
-                    <span className="text-gold text-xs font-bold tracking-[0.2em] uppercase mb-4 block">
-                        ELIGE TU EXPERIENCIA
+        <section
+            className="w-full py-24 md:py-32 bg-bg text-ink relative z-10 transition-colors duration-500"
+            id="servicios"
+            ref={sectionRef}
+        >
+            <div className="container mx-auto px-6 md:px-12">
+
+                {/* Encabezado Animado */}
+                <div className="flex flex-col items-center text-center mb-20 md:mb-32">
+                    <span className={`text-gold text-xs font-bold tracking-[0.2em] uppercase mb-4 block transition-all duration-1000 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                        Choose Your Experience
                     </span>
-                    <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
-                        SERVICIOS
+                    <h2 className={`font-serif text-[clamp(2.5rem,5vw,5rem)] leading-[1] font-extrabold tracking-tight transition-all duration-1000 delay-200 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                        Our Services.
                     </h2>
                 </div>
 
-                {/* Cuadrícula de 6 tarjetas */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-16">
-                    {servicesData.map((service) => (
-                        <article 
-                            key={service.id} 
-                            className="group flex flex-col h-full"
+                {/* Cuadrícula de 6 tarjetas con entrada escalonada */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-10 md:gap-x-16">
+                    {servicesData.map((service, index) => (
+                        <article
+                            key={service.id}
+                            className={`group flex flex-col h-full transition-all duration-[1200ms] ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0'}`}
+                            style={{ transitionDelay: isVisible ? `${(index % 3) * 200 + 300}ms` : '0ms' }}
                         >
-                            {/* Imagen con Aspect Ratio elegante y Zoom en Hover */}
-                            <div className="relative w-full aspect-[4/3] overflow-hidden mb-8 bg-ink-2/5 rounded-sm">
-                                <img 
-                                    src={service.imageUrl} 
-                                    alt={service.title} 
-                                    className="w-full h-full object-cover transition-transform duration-[1200ms] ease-luxury group-hover:scale-105"
+                            {/* Imagen con Aspect Ratio vertical y Zoom */}
+                            <div className="relative w-full aspect-[4/5] overflow-hidden mb-8 bg-ink/5 rounded-sm">
+                                <img
+                                    src={service.imageUrl}
+                                    alt={service.title}
+                                    className="w-full h-full object-cover transition-transform duration-[2000ms] ease-luxury group-hover:scale-110 filter brightness-95 group-hover:brightness-100"
                                 />
-                                <div className="absolute inset-0 bg-ink/0 transition-colors duration-[1000ms] ease-luxury group-hover:bg-ink/10"></div>
-                                
-                                {/* Número flotante (01, 02...) */}
-                                <div className="absolute top-4 left-4 bg-bg/90 backdrop-blur-sm px-3 py-1 text-xs font-bold text-ink tracking-widest">
-                                    {service.id}
-                                </div>
+                                {/* Velo sutil para profundidad */}
+                                <div className="absolute inset-0 bg-ink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-luxury pointer-events-none"></div>
                             </div>
 
-                            {/* Contenido de texto */}
+                            {/* Contenido de texto con acento dorado */}
                             <div className="flex flex-col flex-grow">
-                                <h3 className="font-serif text-2xl font-bold mb-4 transition-colors duration-500 group-hover:text-gold">
-                                    {service.title}
-                                </h3>
-                                <p className="font-sans text-sm md:text-base leading-relaxed text-muted flex-grow">
+                                <div className="flex items-center gap-4 mb-4 border-b border-ink/10 pb-4">
+                                    <span className="text-gold font-bold tracking-[0.2em] text-sm">
+                                        {service.id}
+                                    </span>
+                                    <h3 className="font-serif text-2xl font-bold transition-colors duration-500 group-hover:text-gold leading-tight">
+                                        {service.title}
+                                    </h3>
+                                </div>
+                                <p className="font-sans text-sm md:text-base leading-relaxed text-ink/70 flex-grow mb-6">
                                     {service.description}
                                 </p>
+
+                                {/* Microinteracción interactiva */}
+                                <div className="mt-auto overflow-hidden">
+                                    <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ink group-hover:text-gold transition-colors duration-300">
+                                        Learn More
+                                        <ArrowRight size={16} strokeWidth={2} className="transform -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 ease-luxury" />
+                                    </span>
+                                </div>
                             </div>
                         </article>
                     ))}
                 </div>
 
-                {/* Botón de Cotización (Copiado de tu HTML) */}
-                <div className="mt-20 flex justify-center">
-                    <a href="#contacto" className="btn-pr">
-                        Cotizar
+                {/* Botón de Cotización Animado */}
+                <div className={`mt-24 flex justify-center transition-all duration-1000 delay-1000 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+                    <a href="#contact" className="group flex items-center gap-3 bg-ink text-bg px-10 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-gold hover:text-white transition-all duration-300">
+                        Request a Quote
+                        <ArrowRight size={18} strokeWidth={2} className="group-hover:translate-x-1 transition-transform" />
                     </a>
                 </div>
 

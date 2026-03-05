@@ -1,82 +1,120 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export const Exhibitions: React.FC = () => {
+    // Estado y Referencia para animar al hacer scroll
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    if (sectionRef.current) observer.unobserve(sectionRef.current);
+                }
+            },
+            { threshold: 0.15 }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) observer.unobserve(sectionRef.current);
+        };
+    }, []);
+
     return (
-        <section className="w-full py-24 md:py-32 bg-ink text-bg relative z-10 overflow-hidden" id="about-artist">
+        <section
+            className="w-full py-24 md:py-32 bg-ink text-bg relative z-10 overflow-hidden"
+            id="about-artist"
+            ref={sectionRef}
+        >
             <div className="container mx-auto px-6 md:px-12">
-                
-                {/* 1. SECCIÓN BIOGRÁFICA (Split Layout) */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 mb-20 border-b border-bg/20 pb-16">
-                    
-                    {/* Columna Izquierda: Nombre */}
+
+                {/* 1. SECCIÓN BIOGRÁFICA (Split Layout Animado) */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 mb-20 lg:mb-32 border-b border-bg/20 pb-16 lg:pb-24">
+
+                    {/* Columna Izquierda: Títulos */}
                     <div className="lg:col-span-5 flex flex-col justify-center">
-                        <span className="text-gold text-xs font-bold tracking-[0.3em] uppercase mb-4 block">
-                            Artista & Fundadora
-                        </span>
-                        <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-none">
-                            Grecia <br className="hidden lg:block" /> Portorreal
-                        </h2>
-                        <p className="font-serif italic text-xl md:text-2xl text-gold">
-                            "Donde Cada Evento se Convierte en Arte"
-                        </p>
+                        <div className={`transition-all duration-1000 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+                            <span className="text-gold text-xs font-bold tracking-[0.3em] uppercase mb-4 block">
+                                Artist & Founder
+                            </span>
+                            <h2 className="font-serif text-[clamp(3rem,6vw,5.5rem)] font-extrabold tracking-tight mb-6 leading-[0.95]">
+                                Grecia <br className="hidden lg:block" /> Portorreal
+                            </h2>
+                            <p className="font-serif italic text-xl md:text-2xl text-gold opacity-90">
+                                "Where Every Event Becomes Art"
+                            </p>
+                        </div>
                     </div>
 
-                    {/* Columna Derecha: Biografía EXACTA */}
+                    {/* Columna Derecha: Biografía Editorial */}
                     <div className="lg:col-span-7 flex flex-col justify-center space-y-6 font-sans text-bg/80 text-base md:text-lg leading-relaxed font-light">
-                        <p>
-                            <strong>Grecia Portorreal</strong> es originaria de la República Dominicana. Nació en Santo Domingo, donde estudió artes publicitarias en la Universidad Autónoma de Santo Domingo y bellas artes e ilustración en la Altos de Chavón School of Design, afiliada a la Parsons School of Design de Nueva York, obteniendo el mérito de Cum Laude.
-                        </p>
-                        <p>
-                            Al mismo tiempo, estudió bellas artes durante 5 años en la Escuela de Bellas Artes de Santo Domingo. Se trasladó a España e Italia, donde estudió la conservación y restauración del patrimonio cultural.
-                        </p>
-                        <p>
-                            Ha expuesto su obra en República Dominicana, Nueva York, España, Italia y Suiza.
-                        </p>
-                        <p className="text-white font-medium">
-                            Actualmente vive en Biel, Suiza, donde se encuentra su estudio de arte.
-                        </p>
+                        <div className={`transition-all duration-1000 delay-300 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+                            {/* Párrafo inicial destacado (Lead paragraph) */}
+                            <p className="text-xl md:text-2xl font-serif text-bg mb-6 leading-snug">
+                                <strong>Grecia Portorreal</strong> is originally from the Dominican Republic. Born in Santo Domingo, she studied advertising arts at the Universidad Autónoma de Santo Domingo and fine arts and illustration at the prestigious Altos de Chavón School of Design.
+                            </p>
+                            <p className="mb-4">
+                                Affiliated with the Parsons School of Design in New York, she graduated Cum Laude. Simultaneously, she dedicated 5 years to studying fine arts at the National School of Visual Arts in Santo Domingo.
+                            </p>
+                            <p className="mb-4">
+                                Driven by a deep appreciation for history and technique, she later relocated to Spain and Italy, where she specialized in the conservation and restoration of cultural heritage.
+                            </p>
+                            <p className="mb-8">
+                                Her work has been exhibited internationally across the Dominican Republic, New York, Spain, Italy, and Switzerland.
+                            </p>
+                            <div className="inline-block py-3 px-6 border border-bg/30 rounded-full">
+                                <p className="text-white font-medium text-sm tracking-wide uppercase">
+                                    Currently based in Biel, Switzerland.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                {/* 2. GALERÍA DE OBRAS */}
+                {/* 2. GALERÍA DE OBRAS (Asimétrica y Escalonada) */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-                    
+
                     {/* Obra 1 */}
-                    <div className="group relative aspect-[3/4] overflow-hidden rounded-sm">
-                        <img 
-                            src="/images/PinturaGrecia (7).jpg" 
-                            alt="Obra de Grecia Portorreal" 
-                            className="w-full h-full object-cover transition-transform duration-[1500ms] ease-luxury group-hover:scale-105" 
+                    <div className={`group relative aspect-[3/4] overflow-hidden rounded-sm transition-all duration-[1200ms] delay-500 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0'}`}>
+                        <img
+                            src="/images/PinturaGrecia (7).jpg"
+                            alt="Grecia Portorreal Artwork 1"
+                            className="w-full h-full object-cover transition-transform duration-[2000ms] ease-luxury group-hover:scale-110"
                         />
                         <div className="absolute inset-0 bg-ink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-luxury"></div>
                     </div>
 
-                    {/* Obra 2 (Asimétrica) */}
-                    <div className="group relative aspect-[3/4] overflow-hidden rounded-sm md:mt-16">
-                        <img 
-                            src="/images/pinturas.png" 
-                            alt="Obra de Grecia Portorreal" 
-                            className="w-full h-full object-cover transition-transform duration-[1500ms] ease-luxury group-hover:scale-105" 
+                    {/* Obra 2 (Asimétrica - Desfasada hacia abajo) */}
+                    <div className={`group relative aspect-[3/4] overflow-hidden rounded-sm md:mt-20 transition-all duration-[1200ms] delay-700 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0'}`}>
+                        <img
+                            src="/images/pinturas.png"
+                            alt="Grecia Portorreal Artwork 2"
+                            className="w-full h-full object-cover transition-transform duration-[2000ms] ease-luxury group-hover:scale-110"
                         />
                         <div className="absolute inset-0 bg-ink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-luxury"></div>
                     </div>
 
-                    {/* Obra 3 */}
-                    <div className="group relative aspect-[3/4] overflow-hidden rounded-sm lg:mt-8">
-                        <img 
-                            src="/images/chicas.jpg" 
-                            alt="Espacio de Grecia Portorreal" 
-                            className="w-full h-full object-cover transition-transform duration-[1500ms] ease-luxury group-hover:scale-105 grayscale hover:grayscale-0" 
+                    {/* Obra 3 (Punto intermedio) */}
+                    <div className={`group relative aspect-[3/4] overflow-hidden rounded-sm lg:mt-10 transition-all duration-[1200ms] delay-900 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0'}`}>
+                        <img
+                            src="/images/chicas.jpg"
+                            alt="Grecia Portorreal Studio Space"
+                            className="w-full h-full object-cover transition-transform duration-[2000ms] ease-luxury group-hover:scale-110 grayscale hover:grayscale-0"
                         />
                         <div className="absolute inset-0 bg-ink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-luxury"></div>
                     </div>
                 </div>
 
                 {/* 3. AVISO LEGAL DE DERECHOS DE AUTOR */}
-                <div className="mt-24 text-center border-t border-bg/20 pt-16">
-                    <p className="font-sans text-[11px] md:text-xs text-bg/50 uppercase tracking-[0.2em] leading-loose max-w-2xl mx-auto">
-                        Todas las imágenes publicadas están protegidas por derechos de autor y pertenecen a Grecia Portorreal. <br className="hidden md:block" />
-                        Queda prohibida su reproducción, distribución o uso sin autorización por escrito.
+                <div className={`mt-24 text-center border-t border-bg/20 pt-16 transition-all duration-1000 delay-1000 ease-luxury ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+                    <p className="font-sans text-[10px] md:text-xs text-bg/40 uppercase tracking-[0.2em] leading-loose max-w-2xl mx-auto">
+                        All published images are protected by copyright and belong to Grecia Portorreal. <br className="hidden md:block" />
+                        Reproduction, distribution, or use without written authorization is strictly prohibited.
                     </p>
                 </div>
 

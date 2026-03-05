@@ -4,33 +4,45 @@ export const RulesHero: React.FC = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
+        // Retraso ligero para el efecto de entrada sedoso
         const timer = setTimeout(() => setIsVisible(true), 100);
         return () => clearTimeout(timer);
     }, []);
 
     return (
-        <section className="relative w-full h-[40dvh] md:h-[50dvh] flex items-center justify-center bg-ink overflow-hidden pt-20">
-            
-            {/* Fondo oscuro con imagen sutil que se difumina hacia el color 'bg' (claro) */}
-            <div className="absolute inset-0 z-0">
+        <section className="relative w-full min-h-[50dvh] md:min-h-[60dvh] flex items-end justify-center bg-bg pt-32 md:pt-40 pb-16 md:pb-24 overflow-hidden transition-colors duration-500">
+
+            {/* Fondo con textura hiper-sutil (casi imperceptible) para no dejar el color plano */}
+            <div className="absolute inset-0 z-0 opacity-10 dark:opacity-5 pointer-events-none">
                 <img
-                    src="/images/salon.png" 
-                    alt="Project Room Bern Ambiente"
-                    className="w-full h-full object-cover opacity-20 grayscale"
+                    src="/images/salon.png"
+                    alt="Project Room Bern Texture"
+                    className="w-full h-full object-cover grayscale blur-sm"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/90 to-bg z-10"></div>
+                <div className="absolute inset-0 bg-bg/80 backdrop-blur-3xl"></div>
             </div>
 
-            <div className="relative z-20 container-pr text-center flex flex-col items-center">
-                
-                <span className={`text-gold text-xs font-bold tracking-[0.4em] uppercase mb-4 block transition-all duration-[1000ms] ease-luxury ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                    Documento Oficial
-                </span>
+            {/* Contenedor Principal: Layout dividido (Split Layout) para mayor elegancia */}
+            <div className="container mx-auto px-6 md:px-12 relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-end border-b border-ink/10 pb-12">
 
-                <h1 className={`font-serif text-4xl md:text-5xl lg:text-6xl text-ink font-black tracking-tight mb-6 transition-all duration-[1200ms] delay-300 ease-luxury ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                    Reglamento y <br className="hidden md:block" />
-                    <span className="italic font-light text-gold">Normas del Espacio.</span>
-                </h1>
+                {/* Columna Izquierda: Títulos Monumentales */}
+                <div className="lg:col-span-8 flex flex-col text-center lg:text-left">
+                    <span className={`text-gold text-xs font-bold tracking-[0.4em] uppercase mb-6 block transition-all duration-[1000ms] ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+                        Official Guidelines
+                    </span>
+
+                    <h1 className={`font-serif text-[clamp(3.5rem,7vw,6.5rem)] text-ink font-extrabold tracking-tight leading-[0.95] transition-all duration-[1200ms] delay-300 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+                        Rules & <br className="hidden md:block" />
+                        <span className="italic font-light opacity-90">Regulations.</span>
+                    </h1>
+                </div>
+
+                {/* Columna Derecha: Párrafo de justificación */}
+                <div className="lg:col-span-4 flex flex-col justify-end text-center lg:text-left">
+                    <p className={`font-sans text-ink/70 text-sm md:text-base leading-relaxed max-w-[40ch] mx-auto lg:mx-0 transition-all duration-[1200ms] delay-500 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+                        To ensure a harmonious and respectful environment that preserves both the artwork and the experience, we kindly ask all guests and organizers to adhere to the following policies.
+                    </p>
+                </div>
 
             </div>
         </section>

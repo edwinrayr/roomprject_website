@@ -6,9 +6,7 @@ export const RulesPage: React.FC = () => {
     return (
         <main className="w-full overflow-hidden">
             <RulesHero />
-            
             <RulesContent />
-            
         </main>
     );
 };

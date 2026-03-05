@@ -9,58 +9,56 @@ export const ArtistsHero: React.FC = () => {
     }, []);
 
     return (
-        <section className="relative w-full h-[90dvh] flex items-center justify-center bg-bg overflow-hidden">
-            
-            <div className="container-pr grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
-                {/* Columna de Texto: Enfoque en la Autora */}
-                <div className="lg:col-span-6 z-10">
-                    <div className="overflow-hidden mb-6">
+        <section className="relative w-full min-h-[100dvh] flex items-center justify-center bg-bg pt-24 md:pt-32 pb-16 overflow-hidden transition-colors duration-500">
+
+            <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+
+                {/* Text Column: Focus on the Author */}
+                <div className="lg:col-span-5 lg:col-start-2 z-20 order-2 lg:order-1 flex flex-col justify-center text-center lg:text-left mt-8 lg:mt-0">
+
+                    <div className="overflow-hidden mb-6 flex justify-center lg:justify-start">
                         <span className={`block text-gold text-xs font-bold tracking-[0.4em] uppercase transition-transform duration-[1000ms] ease-luxury ${isVisible ? 'translate-y-0' : 'translate-y-full'}`}>
                             The Eye Behind the Lens
                         </span>
                     </div>
 
-                    <h1 className="font-serif text-[clamp(3rem,7vw,5.5rem)] text-ink leading-[1.1] mb-8">
-                        Grecia <br />
-                        <span className={`italic font-light transition-all duration-[1200ms] delay-300 ease-luxury ${isVisible ? 'opacity-100' : 'opacity-0'}`}>Portorreal</span>
+                    <h1 className={`font-serif text-[clamp(3.5rem,8vw,6rem)] text-ink leading-[0.95] tracking-tight mb-8 transition-all duration-[1200ms] ease-luxury ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+                        Grecia <br className="hidden lg:block" />
+                        <span className="italic font-light">Portorreal</span>
                     </h1>
 
-                    <div className={`max-w-md transition-all duration-[1000ms] delay-500 ease-luxury ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                        <p className="font-sans text-muted text-base md:text-lg leading-relaxed mb-8">
-                            Fundadora y artista principal de Project Room Bern. Su obra captura la esencia de los momentos atemporales, transformando el espacio en un diálogo visual entre la luz y la forma.
+                    <div className={`transition-all duration-[1000ms] delay-300 ease-luxury ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                        <p className="font-sans text-ink/70 text-base md:text-lg leading-relaxed mb-8 max-w-[40ch] mx-auto lg:mx-0">
+                            Founder and principal artist of Project Room Bern. Her work captures the essence of timeless moments, transforming space into a visual dialogue between light and form.
                         </p>
-                        
-                        <div className="inline-block py-4 border-t border-gold/30">
-                            <p className="text-[10px] uppercase tracking-widest text-ink font-bold italic">
+
+                        <div className="inline-block py-4 border-t border-ink/20">
+                            <p className="text-[10px] uppercase tracking-widest text-ink/60 font-bold">
                                 All rights reserved — Featured Artist
                             </p>
                         </div>
                     </div>
                 </div>
 
-                {/* Columna de Imagen: Obra Original */}
-                <div className="lg:col-span-6 relative flex justify-center lg:justify-end">
-                    <div className={`relative w-full max-w-md aspect-[4/5] overflow-hidden transition-all duration-[1500ms] delay-200 ease-luxury ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-110'}`}>
-                        <img 
-                            src="/images/PinturaGrecia (7).jpg" 
-                            alt="Grecia Portorreal Artwork" 
-                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-luxury"
+                {/* Image Column: Original Artwork */}
+                <div className="lg:col-span-5 z-10 order-1 lg:order-2 relative flex justify-center lg:justify-end">
+
+                    <div className={`relative w-full max-w-[16rem] sm:max-w-sm md:max-w-md aspect-[4/5] overflow-hidden transition-all duration-[1500ms] delay-200 ease-luxury shadow-2xl ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-110'}`}>
+                        <img
+                            src="/images/PinturaGrecia (7).jpg"
+                            alt="Grecia Portorreal Artwork"
+                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-[1500ms] ease-luxury"
                         />
-                        {/* Overlay sutil */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-bg/20 to-transparent"></div>
+                        <div className="absolute inset-0 bg-ink/5 pointer-events-none"></div>
                     </div>
-                    
-                    {/* Firma o Detalle Decorativo */}
-                    <div className={`absolute -bottom-4 right-0 lg:-right-8 bg-ink text-bg px-8 py-4 transition-all duration-1000 delay-800 ease-luxury ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-                        <p className="font-serif italic text-lg opacity-90">G. Portorreal</p>
+
+                    <div className={`absolute -bottom-6 md:-bottom-10 right-4 lg:-right-8 bg-ink text-bg px-6 md:px-8 py-3 md:py-4 shadow-xl transition-all duration-1000 delay-700 ease-luxury ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                        <p className="font-serif italic text-lg md:text-xl opacity-90">G. Portorreal</p>
                     </div>
+
                 </div>
 
             </div>
-
         </section>
     );
 };
-
-export default ArtistsHero;
