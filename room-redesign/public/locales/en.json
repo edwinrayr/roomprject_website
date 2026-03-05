@@ -1,4 +1,40 @@
 {
+    "services_details": {
+        "uses": {
+            "eyebrow": "Perfect for",
+            "title": "A Canvas for Every Occasion.",
+            "items": {
+            "workshops": "Workshops & Gatherings",
+            "screenings": "Cinema & Screenings",
+            "celebrations": "Private Events"
+            }
+        },
+        "pricing": {
+            "cleaning_note": "Optional cleaning service: CHF 30.-",
+            "advanced_discount": "20% discount for bookings made +6 months in advance",
+            "standard": {
+            "title": "Hourly Rate",
+            "min_hours": "Minimum 2-hour booking"
+            },
+            "long_term": {
+            "title": "Long-Term Stay",
+            "min_days": "Special rate for 15+ days"
+            }
+        },
+        "policies": {
+            "title": "Cancellation Policies",
+            "short": {
+            "title": "Single-Day Bookings",
+            "full": "+30 days notice: Full refund",
+            "none": "-30 days notice: No refund"
+            },
+            "long": {
+            "title": "15+ Day Bookings",
+            "full": "+2 months notice: Full refund",
+            "partial": "-2 months notice: 50% refund"
+            }
+        }
+        },
     "exhibitions_x": {
         "hero_eyebrow": "Special Collection",
         "hero_description": "A deep dive into the strokes and textures that define our creative pulse. A visual journey through the unseen works of the collection.",

@@ -1,4 +1,40 @@
 {
+    "services_details": {
+        "uses": {
+            "eyebrow": "Ideal para",
+            "title": "Un lienzo para cada ocasión.",
+            "items": {
+            "workshops": "Talleres y Encuentros",
+            "screenings": "Cine y Proyecciones",
+            "celebrations": "Reuniones y Eventos"
+            }
+        },
+        "pricing": {
+            "cleaning_note": "Servicio de limpieza opcional: CHF 30.-",
+            "advanced_discount": "20% de descuento en reservas con +6 meses de anticipación",
+            "standard": {
+            "title": "Uso por Hora",
+            "min_hours": "Mínimo 2 horas de reserva"
+            },
+            "long_term": {
+            "title": "Larga Estancia",
+            "min_days": "Para reservas de 15 días o más"
+            }
+        },
+        "policies": {
+            "title": "Protocolos de Cancelación",
+            "short": {
+            "title": "Reservas de un día",
+            "full": "+30 días de anticipación: Reembolso total",
+            "none": "-30 días: Sin reembolso"
+            },
+            "long": {
+            "title": "Reservas +15 días",
+            "full": "+2 meses de anticipación: Reembolso total",
+            "partial": "-2 meses: Reembolso del 50%"
+            }
+        }
+        },
     "exhibitions_x": {
         "hero_eyebrow": "Colección Especial",
         "hero_description": "Una inmersión profunda en los trazos y texturas que definen nuestro pulso creativo. Un viaje visual a través de las obras inéditas de la colección.",

@@ -3,6 +3,7 @@ import { SEO } from '../components/SEO';
 import { ServicesHero } from '../sections/services/ServicesHero';
 import { ServicesGrid } from '../sections/services/ServicesGrid';
 import { EventCTA } from '../sections/services/EventCTA';
+import { ServicePackages } from '../sections/services/ServicePackages';
 
 export const ServicesPage: React.FC = () => {
     return (
@@ -17,6 +18,7 @@ export const ServicesPage: React.FC = () => {
 
             <ServicesHero />
             <ServicesGrid />
+            <ServicePackages />
             <EventCTA />
 
         </main>
