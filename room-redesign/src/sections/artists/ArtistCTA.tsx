@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Download } from 'lucide-react';
+import { useTranslation } from 'react-i18next'; // <-- Importamos useTranslation
 
 export const ArtistCTA: React.FC = () => {
+    const { t } = useTranslation(); // <-- Extraemos t
+    
     // Estado y Referencia para la animación de entrada al hacer scroll
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
@@ -39,16 +42,16 @@ export const ArtistCTA: React.FC = () => {
                     {/* Mitad Izquierda: Contenido y Botones */}
                     <div className="flex flex-col justify-center p-10 md:p-16 lg:p-24 z-20">
                         <span className={`text-gold text-xs font-bold tracking-[0.3em] uppercase mb-4 block transition-all duration-1000 delay-300 ease-luxury transform ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}>
-                            Private Viewing
+                            {t('artist_cta.subtitle', 'Private Viewing')}
                         </span>
 
                         <h2 className={`font-serif text-[clamp(2.5rem,5vw,4.5rem)] text-ink leading-[1] font-extrabold mb-6 tracking-tight transition-all duration-1000 delay-500 ease-luxury transform ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}>
-                            Step into the <br />
-                            <span className="italic font-light">Studio.</span>
+                            {t('artist_cta.title_1', 'Step into the')} <br />
+                            <span className="italic font-light">{t('artist_cta.title_2', 'Studio.')}</span>
                         </h2>
 
                         <p className={`font-sans text-ink/70 text-sm md:text-base leading-relaxed mb-10 max-w-[40ch] transition-all duration-1000 delay-700 ease-luxury transform ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}>
-                            Experience the creative process firsthand. Schedule a private viewing at Grecia Portorreal's studio in Biel, Switzerland, or request the exclusive portfolio of available works.
+                            {t('artist_cta.description', "Experience the creative process firsthand. Schedule a private viewing at Grecia Portorreal's studio in Biel, Switzerland, or request the exclusive portfolio of available works.")}
                         </p>
 
                         {/* Botones de Acción (Duales) */}
@@ -56,10 +59,10 @@ export const ArtistCTA: React.FC = () => {
 
                             {/* Botón Principal: Agendar Visita */}
                             <a
-                                href="#contact"
+                                href="/reserve"
                                 className="group flex items-center gap-3 bg-ink text-bg px-8 py-3.5 rounded-full font-bold text-xs tracking-widest uppercase hover:bg-gold hover:text-white transition-all duration-300"
                             >
-                                Book a Visit
+                                {t('artist_cta.book_btn', 'Book a Visit')}
                                 <ArrowRight size={16} strokeWidth={2} className="group-hover:translate-x-1 transition-transform" />
                             </a>
 
@@ -68,7 +71,7 @@ export const ArtistCTA: React.FC = () => {
                                 href="#portfolio"
                                 className="group flex items-center gap-3 border border-ink/20 text-ink px-8 py-3.5 rounded-full font-bold text-xs tracking-widest uppercase hover:border-gold hover:text-gold transition-all duration-300"
                             >
-                                Request Portfolio
+                                {t('artist_cta.portfolio_btn', 'Request Portfolio')}
                                 <Download size={16} strokeWidth={2} className="group-hover:-translate-y-0.5 transition-transform" />
                             </a>
 

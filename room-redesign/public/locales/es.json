@@ -1,4 +1,32 @@
 {
+    "artist_hero": {
+        "eyebrow": "El Ojo Detrás del Lente",
+        "first_name": "Grecia",
+        "last_name": "Portorreal",
+        "description": "Fundadora y artista principal de Project Room Bern. Su obra captura la esencia de momentos atemporales, transformando el espacio en un diálogo visual entre la luz y la forma.",
+        "rights": "Todos los derechos reservados — Artista Destacada"
+    },
+    "artist": {
+        "subtitle": "Artista y Fundadora",
+        "name_1": "Grecia",
+        "name_2": "Portorreal",
+        "motto": "Donde cada evento se convierte en arte",
+        "bio_lead": "es originaria de la República Dominicana. Nacida en Santo Domingo, estudió artes publicitarias en la Universidad Autónoma de Santo Domingo y bellas artes e ilustración en la prestigiosa Escuela de Diseño Altos de Chavón.",
+        "bio_p1": "Afiliada a la Parsons School of Design en Nueva York, se graduó Cum Laude. Simultáneamente, dedicó 5 años al estudio de las bellas artes en la Escuela Nacional de Artes Visuales de Santo Domingo.",
+        "bio_p2": "Impulsada por un profundo aprecio por la historia y la técnica, más tarde se trasladó a España e Italia, donde se especializó en la conservación y restauración del patrimonio cultural.",
+        "bio_p3": "Su obra ha sido exhibida internacionalmente en la República Dominicana, Nueva York, España, Italia y Suiza.",
+        "current_location": "Actualmente reside en Biel, Suiza.",
+        "copyright_1": "Todas las imágenes publicadas están protegidas por derechos de autor y pertenecen a Grecia Portorreal.",
+        "copyright_2": "La reproducción, distribución o uso sin autorización por escrito está estrictamente prohibido."
+    },
+    "artist_cta": {
+        "subtitle": "Visita Privada",
+        "title_1": "Entra al",
+        "title_2": "Estudio.",
+        "description": "Experimenta el proceso creativo de primera mano. Agenda una visita privada al estudio de Grecia Portorreal en Biel, Suiza, o solicita el portafolio exclusivo de obras disponibles.",
+        "book_btn": "Agendar Visita",
+        "portfolio_btn": "Solicitar Portafolio"
+    },
     "who_we_are": {
         "subtitle": "Quiénes Somos",
         "title_1": "Un espacio de",

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const ArtistsHero: React.FC = () => {
+    const { t } = useTranslation();
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -18,23 +20,23 @@ export const ArtistsHero: React.FC = () => {
 
                     <div className="overflow-hidden mb-6 flex justify-center lg:justify-start">
                         <span className={`block text-gold text-xs font-bold tracking-[0.4em] uppercase transition-transform duration-[1000ms] ease-luxury ${isVisible ? 'translate-y-0' : 'translate-y-full'}`}>
-                            The Eye Behind the Lens
+                            {t('artist_hero.eyebrow', 'The Eye Behind the Lens')}
                         </span>
                     </div>
 
                     <h1 className={`font-serif text-[clamp(3.5rem,8vw,6rem)] text-ink leading-[0.95] tracking-tight mb-8 transition-all duration-[1200ms] ease-luxury ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-                        Grecia <br className="hidden lg:block" />
-                        <span className="italic font-light">Portorreal</span>
+                        {t('artist_hero.first_name', 'Grecia')} <br className="hidden lg:block" />
+                        <span className="italic font-light">{t('artist_hero.last_name', 'Portorreal')}</span>
                     </h1>
 
                     <div className={`transition-all duration-[1000ms] delay-300 ease-luxury ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                         <p className="font-sans text-ink/70 text-base md:text-lg leading-relaxed mb-8 max-w-[40ch] mx-auto lg:mx-0">
-                            Founder and principal artist of Project Room Bern. Her work captures the essence of timeless moments, transforming space into a visual dialogue between light and form.
+                            {t('artist_hero.description', 'Founder and principal artist of Project Room Bern. Her work captures the essence of timeless moments, transforming space into a visual dialogue between light and form.')}
                         </p>
 
                         <div className="inline-block py-4 border-t border-ink/20">
                             <p className="text-[10px] uppercase tracking-widest text-ink/60 font-bold">
-                                All rights reserved — Featured Artist
+                                {t('artist_hero.rights', 'All rights reserved — Featured Artist')}
                             </p>
                         </div>
                     </div>

@@ -1,4 +1,32 @@
 {
+    "artist_hero": {
+        "eyebrow": "The Eye Behind the Lens",
+        "first_name": "Grecia",
+        "last_name": "Portorreal",
+        "description": "Founder and principal artist of Project Room Bern. Her work captures the essence of timeless moments, transforming space into a visual dialogue between light and form.",
+        "rights": "All rights reserved — Featured Artist"
+    },
+    "artist": {
+        "subtitle": "Artist & Founder",
+        "name_1": "Grecia",
+        "name_2": "Portorreal",
+        "motto": "Where Every Event Becomes Art",
+        "bio_lead": "is originally from the Dominican Republic. Born in Santo Domingo, she studied advertising arts at the Universidad Autónoma de Santo Domingo and fine arts and illustration at the prestigious Altos de Chavón School of Design.",
+        "bio_p1": "Affiliated with the Parsons School of Design in New York, she graduated Cum Laude. Simultaneously, she dedicated 5 years to studying fine arts at the National School of Visual Arts in Santo Domingo.",
+        "bio_p2": "Driven by a deep appreciation for history and technique, she later relocated to Spain and Italy, where she specialized in the conservation and restoration of cultural heritage.",
+        "bio_p3": "Her work has been exhibited internationally across the Dominican Republic, New York, Spain, Italy, and Switzerland.",
+        "current_location": "Currently based in Biel, Switzerland.",
+        "copyright_1": "All published images are protected by copyright and belong to Grecia Portorreal.",
+        "copyright_2": "Reproduction, distribution, or use without written authorization is strictly prohibited."
+    },
+    "artist_cta": {
+        "subtitle": "Private Viewing",
+        "title_1": "Step into the",
+        "title_2": "Studio.",
+        "description": "Experience the creative process firsthand. Schedule a private viewing at Grecia Portorreal's studio in Biel, Switzerland, or request the exclusive portfolio of available works.",
+        "book_btn": "Book a Visit",
+        "portfolio_btn": "Request Portfolio"
+    },
     "who_we_are": {
         "subtitle": "Who We Are",
         "title_1": "A space for",
