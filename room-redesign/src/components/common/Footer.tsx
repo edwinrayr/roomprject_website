@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Twitter, Mail, ArrowRight, ArrowUp } from 'lucide-react';
+import { Instagram, Facebook, Linkedin, Mail, ArrowRight, ArrowUp } from 'lucide-react'; // <-- Cambié Twitter por Linkedin
 
 export const Footer: React.FC = () => {
     const currentYear = new Date().getFullYear();
@@ -49,6 +49,13 @@ export const Footer: React.FC = () => {
         { name: 'Rules & Guidelines', path: '/rules' } // Vinculado a tu página de reglas
     ];
 
+    // Redes Sociales Limpias
+    const socialLinks = [
+        { Icon: Instagram, url: 'https://www.instagram.com/greciaportorreal/' },
+        { Icon: Facebook, url: 'https://www.facebook.com/greciaportorreal12/' },
+        { Icon: Linkedin, url: 'https://ch.linkedin.com/in/grecia-portorreal-6a42b72b4' }
+    ];
+
     return (
         <footer
             ref={footerRef}
@@ -69,7 +76,7 @@ export const Footer: React.FC = () => {
                     {/* Columna 1: Marca y Contacto */}
                     <div className={`flex flex-col items-start transition-all duration-1000 delay-200 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
                         <img
-                            src="/projectroombern-logo.png" // Asegúrate de que exista
+                            src="/projectroombern-logo.png"
                             alt="Project Room Bern Logo"
                             className="h-8 md:h-10 w-auto object-contain mb-8 dark:invert-0 invert"
                         />
@@ -82,7 +89,7 @@ export const Footer: React.FC = () => {
                         </a>
                     </div>
 
-                    {/* Columna 2: Navegación Rápida (React Router Links) */}
+                    {/* Columna 2: Navegación Rápida */}
                     <div className={`flex flex-col transition-all duration-1000 delay-300 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
                         <h4 className="font-serif text-lg md:text-xl font-bold mb-8 text-gold">Explore</h4>
                         <nav className="flex flex-col gap-5">
@@ -123,7 +130,6 @@ export const Footer: React.FC = () => {
                             Subscribe to receive exclusive invitations to upcoming exhibitions and private events.
                         </p>
 
-                        {/* Input de Newsletter Refinado */}
                         <form className="relative flex items-center mb-10 border-b border-ink/20 focus-within:border-gold transition-colors pb-1">
                             <input
                                 type="email"
@@ -135,11 +141,14 @@ export const Footer: React.FC = () => {
                             </button>
                         </form>
 
+                        {/* Redes Sociales Limpias */}
                         <div className="flex items-center gap-4">
-                            {[Instagram, Facebook, Twitter].map((Icon, idx) => (
+                            {socialLinks.map(({ Icon, url }, idx) => (
                                 <a
                                     key={idx}
-                                    href="#"
+                                    href={url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="w-10 h-10 rounded-full border border-ink/20 flex items-center justify-center text-ink hover:bg-gold hover:text-white hover:-translate-y-1 hover:border-gold transition-all duration-500 ease-luxury"
                                     aria-label="Social Media Link"
                                 >
