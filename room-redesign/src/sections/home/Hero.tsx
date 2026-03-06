@@ -20,7 +20,7 @@ export const Hero: React.FC = () => {
             {/* Imagen de Fondo con Zoom Suave */}
             <div className="absolute inset-0 z-0 bg-ink">
                 <img
-                    src="/images/imagensalon1.webp"
+                    src="/images/IMG_2412.webp"
                     alt="Project Room Gallery Space"
                     className="w-full h-full object-cover object-center scale-105 transition-transform duration-[10s] ease-luxury hover:scale-100"
                 />
