@@ -29,19 +29,46 @@ export const Footer: React.FC = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
+    // 👇 LA MAGIA DE SEDA ESTÁ AQUÍ 👇
     const toggleLanguage = () => {
         const currentLang = i18n.language || 'en';
         const newLang = currentLang.startsWith('es') ? 'en' : 'es';
-        i18n.changeLanguage(newLang);
+        
+        // Seleccionamos el contenedor principal de React
+        const rootElement = document.getElementById('root');
+        
+        if (rootElement) {
+            // 1. Iniciamos el desvanecimiento y desenfoque suave
+            rootElement.style.transition = 'opacity 0.6s cubic-bezier(0.33, 1, 0.68, 1), filter 0.6s cubic-bezier(0.33, 1, 0.68, 1)';
+            rootElement.style.opacity = '0';
+            rootElement.style.filter = 'blur(4px)'; // Sutil efecto de niebla
+
+            setTimeout(() => {
+                // 2. Cambiamos el idioma mientras la pantalla está invisible
+                i18n.changeLanguage(newLang);
+
+                // 3. Volvemos a traer el contenido a la luz
+                rootElement.style.opacity = '1';
+                rootElement.style.filter = 'blur(0px)';
+                
+                // 4. Limpiamos los estilos para no afectar otros componentes
+                setTimeout(() => {
+                    rootElement.style.transition = '';
+                    rootElement.style.filter = '';
+                }, 600);
+            }, 600); // Sincronizado con los 0.6s de la transición inicial
+        } else {
+            // Fallback por si acaso
+            i18n.changeLanguage(newLang);
+        }
     };
 
     const isSpanish = i18n.language?.startsWith('es');
 
-    // Navegación con Exhibitions incluido y traducible
     const exploreLinks = [
         { name: t('footer.links.home', 'Home'), path: '/' },
         { name: t('footer.links.about', 'About'), path: '/about' },
-        { name: t('footer.links.exhibitions', 'Exhibitions'), path: '/exhibitions' }, // <-- Botón añadido con t()
+        { name: t('footer.links.exhibitions', 'Exhibitions'), path: '/exhibitions' },
         { name: t('footer.links.services', 'Services'), path: '/services' },
         { name: t('footer.links.artists', 'Artists'), path: '/artists' },
         { name: t('footer.links.contact', 'Contact'), path: '/contact' }
@@ -66,14 +93,14 @@ export const Footer: React.FC = () => {
         >
             <div className="container mx-auto px-6 md:px-12">
 
-                {/* 1. MARCA MONUMENTAL */}
+                {/* MARCA MONUMENTAL */}
                 <div className={`mb-16 md:mb-28 flex justify-center transition-all duration-[1800ms] ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'}`}>
                     <h2 className="font-serif text-[clamp(2.4rem,11vw,11rem)] leading-[0.8] font-extrabold tracking-tighter text-ink text-center opacity-90">
                         PROJECT ROOM.
                     </h2>
                 </div>
 
-                {/* 2. CUADRÍCULA CENTRAL */}
+                {/* CUADRÍCULA CENTRAL */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8 mb-20">
 
                     {/* Branding */}
@@ -133,7 +160,7 @@ export const Footer: React.FC = () => {
                     </div>
                 </div>
 
-                {/* 3. BARRA INFERIOR */}
+                {/* BARRA INFERIOR */}
                 <div className={`flex flex-col md:flex-row items-center justify-between pt-10 lg:border-t border-t-0 border-ink/5 gap-8 transition-all duration-1000 delay-[1000ms] ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'}`}>
                     
                     <p className="text-[9px] opacity-40 font-bold tracking-[0.3em] uppercase order-3 md:order-1">

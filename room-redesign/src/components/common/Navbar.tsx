@@ -57,11 +57,38 @@ export const Navbar: React.FC = () => {
         }, 150);
     };
 
-    // 👇 NUEVA FUNCIÓN: Alternar entre Inglés y Español 👇
+    // 👇 FUNCIÓN DE TRANSICIÓN "SEDA" GLOBAL 👇
     const toggleLanguage = () => {
         const currentLang = i18n.language || 'en';
         const newLang = currentLang.startsWith('es') ? 'en' : 'es';
-        i18n.changeLanguage(newLang);
+        
+        // Seleccionamos el root para la transición cinematográfica
+        const rootElement = document.getElementById('root');
+        
+        if (rootElement) {
+            // 1. Inicia el desvanecimiento y desenfoque
+            rootElement.style.transition = 'opacity 0.6s cubic-bezier(0.33, 1, 0.68, 1), filter 0.6s cubic-bezier(0.33, 1, 0.68, 1)';
+            rootElement.style.opacity = '0';
+            rootElement.style.filter = 'blur(4px)';
+
+            setTimeout(() => {
+                // 2. Cambia el idioma en "la oscuridad"
+                i18n.changeLanguage(newLang);
+
+                // 3. Vuelve a iluminar y enfocar
+                rootElement.style.opacity = '1';
+                rootElement.style.filter = 'blur(0px)';
+                
+                // 4. Limpia los estilos para evitar conflictos futuros
+                setTimeout(() => {
+                    rootElement.style.transition = '';
+                    rootElement.style.filter = '';
+                }, 600);
+            }, 600);
+        } else {
+            // Fallback seguro si no encuentra el root
+            i18n.changeLanguage(newLang);
+        }
     };
 
     const navLinks = [
@@ -124,7 +151,7 @@ export const Navbar: React.FC = () => {
 
                     <div className="flex items-center justify-end gap-3 md:gap-5">
                         
-                        {/* 👇 UN SOLO BOTÓN DE BANDERA EN COMPUTADORA 👇 */}
+                        {/* BOTÓN DE BANDERA EN COMPUTADORA */}
                         <div className="hidden md:flex items-center mr-2">
                             <button 
                                 onClick={toggleLanguage} 
@@ -181,7 +208,7 @@ export const Navbar: React.FC = () => {
                     <div className="w-full h-px bg-bg/10 mb-6"></div>
                     <div className="flex justify-between items-center">
                         
-                        {/* 👇 UN SOLO BOTÓN DE BANDERA EN MÓVIL 👇 */}
+                        {/* BOTÓN DE BANDERA EN MÓVIL */}
                         <div className="flex items-center">
                             <button 
                                 onClick={() => { toggleLanguage(); setIsMenuOpen(false); }} 
