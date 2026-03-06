@@ -1,38 +1,48 @@
 import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next'; // <-- Importamos useTranslation
+import { useTranslation } from 'react-i18next';
 
 export const ContactHero: React.FC = () => {
-    const { t } = useTranslation(); // <-- Extraemos t
+    const { t } = useTranslation();
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        // Ligero retraso para activar la animación de entrada suavemente
         const timer = setTimeout(() => setIsVisible(true), 100);
         return () => clearTimeout(timer);
     }, []);
 
     return (
-        <section className="relative w-full min-h-[50dvh] md:min-h-[65dvh] flex items-end justify-center bg-bg pt-32 md:pt-40 pb-16 md:pb-24 overflow-hidden transition-colors duration-500">
+        <section className="relative w-full min-h-[65dvh] md:min-h-[75dvh] flex items-center justify-center bg-bg pt-32 md:pt-40 pb-12 md:pb-20 overflow-hidden transition-all duration-700">
 
-            {/* Detalle Arquitectónico: Líneas de cuadrícula sutiles en el fondo */}
-            <div className="absolute inset-0 pointer-events-none flex justify-center z-0">
-                <div className="w-full max-w-7xl h-full border-x border-ink/[0.03] dark:border-ink/[0.08]"></div>
-                <div className="absolute left-1/2 -translate-x-1/2 w-px h-full bg-ink/[0.03] dark:bg-ink/[0.08]"></div>
-            </div>
+            {/* Resplandor sutil de fondo */}
+            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[45rem] h-[45rem] bg-gold/5 rounded-full blur-[120px] pointer-events-none transition-opacity duration-[2000ms] ${isVisible ? 'opacity-100' : 'opacity-0'}`}></div>
 
             <div className="relative z-20 container mx-auto px-6 md:px-12 text-center flex flex-col items-center">
 
-                <span className={`text-gold text-xs font-bold tracking-[0.4em] uppercase mb-6 block transition-all duration-[1000ms] ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                    {t('contact_hero.eyebrow', 'Get in Touch')}
-                </span>
+                {/* 1. Eyebrow */}
+                <div className="overflow-hidden mb-6">
+                    <span className={`block text-gold text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase transition-transform duration-[1200ms] ease-out ${isVisible ? 'translate-y-0' : 'translate-y-full'}`}>
+                        {t('contact_hero.eyebrow', 'Get in Touch')}
+                    </span>
+                </div>
 
-                <h1 className={`font-serif text-[clamp(3.8rem,9vw,8.5rem)] text-ink font-black tracking-tighter leading-[0.9] mb-12 transition-all duration-[1200ms] delay-300 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+                {/* 2. Título Monumental */}
+                <h1 className={`font-serif text-[clamp(2.8rem,9vw,7.5rem)] text-ink font-black tracking-tighter leading-[0.95] mb-16 transition-all duration-[1500ms] delay-200 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'}`}>
                     {t('contact_hero.title_1', "Let's discuss")} <br />
-                    <span className="italic font-light opacity-90">{t('contact_hero.title_2', "your vision.")}</span>
+                    <span className="italic font-light text-gold/80">{t('contact_hero.title_2', "your vision.")}</span>
                 </h1>
 
-                {/* Línea decorativa dinámica que invita a hacer scroll hacia la información */}
-                <div className={`w-px h-16 md:h-24 bg-gradient-to-b from-ink/30 to-transparent transition-all duration-[1500ms] delay-700 ease-luxury origin-top transform ${isVisible ? 'scale-y-100' : 'scale-y-0'}`}></div>
+                {/* 3. IMAGEN (PANORÁMICA): Optimizada a lo ancho */}
+                <div className={`w-full max-w-xl md:max-w-3xl transition-all duration-[1800ms] delay-400 ease-out transform ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-4 opacity-0 scale-[1.01]'}`}>
+                    {/* Cambiado de aspect-[4/5] a aspect-[16/9] para mayor anchura */}
+                    <div className="relative w-full aspect-[16/9] overflow-hidden rounded-sm shadow-2xl">
+                        <img
+                            src="/images/acercahome.webp"
+                            alt={t('contact_hero.image_alt', 'Grecia Portorreal - Project Room Bern')}
+                            className="w-full h-full object-cover filter grayscale transition-all duration-[3s] hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-ink/5 pointer-events-none"></div>
+                    </div>
+                </div>
 
             </div>
         </section>
