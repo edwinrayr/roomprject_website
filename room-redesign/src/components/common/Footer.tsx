@@ -176,7 +176,8 @@ export const Footer: React.FC = () => {
 
                     <div className="flex items-center order-2 md:order-3">
                         <button onClick={toggleLanguage} className="transition-all duration-300 hover:scale-110 opacity-70 hover:opacity-100 flex items-center gap-2">
-                            <img src={isSpanish ? "https://flagcdn.com/w40/mx.png" : "https://flagcdn.com/w40/us.png"} alt="Flag" className="w-5 h-auto rounded-[1px] grayscale-[0.5] hover:grayscale-0 transition-all" />
+                            {/* 👇 AQUÍ ESTÁ EL CAMBIO A es.png 👇 */}
+                            <img src={isSpanish ? "https://flagcdn.com/w40/es.png" : "https://flagcdn.com/w40/us.png"} alt="Flag" className="w-5 h-auto rounded-[1px] grayscale-[0.5] hover:grayscale-0 transition-all" />
                         </button>
                     </div>
                 </div>

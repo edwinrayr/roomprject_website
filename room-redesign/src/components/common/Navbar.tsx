@@ -159,7 +159,7 @@ export const Navbar: React.FC = () => {
                                 aria-label="Cambiar idioma"
                             >
                                 <img 
-                                    src={isSpanish ? "https://flagcdn.com/w40/mx.png" : "https://flagcdn.com/w40/us.png"} 
+                                    src={isSpanish ? "https://flagcdn.com/w40/es.png" : "https://flagcdn.com/w40/us.png"} 
                                     alt={isSpanish ? "Español" : "English"} 
                                     className="w-5 md:w-6 h-auto rounded-[2px] shadow-sm" 
                                 />
@@ -216,7 +216,7 @@ export const Navbar: React.FC = () => {
                                 aria-label="Cambiar idioma"
                             >
                                 <img 
-                                    src={isSpanish ? "https://flagcdn.com/w40/mx.png" : "https://flagcdn.com/w40/us.png"} 
+                                    src={isSpanish ? "https://flagcdn.com/w40/es.png" : "https://flagcdn.com/w40/us.png"} 
                                     alt={isSpanish ? "Español" : "English"} 
                                     className="w-7 md:w-8 h-auto rounded-[2px] shadow-sm" 
                                 />

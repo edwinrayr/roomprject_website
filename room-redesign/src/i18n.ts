@@ -8,13 +8,21 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: 'en',
+    fallbackLng: 'en', // Idioma por defecto si no hay nada guardado
     debug: true, 
+    
+    // 👇 LA SOLUCIÓN: Configuramos el detector 👇
+    detection: {
+      // Quitamos 'navigator' (el navegador) de la lista. 
+      // Solo leerá si el usuario ya cambió el idioma antes y se guardó.
+      order: ['localStorage', 'cookie'],
+      caches: ['localStorage', 'cookie'],
+    },
+
     interpolation: {
       escapeValue: false,
     },
     backend: {
-      // RUTA CORREGIDA PARA TU ESTRUCTURA
       loadPath: '/locales/{{lng}}.json',
     },
     react: {
