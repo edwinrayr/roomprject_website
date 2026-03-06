@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { ArrowRight } from 'lucide-react';
-import { useTranslation } from 'react-i18next'; // <-- Importamos useTranslation
+import { ArrowRight, ChevronDown } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export const Artists: React.FC = () => {
-    const { t } = useTranslation(); // <-- Extraemos t
+    const { t } = useTranslation();
 
-    // Movemos los datos adentro para usar t() y useMemo para optimizar
     const artistsData = useMemo(() => [
         {
             id: '01',
@@ -27,13 +26,8 @@ export const Artists: React.FC = () => {
         },
     ], [t]);
 
-    const [activeArtist, setActiveArtist] = useState(artistsData[0]);
-
-    // Actualizamos el artista activo si cambia el idioma para mantener la consistencia
-    useEffect(() => {
-        setActiveArtist(prev => artistsData.find(a => a.id === prev.id) || artistsData[0]);
-    }, [artistsData]);
-
+    // Predeterminado el primer artista (01)
+    const [activeArtistId, setActiveArtistId] = useState<string | null>(artistsData[0].id);
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
 
@@ -42,99 +36,120 @@ export const Artists: React.FC = () => {
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setIsVisible(true);
-                    if (sectionRef.current) observer.unobserve(sectionRef.current);
+                    observer.unobserve(entry.target);
                 }
             },
-            { threshold: 0.15 }
+            { threshold: 0.1 }
         );
-
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
-        return () => {
-            if (sectionRef.current) observer.unobserve(sectionRef.current);
-        };
+        if (sectionRef.current) observer.observe(sectionRef.current);
+        return () => observer.disconnect();
     }, []);
+
+    // Lógica para Escritorio (Hover)
+    const handleMouseEnter = (id: string) => {
+        if (window.innerWidth >= 1024) setActiveArtistId(id);
+    };
+
+    // Lógica para Móvil (Click / Toggle)
+    const handleArtistClick = (id: string) => {
+        if (window.innerWidth < 1024) {
+            setActiveArtistId(activeArtistId === id ? null : id);
+        }
+    };
 
     return (
         <section
             id="artists"
             ref={sectionRef}
-            className="w-full bg-bg text-ink py-24 md:py-32 lg:py-40 transition-colors duration-500 border-b border-ink/10 overflow-hidden"
+            /* OPTIMIZACIÓN DE ESPACIOS: py-10 en móvil, py-16 md:py-20 en desktop */
+            className="w-full bg-bg text-ink py-10 md:py-16 lg:py-20 border-b border-ink/5 overflow-hidden transition-all duration-700"
         >
-            <div className="container mx-auto px-6 md:px-12">
+            <div className={`container mx-auto px-6 md:px-12 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
 
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 lg:mb-24 gap-8">
-                    <div className={`transition-all duration-1000 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
-                        <span className="text-xs font-bold tracking-[0.18em] uppercase opacity-70 block mb-3 text-gold">
+                {/* Cabecera Compacta y Centrada en móvil */}
+                <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-8 md:mb-12 lg:mb-16 gap-6 text-center md:text-left">
+                    <div className="max-w-2xl">
+                        <span className="text-[10px] font-bold tracking-[0.4em] uppercase opacity-60 block mb-2 text-gold">
                             {t('home_artists.eyebrow', 'The Roster')}
                         </span>
-                        <h2 className="font-serif text-[clamp(2.5rem,5vw,4.5rem)] leading-[1] font-extrabold tracking-tight">
-                            {t('home_artists.title_1', 'Selected')} <br className="hidden md:block" /> {t('home_artists.title_2', 'Artists.')}
+                        <h2 className="font-serif text-[clamp(2rem,5vw,3.5rem)] leading-none font-extrabold tracking-tighter">
+                            {t('home_artists.title_1', 'Selected')} <br className="hidden md:block" /> 
+                            <span className="italic font-light">{t('home_artists.title_2', 'Artists.')}</span>
                         </h2>
                     </div>
 
-                    <div className={`transition-all duration-1000 delay-300 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
-                        <a href="/artists" className="btn-pr shrink-0">
+                    <div className="shrink-0 md:mb-1">
+                        <a href="/artists" className="group relative inline-flex items-center gap-3 font-bold text-[9px] tracking-[0.3em] uppercase py-2.5 px-6 border border-ink/10 rounded-full hover:bg-ink hover:text-bg transition-all duration-500">
                             {t('home_artists.cta', 'View Directory')}
                         </a>
                     </div>
                 </div>
 
-                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 relative">
-
+                <div className="flex flex-col lg:flex-row gap-0 lg:gap-20 items-stretch">
+                    
+                    {/* LISTA DE ARTISTAS: Nombres más grandes y paddings compactos */}
                     <div className="w-full lg:w-1/2 flex flex-col justify-center">
-                        {artistsData.map((artist, index) => (
-                            <div
-                                key={artist.id}
-                                onMouseEnter={() => setActiveArtist(artist)}
-                                className={`group cursor-pointer py-8 md:py-10 border-b border-ink/20 transition-all duration-[800ms] flex items-center justify-between transform ease-out ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-12 opacity-0'
-                                    } ${activeArtist.id === artist.id ? 'opacity-100' : 'opacity-40 hover:opacity-70'
-                                    }`}
-                                style={{ transitionDelay: isVisible ? `${400 + (index * 150)}ms` : '0ms' }}
-                            >
-                                <div className="flex items-center gap-6 md:gap-8">
-                                    <div className={`transition-all duration-500 overflow-hidden flex items-center justify-center ${activeArtist.id === artist.id ? 'w-6 opacity-100' : 'w-0 opacity-0'}`}>
-                                        <ArrowRight className="text-gold shrink-0" size={24} strokeWidth={1.5} />
-                                    </div>
+                        {artistsData.map((artist, index) => {
+                            const isActive = activeArtistId === artist.id;
+                            
+                            return (
+                                <div key={artist.id} className="w-full border-b border-ink/5">
+                                    <button
+                                        onMouseEnter={() => handleMouseEnter(artist.id)}
+                                        onClick={() => handleArtistClick(artist.id)}
+                                        className={`w-full py-6 md:py-8 lg:py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left transition-all duration-500 group
+                                        ${isActive ? 'opacity-100' : 'opacity-30 lg:opacity-40 hover:opacity-100'}`}
+                                    >
+                                        <div className="flex flex-col md:flex-row items-center gap-2 md:gap-8 lg:gap-12">
+                                            <span className="text-[9px] font-mono tracking-widest text-gold">{artist.id}</span>
+                                            {/* OPTIMIZACIÓN: Nombres más grandes en Desktop (lg:text-7xl) */}
+                                            <h3 className={`font-serif text-3xl md:text-5xl lg:text-7xl font-light tracking-tight transition-all duration-700 ${isActive ? 'lg:translate-x-4 text-gold' : ''}`}>
+                                                {artist.name}
+                                            </h3>
+                                        </div>
+                                        
+                                        <div className="flex items-center gap-4">
+                                            <span className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] font-medium opacity-50">
+                                                {artist.category}
+                                            </span>
+                                            <ChevronDown className={`lg:hidden text-gold transition-transform duration-500 ${isActive ? 'rotate-180' : 'rotate-0'}`} size={14} />
+                                        </div>
+                                    </button>
 
-                                    <div>
-                                        <span className="text-sm font-bold tracking-widest text-gold mb-2 block">
-                                            {artist.id}
-                                        </span>
-                                        <h3 className={`font-serif text-3xl md:text-5xl font-light transition-all duration-500 ease-out ${activeArtist.id === artist.id ? 'translate-x-0' : '-translate-x-4 group-hover:-translate-x-2'}`}>
-                                            {artist.name}
-                                        </h3>
+                                    {/* MÓVIL: Imagen Acordeón (Verticalidad corregida) */}
+                                    <div className={`lg:hidden overflow-hidden transition-all duration-700 ease-luxury ${isActive ? 'max-h-[800px] opacity-100 pb-8' : 'max-h-0 opacity-0'}`}>
+                                        <div className="relative w-full max-w-[400px] mx-auto aspect-[3/4] overflow-hidden rounded-sm shadow-xl">
+                                            <img src={artist.img} alt={artist.name} className="w-full h-full object-cover" />
+                                        </div>
                                     </div>
                                 </div>
-                                <span className="text-xs md:text-sm uppercase tracking-wider opacity-60 text-right max-w-[120px] md:max-w-none">
-                                    {artist.category}
-                                </span>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
 
-                    <div
-                        className={`w-full lg:w-1/2 h-[50vh] lg:h-[70vh] relative overflow-hidden bg-ink/5 transition-all duration-1000 delay-500 ease-[cubic-bezier(0.16,1,0.3,1)] transform ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-24 opacity-0 scale-95'
-                            }`}
-                    >
+                    {/* ESCRITORIO: Visual Showcase a la derecha (Verticalidad corregida) */}
+                    <div className="hidden lg:block lg:w-1/2 relative overflow-hidden bg-ink/5 rounded-sm shadow-2xl min-h-[600px]">
                         {artistsData.map((artist) => (
-                            <img
+                            <div
                                 key={artist.id}
-                                src={artist.img}
-                                alt={`Artwork by ${artist.name}`}
-                                className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] ${activeArtist.id === artist.id
-                                        ? 'opacity-100 scale-100 z-10'
-                                        : 'opacity-0 scale-110 z-0'
-                                    }`}
-                            />
+                                className={`absolute inset-0 transition-all duration-[1200ms] ease-luxury transform
+                                ${activeArtistId === artist.id ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0'}`}
+                            >
+                                <img 
+                                    src={artist.img} 
+                                    alt={artist.name} 
+                                    className="w-full h-full object-cover transition-transform duration-[10s] ease-linear hover:scale-110" 
+                                />
+                                <div className="absolute inset-0 bg-ink/10 mix-blend-multiply"></div>
+                            </div>
                         ))}
-                        <div className="absolute inset-4 border border-bg/20 z-20 pointer-events-none mix-blend-overlay"></div>
+                        {/* Marco decorativo minimalista */}
+                        <div className="absolute inset-8 border border-bg/10 z-20 pointer-events-none mix-blend-overlay"></div>
                     </div>
 
                 </div>
             </div>
+            <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-black to-transparent opacity-50 pointer-events-none"></div>
         </section>
     );
 };
