@@ -1,4 +1,10 @@
 {
+    "projections": {
+        "eyebrow": "Sonido y Visión Interactiva",
+        "title": "Experiencias",
+        "subtitle": "Inmersivas.",
+        "hover_instruction": "Pasa el cursor para reproducir con sonido"
+    },
     "services_details": {
         "uses": {
             "eyebrow": "Ideal para",

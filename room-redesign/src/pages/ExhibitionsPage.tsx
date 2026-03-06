@@ -2,6 +2,7 @@ import React from 'react';
 import { SEO } from '../components/SEO';
 import { ExhibitionsXHero } from '../sections/exhibitions/ExhibitionsXHero';
 import { ExhibitionsXContent } from '../sections/exhibitions/ExhibitionsXContent';
+import { ProjectionGallery } from '../sections/exhibitions/ProjectionGallery';
 
 export const ExhibitionsPage: React.FC = () => {
     return (
@@ -18,6 +19,8 @@ export const ExhibitionsPage: React.FC = () => {
 
             {/* 3. Galería extendida de obras inéditas (Fondo Bg) */}
             <ExhibitionsXContent />
+
+            <ProjectionGallery/>
 
         </main>
     );
