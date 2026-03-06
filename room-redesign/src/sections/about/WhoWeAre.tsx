@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next'; // <-- Importamos useTranslation
+import { useTranslation } from 'react-i18next';
 
 export const WhoWeAre: React.FC = () => {
-    const { t } = useTranslation(); // <-- Extraemos t
-    
-    // Estado y Referencia para la animación al hacer scroll
+    const { t } = useTranslation();
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
 
@@ -16,73 +14,75 @@ export const WhoWeAre: React.FC = () => {
                     if (sectionRef.current) observer.unobserve(sectionRef.current);
                 }
             },
-            { threshold: 0.15 } // Se activa cuando el 15% es visible
+            { threshold: 0.1 }
         );
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
-        return () => {
-            if (sectionRef.current) observer.unobserve(sectionRef.current);
-        };
+        if (sectionRef.current) observer.observe(sectionRef.current);
+        return () => { if (sectionRef.current) observer.unobserve(sectionRef.current); };
     }, []);
 
     return (
         <section
             ref={sectionRef}
-            className="w-full py-24 md:py-32 bg-bg text-ink relative z-10 transition-colors duration-500 overflow-hidden"
+            /* COMPACTACIÓN: py-12 en móvil, py-20 en desktop */
+            className="w-full py-12 md:py-20 bg-bg text-ink relative z-10 overflow-hidden transition-all duration-700"
         >
-            <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
+            <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 items-center">
 
-                {/* Columna Izquierda: Imagen Editorial */}
-                <div className={`lg:col-span-5 relative group transition-all duration-[1500ms] ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0'}`}>
+                {/* COLUMNA DE CONTENIDO (Foco principal en móvil) */}
+                <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left order-1">
 
-                    <div className="relative w-full max-w-md mx-auto lg:max-w-full aspect-[4/5] overflow-hidden rounded-sm z-10 shadow-lg">
-                        <img
-                            src="/images/imagensalon2.webp"
-                            alt="Project Room Bern Space"
-                            className="w-full h-full object-cover transition-transform duration-[2000ms] ease-luxury group-hover:scale-105 filter brightness-95 group-hover:brightness-100"
-                        />
-                    </div>
-
-                    {/* Marco decorativo asimétrico y animado */}
-                    <div className="absolute -inset-4 md:-inset-6 border border-ink/20 z-0 translate-x-4 translate-y-4 md:translate-x-6 md:translate-y-6 transition-transform duration-[1000ms] ease-luxury group-hover:translate-x-8 group-hover:translate-y-8 hidden md:block"></div>
-                </div>
-
-                {/* Columna Derecha: El texto oficial de la misión */}
-                <div className="lg:col-span-7 flex flex-col justify-center mt-8 lg:mt-0">
-
-                    <span className={`text-gold text-xs font-bold tracking-[0.3em] uppercase mb-6 block transition-all duration-1000 delay-200 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                    {/* 1. Subtítulo */}
+                    <span className={`text-gold text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase mb-4 block transition-all duration-1000 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}>
                         {t('who_we_are.subtitle', 'Who We Are')}
                     </span>
 
-                    <h2 className={`font-serif text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] font-extrabold tracking-tight mb-10 transition-all duration-1000 delay-400 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                    {/* 2. Título */}
+                    <h2 className={`font-serif text-[clamp(2.3rem,6vw,4.2rem)] leading-[1.05] font-extrabold tracking-tighter mb-8 transition-all duration-1000 delay-200 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                         {t('who_we_are.title_1', 'A space for')} <br className="hidden lg:block" />
-                        <span className="italic font-light">{t('who_we_are.title_2', 'cultural resistance.')}</span>
+                        <span className="italic font-light text-gold/80">{t('who_we_are.title_2', 'cultural resistance.')}</span>
                     </h2>
 
-                    {/* Inyectamos y adaptamos el texto de la visión y ubicación */}
-                    <div className={`font-sans text-ink/75 text-base md:text-lg leading-relaxed space-y-6 max-w-[55ch] transition-all duration-1000 delay-600 ease-luxury transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                    {/* 3. IMAGEN (SÓLO MÓVIL): Inyectada bajo el título */}
+                    <div className={`lg:hidden w-full flex justify-center mb-10 transition-all duration-[1500ms] delay-300 transform ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}>
+                        <div className="relative w-full max-w-[20rem] aspect-[4/5] overflow-hidden rounded-sm shadow-2xl">
+                            <img
+                                src="/images/imagensalon2.webp"
+                                alt="Project Room Bern Space"
+                                className="w-full h-full object-cover filter brightness-95"
+                            />
+                        </div>
+                    </div>
 
-                        {/* Párrafo destacado (Lead Paragraph) */}
-                        <p className="text-xl md:text-2xl font-serif text-ink mb-6 leading-snug">
-                            <strong>Project Room Bern</strong> {t('who_we_are.lead_text', 'is a new space, open to everyone and to art in all its forms.')}
+                    {/* 4. Bloque de Texto Biográfico */}
+                    <div className={`font-sans text-ink/70 text-sm md:text-base lg:text-lg leading-relaxed space-y-6 max-w-[55ch] transition-all duration-1000 delay-400 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+
+                        <p className="text-lg md:text-xl font-serif text-ink mb-6 leading-snug">
+                            <strong className="text-gold/90">Project Room Bern</strong> {t('who_we_are.lead_text', 'is a new space, open to everyone and to art in all its forms.')}
                         </p>
+
+                        <p>{t('who_we_are.p1', 'We continuously collaborate with emerging artists...')}</p>
 
                         <p>
-                            {t('who_we_are.p1', 'We continuously collaborate with emerging artists seeking exhibition opportunities, as well as curators, cultural managers, educators, artisans, and lecturers, to promote art, culture, and personal development.')}
+                            {t('who_we_are.p2_1', 'Located in the heart of Bern, within the emblematic')} <strong>Das Dazwischen</strong>{t('who_we_are.p2_2', '—a vibrant center renowned for its eclectic programming...')}.
                         </p>
 
-                        <p>
-                            {t('who_we_are.p2_1', 'Located in the heart of Bern, within the emblematic')} <strong>Das Dazwischen</strong>{t('who_we_are.p2_2', '—a vibrant center renowned for its eclectic programming and commitment to contemporary arts. This venue hosts experimental music concerts, artistic performances, participatory workshops, and community events, serving as a true platform for creators.')}
-                        </p>
-
-                        <p>
-                            {t('who_we_are.p3', 'By establishing ourselves in such a symbolic cornerstone of Bern\'s cultural scene, we amplify our initiative, joining a long-standing tradition of social innovation and cultural resistance.')}
-                        </p>
+                        <p>{t('who_we_are.p3', 'By establishing ourselves in such a symbolic cornerstone...')}</p>
 
                     </div>
+                </div>
+
+                {/* COLUMNA DE IMAGEN (SÓLO ESCRITORIO): Oculta en móvil */}
+                <div className={`hidden lg:block lg:col-span-5 relative group transition-all duration-[1500ms] ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+                    <div className="relative w-full aspect-[4/5] overflow-hidden rounded-sm z-10 shadow-2xl">
+                        <img
+                            src="/images/imagensalon2.webp"
+                            alt="Project Room Bern Space"
+                            className="w-full h-full object-cover transition-transform duration-[2.5s] ease-out group-hover:scale-105 filter brightness-95 group-hover:brightness-100"
+                        />
+                    </div>
+                    {/* Marco decorativo: Sólo desktop */}
+                    <div className="absolute -inset-6 border border-ink/10 z-0 translate-x-4 translate-y-4 transition-transform duration-[1200ms] ease-out group-hover:translate-x-6 group-hover:translate-y-6"></div>
                 </div>
 
             </div>
